@@ -111,3 +111,5 @@ Verifiche della correzione, eseguite realmente con Node 22.23.3:
 Pagefind segnala che il file Google non ha un elemento HTML e lo ignora: è previsto e non fa fallire la build. Il file non deve ricevere markup.
 
 Il browser cloud mostra Search Console non autenticata e il collegamento di accesso Google. Non sono state completate verifica della proprietà, invio sitemap o richiesta di indicizzazione. I passaggi dal proprio account autorizzato sono in [DEPLOYMENT.md](DEPLOYMENT.md). I controlli locali non provano l’indicizzazione da parte di Google; lo stato del deployment finale e i controlli HTTP di produzione sono riportati nella consegna dell’intervento.
+
+Il commit di correzione `27f35ac` ha superato GitHub Actions (run `37849134380`) e il deployment Cloudflare `bfeb10bf-4f81-454d-9845-19e13d43adf4`, completato alle 21:47:43 UTC. Il controllo HTTP senza seguire redirect ha poi rilevato un 308 dall’URL Google `.html` alla versione senza estensione; il browser mostrava il token corretto all’URL finale. Per soddisfare anche il 200 diretto, è stata aggiunta una regola statica e circoscritta in `public/_redirects`, senza alterare il file o introdurre Functions.

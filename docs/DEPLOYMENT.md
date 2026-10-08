@@ -48,6 +48,8 @@ Dopo l’attivazione, cambia PUBLIC_SITE_URL all’origine personalizzata e rico
 
 Il file originale `public/googleb99d9db8ab55914d.html` viene copiato nella root di `dist/` senza trasformazioni. Non aggiungere markup o metadati e non rimuoverlo dopo la verifica: Google può ricontrollarlo. Il validatore riconosce solo file `google<token-esadecimale>.html` nella root, ne controlla il contenuto e l’identità con l’originale. Le altre pagine mantengono tutti i controlli. Sitemap e Pagefind escludono la risorsa di verifica.
 
+Cloudflare Pages normalmente reindirizza i file HTML verso URL senza estensione. `public/_redirects` contiene una singola regola di proxy interno con stato 200 dal nome Google originale alla stessa risorsa senza estensione: l’URL `.html` resta pubblico senza modificare i byte del file. Non è un Worker o una Function. Se aggiungi un nuovo file Google, aggiungi anche la sua regola esatta con la stessa struttura. Riferimento: https://developers.cloudflare.com/pages/configuration/redirects/.
+
 Da un account Google autorizzato:
 
 1. Apri https://search.google.com/search-console e seleziona la proprietà **Prefisso URL** `https://litness-wiki.pages.dev/`.
