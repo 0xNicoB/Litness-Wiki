@@ -8,7 +8,7 @@ Prima release: **27 articoli**, 8 categorie, HTML statico Astro, ricerca locale 
 
 ## Sviluppo
 
-Richiede Node 22.16.0 (vedi `.nvmrc`) e npm. Il runtime locale 24 è compatibile; Cloudflare usa la versione dichiarata.
+Richiede Node 22.23.3 (vedi `.nvmrc`) e npm. Il runtime locale 24 è compatibile; Cloudflare usa la versione dichiarata.
 
 ```bash
 npm ci
@@ -22,7 +22,7 @@ npm run verify
 npm run preview
 ```
 
-`verify` esegue Astro/TypeScript strict, ESLint, 5 controlli editoriali e build. `build` produce `dist`, genera Pagefind e verifica pagine, link interni, anchor, asset e metadata. E2E, clipboard, accessibilità axe e screenshot:
+`verify` esegue Astro/TypeScript strict, ESLint, 5 controlli editoriali, 8 test di regressione del validatore e build. `build` produce `dist`, genera Pagefind e verifica pagine, link interni, anchor, asset e metadata. I file Google nella root sono confrontati byte per byte con gli originali in `public/` e separati dalle pagine della wiki. E2E, clipboard, accessibilità axe e screenshot:
 
 ```bash
 npx playwright install --with-deps chromium
@@ -39,7 +39,7 @@ Con questa variabile non viene avviato il server di preview locale.
 
 ## Pubblicazione Cloudflare Pages
 
-Collega **0xNicoB/Litness-Wiki**, produzione **main**. Framework **Astro**, root repository, build **npm run build**, output **dist**, variabile **NODE_VERSION=22.16.0**. Nessun adapter SSR o Pages Function.
+Collega **0xNicoB/Litness-Wiki**, produzione **main**. Framework **Astro**, root repository, build **npm run build**, output **dist**, variabile **NODE_VERSION=22.23.3**. Nessun adapter SSR o Pages Function.
 
 Il progetto esistente usa **PUBLIC_SITE_URL=https://litness-wiki.pages.dev** in produzione e preview. Se attivi un dominio personalizzato verificato, aggiorna questa origine e ricostruisci. Senza la variabile il sito omette canonical, sitemap e URL assoluti social.
 

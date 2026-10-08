@@ -1,6 +1,6 @@
 # Architettura
 
-Astro 5 static-first con MDX, TypeScript strict, Tailwind 4 via Vite e CSS custom centralizzato. Le versioni esatte installate sono in package.json e package-lock.json. Node 22.16.0 dichiarato. Non servono Workers, Functions, adapter SSR, database o servizi di ricerca esterni.
+Astro 5 static-first con MDX, TypeScript strict, Tailwind 4 via Vite e CSS custom centralizzato. Le versioni esatte installate sono in package.json e package-lock.json. Node 22.23.3 dichiarato. Non servono Workers, Functions, adapter SSR, database o servizi di ricerca esterni.
 
 ## Flusso dei dati
 

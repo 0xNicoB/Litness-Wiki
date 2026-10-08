@@ -82,3 +82,32 @@ GitHub Actions è passato per entrambi i commit `57b478c` e `5d23d1b`: installaz
 - Articolo dungeon controllato visivamente in tema chiaro e scuro; nessun overflow orizzontale nella viewport desktop. Le verifiche mobile documentate sopra riguardano la build locale e la CI.
 
 La suite Playwright completa contro l’hostname pubblico non ha potuto navigare da Chromium locale: 21 casi terminati con `net::ERR_EMPTY_RESPONSE` prima di caricare la pagina, un caso escluso intenzionalmente. Non è un risultato E2E superato sulla produzione. Le richieste HTTP e il browser cloud hanno invece raggiunto il sito; i test funzionali remoti sopra sono stati effettuati in quel browser. `PLAYWRIGHT_BASE_URL` consente di ripetere l’intera suite da un ambiente con accesso all’hostname pubblico.
+
+## Correzione verifica Google e runtime Node
+
+Intervento dell’8 ottobre 2026, successivo all’aggiunta del file Google nel commit `21f4a9d`.
+
+La build fallita `9dcfa840-fb98-46cc-b182-ff7f41f2fee4` è stata esaminata tramite i log Cloudflare. Astro e Pagefind erano riusciti; `verify-build.mjs` richiedeva markup SEO al file di protocollo Google e lo conteggiava tra le pagine, mentre Astro non lo inseriva nella sitemap. Lo stesso errore è stato riprodotto localmente prima della correzione.
+
+Il validatore ora separa esclusivamente i file Google esadecimali nella root, ne verifica il contenuto e confronta i byte con `public/`. Le pagine ordinarie e i file annidati mantengono i controlli SEO; risorse, anchor e Pagefind continuano a essere validati. La sitemap è confrontata con l’insieme esatto delle pagine indicizzabili, senza duplicati, 404 o file di verifica.
+
+Il warning `EBADENGINE` riguardava `undici@8.11.2`, che richiede Node almeno 22.19.0. Runtime fissato a **22.23.3 LTS** in `.nvmrc` e Cloudflare, produzione e preview; `engines` e lockfile allineati al requisito minimo. Nessuna versione delle dipendenze modificata. La CI usa `.nvmrc` e l’origine reale per verificare anche canonical e sitemap.
+
+Verifiche della correzione, eseguite realmente con Node 22.23.3:
+
+| Controllo                                                       | Risultato                                                                                                                    |
+| --------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `npm ci`                                                        | Riuscito, nessun `EBADENGINE`                                                                                                |
+| `PUBLIC_SITE_URL=https://litness-wiki.pages.dev npm run verify` | Exit 0: typecheck, lint, 13 test e build                                                                                     |
+| TypeScript/Astro                                                | 0 errori, warning e hint                                                                                                     |
+| Test Node                                                       | 5 editoriali e 8 regressioni passati                                                                                         |
+| Build e validatore                                              | 38 pagine, 1 file Google invariato, 3.405 risorse/anchor                                                                     |
+| Sitemap                                                         | 37 URL unici sull’origine corretta, nessuna 404 o verifica Google                                                            |
+| Pagefind                                                        | 27 articoli italiani; file Google non indicizzato                                                                            |
+| E2E desktop/mobile                                              | 21 passati, 1 skip previsto per il drawer sul desktop                                                                        |
+| Audit SEO statico                                               | Lingua, title, description, canonical, Open Graph e robots controllati su tutte le 38 pagine; schema Article nei 27 articoli |
+| Identità file                                                   | Allegato = public = dist, 53 byte; SHA-256 `f1684269317123c78f3760a5929f9d8bd559b5d08446264cbf0fe7e9d9231383`                |
+
+Pagefind segnala che il file Google non ha un elemento HTML e lo ignora: è previsto e non fa fallire la build. Il file non deve ricevere markup.
+
+Il browser cloud mostra Search Console non autenticata e il collegamento di accesso Google. Non sono state completate verifica della proprietà, invio sitemap o richiesta di indicizzazione. I passaggi dal proprio account autorizzato sono in [DEPLOYMENT.md](DEPLOYMENT.md). I controlli locali non provano l’indicizzazione da parte di Google; lo stato del deployment finale e i controlli HTTP di produzione sono riportati nella consegna dell’intervento.

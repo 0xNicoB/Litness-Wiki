@@ -2,10 +2,12 @@ import { readdir, readFile, stat } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { load } from "cheerio";
-const root = path.resolve(
+const projectRoot = path.resolve(
   path.dirname(fileURLToPath(import.meta.url)),
-  "../dist",
+  "..",
 );
+// An optional output directory lets regression tests validate isolated fixtures.
+const root = path.resolve(process.argv[2] ?? path.join(projectRoot, "dist"));
 async function files(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
   return (
@@ -18,8 +20,42 @@ async function files(dir) {
     )
   ).flat();
 }
-const htmls = (await files(root)).filter((f) => f.endsWith(".html"));
+const allHtmls = (await files(root)).filter((f) => f.endsWith(".html"));
+// Only Google's root-level HTML verification files are protocol resources.
+// Nested files and other HTML still receive every ordinary page check.
+const verificationFiles = allHtmls.filter(
+  (file) =>
+    path.dirname(file) === root &&
+    /^google[a-f0-9]+\.html$/.test(path.basename(file)),
+);
+const htmls = allHtmls.filter((file) => !verificationFiles.includes(file));
 const failures = [];
+for (const file of verificationFiles) {
+  const name = path.basename(file);
+  const output = await readFile(file);
+  if (
+    !new RegExp(
+      `^google-site-verification: ${name.replaceAll(".", "\\.")}(?:\\r?\\n)?$`,
+    ).test(output.toString("utf8"))
+  )
+    failures.push(`/${name}: invalid Google verification content`);
+  try {
+    const source = await readFile(path.join(projectRoot, "public", name));
+    if (!output.equals(source))
+      failures.push(`/${name}: Google verification file changed during build`);
+  } catch {
+    failures.push(`/${name}: missing original verification file in public/`);
+  }
+}
+function routeFor(file) {
+  return (
+    "/" +
+    path
+      .relative(root, file)
+      .replaceAll(path.sep, "/")
+      .replace(/index\.html$/, "")
+  );
+}
 const origin = process.env.PUBLIC_SITE_URL?.trim();
 const cache = new Map();
 async function document(file) {
@@ -36,12 +72,7 @@ async function exists(p) {
 let links = 0;
 for (const file of htmls) {
   const $ = await document(file);
-  const route =
-    "/" +
-    path
-      .relative(root, file)
-      .replaceAll(path.sep, "/")
-      .replace(/index\.html$/, "");
+  const route = routeFor(file);
   for (const [label, valid] of [
     ["lang", $("html").attr("lang") === "it"],
     ["title", $("title").text().length > 3],
@@ -135,15 +166,19 @@ if (origin) {
   const locations = sitemap("loc")
     .map((_, el) => sitemap(el).text())
     .get();
+  const expectedLocations = new Set(
+    htmls
+      .filter((file) => file !== path.join(root, "404.html"))
+      .map((file) => new URL(routeFor(file), origin).href),
+  );
   if (
-    locations.length !== htmls.length - 1 ||
-    locations.some(
-      (url) =>
-        !url.startsWith(new URL(origin).origin + "/") ||
-        /\/404(?:\/|\.html)$/.test(url),
-    )
+    locations.length !== expectedLocations.size ||
+    new Set(locations).size !== locations.length ||
+    locations.some((url) => !expectedLocations.has(url))
   )
-    failures.push("Sitemap origin, route count or 404 exclusion is invalid");
+    failures.push(
+      "Sitemap URLs, duplicates or page/verification/404 exclusions are invalid",
+    );
   if (
     !robots.includes(`Sitemap: ${new URL("/sitemap-index.xml", origin).href}`)
   )
@@ -163,5 +198,5 @@ if (failures.length) {
   process.exitCode = 1;
 } else
   console.log(
-    `Verified ${htmls.length} HTML pages, ${links} internal resources/anchors, SEO and Pagefind (${index.languages.it.page_count} articles).`,
+    `Verified ${htmls.length} HTML pages, ${verificationFiles.length} unchanged Google verification files, ${links} internal resources/anchors, SEO and Pagefind (${index.languages.it.page_count} articles).`,
   );

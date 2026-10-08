@@ -1,10 +1,10 @@
 # Cloudflare Pages
 
-Progetto attivo dall’8 ottobre 2026: **https://litness-wiki.pages.dev/**. Repository collegata: `0xNicoB/Litness-Wiki`; produzione: `main`. La build e il primo deployment Git sono riusciti. `NODE_VERSION=22.16.0` e `PUBLIC_SITE_URL=https://litness-wiki.pages.dev` sono configurati sia in produzione sia in preview.
+Progetto attivo dall’8 ottobre 2026: **https://litness-wiki.pages.dev/**. Repository collegata: `0xNicoB/Litness-Wiki`; produzione: `main`. La build e il primo deployment Git sono riusciti. `NODE_VERSION=22.23.3` e `PUBLIC_SITE_URL=https://litness-wiki.pages.dev` sono configurati sia in produzione sia in preview.
 
 ## Sviluppo e build riproducibili
 
-Node 22.16.0, npm, lockfile committato.
+Node 22.23.3, npm, lockfile committato.
 
 ```bash
 npm ci
@@ -27,7 +27,7 @@ Nel dashboard Cloudflare: Workers & Pages → Create application → Pages → C
 | Root          | root repository, vuoto oppure /                |
 | Build         | npm run build                                  |
 | Output        | dist                                           |
-| Node          | NODE_VERSION=22.16.0                           |
+| Node          | NODE_VERSION=22.23.3                           |
 | Origine SEO   | PUBLIC_SITE_URL=https://litness-wiki.pages.dev |
 
 Nessuna Function, Worker o adapter SSR. Il nome Pages assegnato dal provider è la fonte dell’hostname, non una previsione della wiki.
@@ -43,6 +43,21 @@ Senza questa variabile sitemap/canonical/og:image sono omessi intenzionalmente. 
 Apri Pages project → Custom domains → Set up a custom domain. Inserisci il dominio che possiedi, segui le istruzioni DNS del provider e attendi verifica/certificato. Per un apex potrebbe servire gestire la zona su Cloudflare. Non creare record DNS senza sapere quale dominio va usato.
 
 Dopo l’attivazione, cambia PUBLIC_SITE_URL all’origine personalizzata e ricostruisci. Verifica HTTPS, canonical e sitemap. Il dominio deve essere già attivo: non inserire hostname immaginari.
+
+## Google Search Console
+
+Il file originale `public/googleb99d9db8ab55914d.html` viene copiato nella root di `dist/` senza trasformazioni. Non aggiungere markup o metadati e non rimuoverlo dopo la verifica: Google può ricontrollarlo. Il validatore riconosce solo file `google<token-esadecimale>.html` nella root, ne controlla il contenuto e l’identità con l’originale. Le altre pagine mantengono tutti i controlli. Sitemap e Pagefind escludono la risorsa di verifica.
+
+Da un account Google autorizzato:
+
+1. Apri https://search.google.com/search-console e seleziona la proprietà **Prefisso URL** `https://litness-wiki.pages.dev/`.
+2. Con il metodo **File HTML**, controlla https://litness-wiki.pages.dev/googleb99d9db8ab55914d.html e premi **Verifica**. Il file deve essere quello generato per il tuo account e questa proprietà.
+3. In **Sitemap**, invia `sitemap-index.xml` e controlla il risultato restituito da Google.
+4. In **Controllo URL**, esegui il test live per la homepage e `/wiki/`; richiedi l’indicizzazione se Google rende disponibile il comando.
+
+La disponibilità pubblica del file non prova che Google abbia già verificato la proprietà. Una sitemap valida e inviata non garantisce l’indicizzazione. Lo stato effettivamente osservato è riportato in QA e nella consegna.
+
+Riferimenti: https://support.google.com/webmasters/answer/9008080?hl=it e https://support.google.com/webmasters/answer/7451001?hl=it.
 
 ## Build automatiche e preview
 
