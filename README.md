@@ -2,6 +2,8 @@
 
 Wiki italiana indipendente del server Minecraft Litness. Non affiliata o gestita da Litness Ltd.
 
+Sito pubblico: **https://litness-wiki.pages.dev/**. Cloudflare Pages è collegato a `main` tramite l’integrazione GitHub.
+
 Prima release: **27 articoli**, 8 categorie, HTML statico Astro, ricerca locale Pagefind, font self-hosted e layout responsive. Nessun database, login o servizio indispensabile esterno.
 
 ## Sviluppo
@@ -27,11 +29,19 @@ npx playwright install --with-deps chromium
 npm run test:e2e
 ```
 
+Per eseguire la stessa suite contro un deployment raggiungibile dal tuo ambiente:
+
+```bash
+PLAYWRIGHT_BASE_URL=https://litness-wiki.pages.dev npm run test:e2e
+```
+
+Con questa variabile non viene avviato il server di preview locale.
+
 ## Pubblicazione Cloudflare Pages
 
 Collega **0xNicoB/Litness-Wiki**, produzione **main**. Framework **Astro**, root repository, build **npm run build**, output **dist**, variabile **NODE_VERSION=22.16.0**. Nessun adapter SSR o Pages Function.
 
-Imposta **PUBLIC_SITE_URL** con l’origine HTTPS reale assegnata al progetto (o il dominio personalizzato verificato), ad esempio il valore effettivo mostrato da Cloudflare. Prima di questa configurazione il sito omette canonical, sitemap e URL assoluti social, evitando un dominio inventato. Dopo aver impostato l’origine, ricostruisci la produzione.
+Il progetto esistente usa **PUBLIC_SITE_URL=https://litness-wiki.pages.dev** in produzione e preview. Se attivi un dominio personalizzato verificato, aggiorna questa origine e ricostruisci. Senza la variabile il sito omette canonical, sitemap e URL assoluti social.
 
 I push su main attivano le build automatiche; gli altri branch possono generare preview. Vedi [DEPLOYMENT](docs/DEPLOYMENT.md) per il collegamento GitHub, il dominio e le verifiche.
 

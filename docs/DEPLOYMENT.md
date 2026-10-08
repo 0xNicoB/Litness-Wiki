@@ -1,5 +1,7 @@
 # Cloudflare Pages
 
+Progetto attivo dall’8 ottobre 2026: **https://litness-wiki.pages.dev/**. Repository collegata: `0xNicoB/Litness-Wiki`; produzione: `main`. La build e il primo deployment Git sono riusciti. `NODE_VERSION=22.16.0` e `PUBLIC_SITE_URL=https://litness-wiki.pages.dev` sono configurati sia in produzione sia in preview.
+
 ## Sviluppo e build riproducibili
 
 Node 22.16.0, npm, lockfile committato.
@@ -17,15 +19,16 @@ La build usa Astro + Pagefind + verifica output. La preview serve la build compl
 
 Nel dashboard Cloudflare: Workers & Pages → Create application → Pages → Connect to Git. Autorizza l’app Cloudflare solo per la repository desiderata e seleziona `0xNicoB/Litness-Wiki`.
 
-| Impostazione  | Valore                          |
-| ------------- | ------------------------------- |
-| Nome progetto | litness-wiki (se disponibile)   |
-| Produzione    | main                            |
-| Framework     | Astro                           |
-| Root          | root repository, vuoto oppure / |
-| Build         | npm run build                   |
-| Output        | dist                            |
-| Node          | NODE_VERSION=22.16.0            |
+| Impostazione  | Valore                                         |
+| ------------- | ---------------------------------------------- |
+| Nome progetto | litness-wiki                                   |
+| Produzione    | main                                           |
+| Framework     | Astro                                          |
+| Root          | root repository, vuoto oppure /                |
+| Build         | npm run build                                  |
+| Output        | dist                                           |
+| Node          | NODE_VERSION=22.16.0                           |
+| Origine SEO   | PUBLIC_SITE_URL=https://litness-wiki.pages.dev |
 
 Nessuna Function, Worker o adapter SSR. Il nome Pages assegnato dal provider è la fonte dell’hostname, non una previsione della wiki.
 
@@ -56,7 +59,7 @@ Per correggere una release, apri una PR e lascia eseguire CI. Un push successivo
 - /robots.txt e /sitemap-index.xml coerenti con l’origine.
 - Asset, font e Pagefind caricati localmente, nessun servizio indispensabile mancante.
 
-La documentazione descrive la configurazione; lo stato effettivo della pubblicazione è riportato in QA e nella consegna, solo dopo una verifica reale.
+Le verifiche effettive, incluse quelle sulla produzione, sono riportate in [QA.md](QA.md).
 
 ## Fonti tecniche
 

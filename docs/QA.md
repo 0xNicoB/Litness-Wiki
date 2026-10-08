@@ -1,19 +1,19 @@
 # Verifica della prima release
 
-Verifiche eseguite l’8 ottobre 2026, sulla build statica locale. Il sito non è ancora pubblicato su Cloudflare; lo stato remoto aggiornato è riportato nell’ultima sezione.
+Verifiche eseguite l’8 ottobre 2026 sulla build statica locale, nella CI GitHub e sulla produzione Cloudflare. Il sito è pubblicato su **https://litness-wiki.pages.dev/**. I risultati locali e quelli di produzione sono distinti nelle sezioni seguenti.
 
 ## Risultati tecnici
 
-| Verifica | Risultato effettivo |
-| --- | --- |
-| Installazione riproducibile | `npm ci` completato con lockfile |
-| Astro / TypeScript strict | 0 errori, 0 warning, 0 hint |
-| ESLint | Passato |
-| Test editoriali Node | 5 passati |
-| Build statica | 38 pagine HTML, 27 articoli in 8 categorie |
-| Pagefind | 27 articoli italiani indicizzati; ricerca provata nel browser |
-| Risorse e anchor interni | 3.367 riferimenti controllati, nessun riferimento mancante |
-| SEO senza dominio | Canonical, sitemap e URL social assoluti omessi; nessun dominio di produzione inventato |
+| Verifica                    | Risultato effettivo                                                                                                                     |
+| --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| Installazione riproducibile | `npm ci` completato con lockfile                                                                                                        |
+| Astro / TypeScript strict   | 0 errori, 0 warning, 0 hint                                                                                                             |
+| ESLint                      | Passato                                                                                                                                 |
+| Test editoriali Node        | 5 passati                                                                                                                               |
+| Build statica               | 38 pagine HTML, 27 articoli in 8 categorie                                                                                              |
+| Pagefind                    | 27 articoli italiani indicizzati; ricerca provata nel browser                                                                           |
+| Risorse e anchor interni    | 3.367 riferimenti controllati, nessun riferimento mancante                                                                              |
+| SEO senza dominio           | Canonical, sitemap e URL social assoluti omessi; nessun dominio di produzione inventato                                                 |
 | SEO con origine configurata | Build con `https://example.com` come fixture: 37 URL in sitemap, 404 esclusa, canonical esatti, social card e schema Article verificati |
 
 La fixture è stata rimossa ricostruendo il sito senza `PUBLIC_SITE_URL`. La build consegnata non pubblica URL verso example.com. I controlli SEO sono parte di `scripts/verify-build.mjs` e della build ordinaria.
@@ -47,10 +47,10 @@ Il sito ufficiale è stato ispezionato visivamente su desktop, in tema chiaro/sc
 
 Lighthouse 13.5.0, modalità mobile standard, preview locale, dopo la build finale dell’interfaccia. Report JSON inclusi nella consegna.
 
-| Pagina | Performance | Accessibility | Best Practices | SEO |
-| --- | ---: | ---: | ---: | ---: |
-| Homepage | 96 | 100 | 100 | 100 |
-| Storico economico | 91 | 100 | 100 | 100 |
+| Pagina            | Performance | Accessibility | Best Practices | SEO |
+| ----------------- | ----------: | ------------: | -------------: | --: |
+| Homepage          |          96 |           100 |            100 | 100 |
+| Storico economico |          91 |           100 |            100 | 100 |
 
 Nessun audit binario fallito nei due report. Sono misure locali, non misure della produzione Cloudflare; i risultati variano con hardware, rete e provider.
 
@@ -68,6 +68,17 @@ Aggiornamento dell’8 ottobre 2026 dopo la riconfigurazione delle connessioni.
 
 L’accesso GitHub è ripristinato: la scrittura tramite integrazione è riuscita. Il progetto completo è pubblicato su `main` con il commit `57b478c5234f7260084f5f82a8fb2721bb2fead6`, preceduto dall’inizializzazione `22ae6d5c2d969a33a71e670de1728306f2998d90`. Non è stato usato force push. La cronologia locale precedente è conservata nei branch `implementation-local` e `prepared-release` e nel bundle già consegnato.
 
-La creazione del progetto Cloudflare Pages collegato a GitHub continua a restituire **8000011 — internal issue with your Cloudflare Pages Git installation**. Una successiva lettura conferma la lista dei progetti Pages vuota: nessun progetto o deployment è stato creato.
+L’errore Cloudflare **8000011** non si è ripresentato dopo la riconfigurazione. Il progetto Git `litness-wiki` è stato creato e collegato a questa repository, produzione `main`, preview abilitate per tutti i branch. Node 22.16.0 e l’origine SEO reale sono configurati per entrambi gli ambienti. Nessuna modifica a credenziali o DNS.
 
-Per completare la pubblicazione occorre ripristinare l’installazione Git Cloudflare, oppure contattare il supporto se la reinstallazione è già stata effettuata. Le impostazioni e le verifiche dopo il deployment sono in [DEPLOYMENT.md](DEPLOYMENT.md). Non sono state modificate autorizzazioni, credenziali o DNS.
+La build Cloudflare del commit `5d23d1b228995d2ec9693330bec9768f416c4309` ha completato clone, build e pubblicazione. Deployment `953b1d01-75d1-4a84-8dfb-bcd4a2873320`, stato `success`, completato l’8 ottobre 2026 alle 10:23:51 UTC. La prima build è stata avviata manualmente tramite API sul progetto Git: non è stato usato Direct Upload.
+
+GitHub Actions è passato per entrambi i commit `57b478c` e `5d23d1b`: installazione, verifiche tecniche, build e suite E2E. Run: [37746193392](https://github.com/0xNicoB/Litness-Wiki/actions/runs/37746193392) e [37746413186](https://github.com/0xNicoB/Litness-Wiki/actions/runs/37746413186).
+
+## Verifiche sulla produzione
+
+- Otto endpoint HTTP controllati: homepage, dungeon, storico economico, robots, sitemap index, sitemap, indice Pagefind e percorso inesistente. Sette risposte 200 e una 404 personalizzata, come previsto.
+- Canonical e schema Article puntano all’origine reale. Sitemap con 37 URL; Pagefind con 27 articoli italiani. Robots include il riferimento alla sitemap. Header CSP presenti.
+- Nel browser cloud: ricerca «villager» con due risultati reali, apertura dell’articolo, navigazione al dungeon, copia IP e `/dungeon leave` riletti dalla clipboard, Ctrl+K, Escape e cambio tema verificati.
+- Articolo dungeon controllato visivamente in tema chiaro e scuro; nessun overflow orizzontale nella viewport desktop. Le verifiche mobile documentate sopra riguardano la build locale e la CI.
+
+La suite Playwright completa contro l’hostname pubblico non ha potuto navigare da Chromium locale: 21 casi terminati con `net::ERR_EMPTY_RESPONSE` prima di caricare la pagina, un caso escluso intenzionalmente. Non è un risultato E2E superato sulla produzione. Le richieste HTTP e il browser cloud hanno invece raggiunto il sito; i test funzionali remoti sopra sono stati effettuati in quel browser. `PLAYWRIGHT_BASE_URL` consente di ripetere l’intera suite da un ambiente con accesso all’hostname pubblico.
