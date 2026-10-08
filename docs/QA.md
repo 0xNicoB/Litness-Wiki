@@ -1,6 +1,6 @@
 # Verifica della prima release
 
-Verifiche eseguite l’8 ottobre 2026, sulla build statica locale. Il sito non è ancora pubblicato e i workflow GitHub non sono stati eseguiti sul servizio remoto.
+Verifiche eseguite l’8 ottobre 2026, sulla build statica locale. Il sito non è ancora pubblicato su Cloudflare; lo stato remoto aggiornato è riportato nell’ultima sezione.
 
 ## Risultati tecnici
 
@@ -64,8 +64,10 @@ Il verificatore automatico controlla link interni, asset e anchor. Non è stato 
 
 ## Stato GitHub e Cloudflare
 
-La repository vuota è stata clonata e i commit sono stati creati localmente su `main`. Il push nativo richiede credenziali non disponibili; il tentativo tramite integrazione GitHub restituisce **403 — Resource not accessible by integration**. Nessun commit è stato pubblicato su GitHub.
+Aggiornamento dell’8 ottobre 2026 dopo la riconfigurazione delle connessioni.
 
-Cloudflare è accessibile, ma la creazione del progetto Pages collegato a GitHub restituisce **8000011 — internal issue with your Cloudflare Pages Git installation**. La lista dei progetti Pages è rimasta vuota. Nessun deployment è stato effettuato.
+L’accesso GitHub è ripristinato: la scrittura tramite integrazione è riuscita. Il progetto completo è pubblicato su `main` con il commit `57b478c5234f7260084f5f82a8fb2721bb2fead6`, preceduto dall’inizializzazione `22ae6d5c2d969a33a71e670de1728306f2998d90`. Non è stato usato force push. La cronologia locale precedente è conservata nei branch `implementation-local` e `prepared-release` e nel bundle già consegnato.
 
-Per completare la pubblicazione occorre abilitare l’accesso GitHub alla repository `0xNicoB/Litness-Wiki` e ripristinare l’installazione Git Cloudflare. Le impostazioni e le verifiche dopo il deployment sono in [DEPLOYMENT.md](DEPLOYMENT.md). Non sono state modificate autorizzazioni, credenziali o DNS.
+La creazione del progetto Cloudflare Pages collegato a GitHub continua a restituire **8000011 — internal issue with your Cloudflare Pages Git installation**. Una successiva lettura conferma la lista dei progetti Pages vuota: nessun progetto o deployment è stato creato.
+
+Per completare la pubblicazione occorre ripristinare l’installazione Git Cloudflare, oppure contattare il supporto se la reinstallazione è già stata effettuata. Le impostazioni e le verifiche dopo il deployment sono in [DEPLOYMENT.md](DEPLOYMENT.md). Non sono state modificate autorizzazioni, credenziali o DNS.
