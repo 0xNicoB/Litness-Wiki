@@ -1,0 +1,37 @@
+---
+title: "Commissioni e tassazione"
+description: "Confronta i canali di vendita e comprendi chi sostiene la tassa sui trasferimenti Money."
+lang: "it"
+category: "economia"
+order: 30
+tags: ["tasse", "commissioni", "pay"]
+status: "riferito"
+published: "2026-10-08"
+updated: "2026-10-08"
+lastVerified: null
+sources: ["COMM-GUIDES", "COMM-07"]
+related: ["it/economia/scambi", "it/economia/auction-house"]
+featured: true
+---
+
+import Callout from '../../../../components/mdx/Callout.astro';
+import Formula from '../../../../components/mdx/Formula.astro';
+import FeeSummary from '../../../../components/mdx/FeeSummary.astro';
+
+## Commissioni riportate
+<FeeSummary />
+
+## Il destinatario paga la tassa di /pay
+Nel resoconto fornito, il 3% viene trattenuto a chi riceve. Su **1.000 Money inviati**, il destinatario riceve **970 Money**, trascurando gli arrotondamenti. Non significa che il mittente debba pagare 1.030.
+
+<Formula expression="Ricevuto ≈ Inviato × 0,97" label="CALCOLATO · IPOTESI DI ARROTONDAMENTO ESCLUSA" />
+Se vuoi che il destinatario riceva un importo prefissato, il modello matematico è:
+<Formula expression="Da inviare ≈ Ricevuto desiderato / 0,97">Per ottenere circa 1.000 Money: 1.030,93 Money. Precisione ammessa e arrotondamento in-game da verificare.</Formula>
+
+## AH e plot: cosa resta da verificare
+Le percentuali sono riportate, ma non è stabilito in questa release se l’addebito avvenga alla pubblicazione, alla vendita, sul lordo o in altro modo. Non convertiamo una percentuale in una garanzia sul netto senza sapere la base imponibile.
+
+## La GUI /trade è un canale separato
+La sua commissione è sconosciuta. Usare `/pay` durante uno scambio applica le condizioni di `/pay`; non prova che la GUI `/trade` abbia la stessa tassa. Verifica ogni riepilogo di conferma prima dello scambio.
+
+<Callout type="verify">Valori riferiti al materiale del 7 ottobre 2026. Per confermarli servono schermate delle guide, del riepilogo e dei saldi prima/dopo, senza dati personali pubblicabili.</Callout>

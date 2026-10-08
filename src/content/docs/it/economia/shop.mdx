@@ -1,0 +1,39 @@
+---
+title: "Shop NPC e prezzi dinamici"
+description: "Leggi Buy, Sell, Market e limiti senza confondere un modello empirico con l’algoritmo del server."
+lang: "it"
+category: "economia"
+order: 40
+tags: []
+status: "riferito"
+published: "2026-10-08"
+updated: "2026-10-08"
+lastVerified: null
+sources: ["COMM-GUIDES", "COMM-07", "LIT-PATCH-05"]
+related: ["it/economia/storico", "it/economia/auction-house"]
+featured: true
+---
+
+import Formula from '../../../../components/mdx/Formula.astro';
+import MarketTable from '../../../../components/mdx/MarketTable.astro';
+import GuideLink from '../../../../components/mdx/GuideLink.astro';
+import SourceRef from '../../../../components/mdx/SourceRef.astro';
+
+## Buy e Sell dal punto di vista del giocatore
+**Buy** è quanto paghi per acquistare dal server. **Sell** è quanto ricevi vendendo al server. Leggi sempre quantità, valuta e limite residuo prima di confermare.
+
+## Market e limiti quantitativi
+Sono riportati prezzi variabili, un indicatore percentuale Market e limiti di quantità. Dal 5 ottobre il changelog ufficiale conferma inoltre soglie minime e massime di prezzo non visibili nell’interfaccia. Non sono pubblicati i relativi valori. <SourceRef id="LIT-PATCH-05" />
+
+## Un modello interpretativo
+<Formula expression="Prezzo corrente ≈ Prezzo base × (1 + Market% / 100)" label="IPOTESI · NON È LA FORMULA UFFICIALE" />
+Il modello aiuta a leggere una variazione percentuale rispetto a una base ipotizzata. Non consente di ricavare il coefficiente dell’algoritmo, l’effetto di ogni vendita, il tempo di recupero o le soglie nascoste. Gli arrotondamenti visualizzati complicano ulteriormente il confronto.
+
+## Il reset non implica un azzeramento
+È riferita un’osservazione in cui il reset dei limiti non ha azzerato Market. Non assumere quindi che la percentuale riparta ogni giorno da zero.
+
+## Un caso: Charcoal
+<MarketTable kind="charcoal" />
+Le quote 0, 1 e 11 riportano lo stesso Market; a 140 la percentuale cambia. Sono letture storiche riferite, non un esperimento controllato: non deduciamo una variazione costante per singolo oggetto.
+
+<GuideLink href="/wiki/it/economia/storico/" title="Consulta i prezzi storici del 7 ottobre" description="Tabelle datate, senza quotazioni attuali." />

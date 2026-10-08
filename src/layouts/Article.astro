@@ -1,0 +1,206 @@
+---
+import Base from "./Base.astro";
+import Sidebar from "../components/Sidebar.astro";
+import Icon from "../components/Icon.astro";
+import ArticleCard from "../components/ArticleCard.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+import type { MarkdownHeading } from "astro";
+import {
+  categories,
+  articles,
+  articleUrl,
+  categoryUrl,
+  dateLabel,
+  statusLabels,
+} from "../lib/wiki";
+import { site } from "../config/site";
+interface Props {
+  article: CollectionEntry<"docs">;
+  headings: MarkdownHeading[];
+}
+const { article, headings } = Astro.props;
+const cat = categories.find((c) => c.id === article.data.category)!;
+const all = await articles();
+const index = all.findIndex((p) => p.id === article.id);
+const previous = all[index - 1],
+  next = all[index + 1];
+const related = all.filter((p) => article.data.related.includes(p.id));
+const sources = (await getCollection("sources")).filter((s) =>
+  article.data.sources.includes(s.id),
+);
+const issue = `${site.repository}/issues/new?template=informazione-errata.yml&title=${encodeURIComponent("Correzione: " + article.data.title)}&article=${encodeURIComponent(articleUrl(article.id))}`;
+const toc = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const jsonLd = Astro.site
+  ? {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: article.data.title,
+      description: article.data.description,
+      inLanguage: "it",
+      datePublished: article.data.published,
+      dateModified: article.data.updated,
+      mainEntityOfPage: new URL(articleUrl(article.id), Astro.site).href,
+      publisher: { "@type": "Organization", name: site.name },
+    }
+  : null;
+---
+
+<Base title={article.data.title} description={article.data.description}>
+  <div class="wiki-shell">
+    <Sidebar current={article.id} /><main
+      id="main"
+      class="article-main"
+      data-pagefind-body
+      data-pagefind-filter={`categoria:${cat.title}`}
+    >
+      <nav class="breadcrumbs" aria-label="Percorso" data-pagefind-ignore>
+        <a href="/">Home</a><Icon name="ChevronRight" size={13} /><a
+          href={categoryUrl(cat.id)}>{cat.title}</a
+        ><Icon name="ChevronRight" size={13} /><span aria-current="page"
+          >{article.data.title}</span>
+      </nav>
+      <header class="article-header">
+        <span class="eyebrow">{cat.title}</span><h1 data-pagefind-meta="title">
+          {article.data.title}
+        </h1><p class="article-description">{article.data.description}</p><div
+          class="article-metadata"
+        >
+          <span class:list={["status-badge", article.data.status]}
+            >{statusLabels[article.data.status]}</span
+          ><span
+            >Aggiornata <time datetime={article.data.updated}
+              >{dateLabel(article.data.updated)}</time
+            ></span
+          >{
+            article.data.lastVerified ? (
+              <span>
+                Verificata{" "}
+                <time datetime={article.data.lastVerified}>
+                  {dateLabel(article.data.lastVerified)}
+                </time>
+              </span>
+            ) : (
+              <span>Verifica diretta in attesa</span>
+            )
+          }{article.data.version && <span>{article.data.version}</span>}
+        </div>
+      </header>
+      <details class="mobile-toc">
+        <summary>In questa pagina</summary><nav
+          aria-label="Indice dell’articolo su mobile"
+        >
+          {toc.map((h) => <a href={`#${h.slug}`}>{h.text}</a>)}
+        </nav>
+      </details>
+      <article class="prose"><slot /></article>
+      <section id="fonti" class="sources-section">
+        <h2>Fonti e riferimenti</h2><p class="source-dates">
+          Pubblicata il {dateLabel(article.data.published)}. Le date di verifica
+          riguardano le fonti consultate, non una prova di tutte le meccaniche
+          in gioco.
+        </p><ol>
+          {
+            sources.map((source) => (
+              <li>
+                <>
+                  <div>
+                    {source.data.url ? (
+                      <a href={source.data.url}>
+                        {source.data.title}
+                        <Icon name="ExternalLink" size={13} />
+                      </a>
+                    ) : (
+                      <strong>{source.data.title}</strong>
+                    )}
+                    <span class="source-kind">
+                      {source.data.type.toUpperCase()}
+                    </span>
+                  </div>
+                  <small>
+                    {source.data.accessed
+                      ? `Consultata il ${dateLabel(source.data.accessed)}`
+                      : source.data.observed
+                        ? `Osservazione riferita al ${dateLabel(source.data.observed)}`
+                        : ""}
+                    . {source.data.note}
+                  </small>
+                </>
+              </li>
+            ))
+          }
+        </ol>
+      </section>
+      <div class="article-feedback" data-pagefind-ignore>
+        <span><Icon name="Info" size={18} />Questa pagina può migliorare.</span
+        ><a href={issue}
+          >Segnala una correzione <Icon name="ArrowUpRight" size={16} /></a>
+      </div>
+      {
+        related.length > 0 && (
+          <section class="related-section" data-pagefind-ignore>
+            <>
+              <h2>Continua a esplorare</h2>
+              <div class="related-grid">
+                {related.map((p) => (
+                  <ArticleCard article={p} />
+                ))}
+              </div>
+            </>
+          </section>
+        )
+      }
+      <nav
+        class="article-pagination"
+        aria-label="Articoli precedenti e successivi"
+        data-pagefind-ignore
+      >
+        {
+          previous ? (
+            <a href={articleUrl(previous.id)}>
+              <>
+                <small>← Articolo precedente</small>
+                <strong>{previous.data.title}</strong>
+              </>
+            </a>
+          ) : (
+            <span />
+          )
+        }{
+          next && (
+            <a href={articleUrl(next.id)}>
+              <>
+                <small>Articolo successivo →</small>
+                <strong>{next.data.title}</strong>
+              </>
+            </a>
+          )
+        }
+      </nav>
+      {
+        jsonLd && (
+          <script
+            type="application/ld+json"
+            set:html={JSON.stringify(jsonLd)}
+          />
+        )
+      }
+    </main><aside class="article-toc" data-pagefind-ignore>
+      <strong>IN QUESTA PAGINA</strong><nav aria-label="Indice dell’articolo">
+        {
+          toc.map((h) => (
+            <a
+              class:list={["toc-link", { "toc-sub": h.depth === 3 }]}
+              href={`#${h.slug}`}
+            >
+              {h.text}
+            </a>
+          ))
+        }<a href="#fonti">Fonti e riferimenti</a>
+      </nav><div class="toc-note">
+        <Icon name="ShieldCheck" size={19} /><p>
+          Informazioni con fonti.<br />Nessun dato di mercato live.
+        </p>
+      </div>
+    </aside>
+  </div>
+</Base>

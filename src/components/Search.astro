@@ -1,0 +1,93 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<dialog id="search-dialog" aria-labelledby="search-title">
+  <div class="search-top">
+    <div>
+      <span class="eyebrow">TROVA LA TUA PROSSIMA RISPOSTA</span><h2
+        id="search-title"
+      >
+        Cerca nella wiki
+      </h2>
+    </div><button
+      class="icon-button"
+      data-close-search
+      aria-label="Chiudi ricerca"><Icon name="X" /></button>
+  </div>
+  <div id="pagefind-search"></div><p id="search-message" role="status"></p><p
+    class="search-hint"
+  >
+    Tab per spostarti · Invio per aprire · Esc per chiudere
+  </p>
+</dialog>
+<script>
+  let initialized = false;
+  const dialog = document.querySelector<HTMLDialogElement>("#search-dialog")!;
+  let trigger: HTMLElement | null = null;
+  async function openSearch(button?: HTMLElement) {
+    trigger = button ?? (document.activeElement as HTMLElement);
+    if (dialog.open) return;
+    dialog.showModal();
+    if (!initialized) {
+      try {
+        const index = await fetch("/pagefind/pagefind-entry.json");
+        if (!index.ok) throw new Error("Index unavailable");
+        const { PagefindUI } = await import("@pagefind/default-ui");
+        new PagefindUI({
+          element: "#pagefind-search",
+          bundlePath: "/pagefind/",
+          showSubResults: true,
+          showImages: false,
+          translations: {
+            placeholder: "Comandi, claim, dungeon…",
+            zero_results: "Nessun risultato per [SEARCH_TERM]",
+            search_label: "Cerca articoli",
+            searching: "Ricerca in corso…",
+            many_results: "[COUNT] risultati per [SEARCH_TERM]",
+            one_result: "[COUNT] risultato per [SEARCH_TERM]",
+            total_one_result: "[COUNT] risultato",
+            total_many_results: "[COUNT] risultati",
+            filters_label: "Filtri",
+            clear_search: "Cancella",
+            load_more: "Altri risultati",
+          },
+        });
+        initialized = true;
+      } catch {
+        document.querySelector("#search-message")!.textContent = import.meta.env
+          .DEV
+          ? "La ricerca è disponibile nella build di produzione. Esegui npm run build e npm run preview."
+          : "Indice di ricerca non disponibile. Puoi consultare le categorie della wiki.";
+      }
+    }
+    dialog.querySelector<HTMLInputElement>("input")?.focus();
+  }
+  document
+    .querySelectorAll<HTMLElement>("[data-open-search]")
+    .forEach((button) =>
+      button.addEventListener("click", () => void openSearch(button)),
+    );
+  document
+    .querySelector("[data-close-search]")
+    ?.addEventListener("click", () => dialog.close());
+  dialog.addEventListener("click", (event) => {
+    if (event.target === dialog) {
+      const r = dialog.getBoundingClientRect();
+      if (
+        event.clientX < r.left ||
+        event.clientX > r.right ||
+        event.clientY < r.top ||
+        event.clientY > r.bottom
+      )
+        dialog.close();
+    }
+  });
+  dialog.addEventListener("close", () => trigger?.focus());
+  document.addEventListener("keydown", (event) => {
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "k") {
+      event.preventDefault();
+      void openSearch();
+    }
+  });
+</script>

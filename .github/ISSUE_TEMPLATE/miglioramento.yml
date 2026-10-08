@@ -1,0 +1,16 @@
+name: Miglioramento della wiki
+description: Proponi un miglioramento ai contenuti o all’interfaccia.
+title: "Miglioramento: "
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema e pagina interessata
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposta e beneficio
+    validations:
+      required: true

@@ -1,0 +1,21 @@
+---
+import Base from "../layouts/Base.astro";
+import Icon from "../components/Icon.astro";
+---
+
+<Base title="Pagina non trovata" noindex
+  ><main id="main" class="not-found">
+    <span class="eyebrow">FUORI DALLA MAPPA · 404</span><Icon
+      name="Compass"
+      size={70}
+    /><h1>Questo sentiero non porta da nessuna parte.</h1><p>
+      La pagina potrebbe essere stata spostata. Ritrova la strada dalla wiki o
+      cerca l’argomento che ti interessa.
+    </p><div class="button-row">
+      <a href="/wiki/" class="button primary"
+        >Esplora la wiki <Icon name="ArrowRight" /></a
+      ><button class="button secondary" data-open-search
+        ><Icon name="Search" />Cerca una guida</button>
+    </div>
+  </main></Base
+>

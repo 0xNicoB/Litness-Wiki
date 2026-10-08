@@ -1,0 +1,24 @@
+name: Informazione errata
+description: Correggi un’informazione con una fonte e una data.
+title: "Correzione: "
+body:
+  - type: input
+    id: article
+    attributes:
+      label: Articolo
+      description: URL o percorso della pagina.
+    validations:
+      required: true
+  - type: textarea
+    id: correction
+    attributes:
+      label: Informazione e correzione proposta
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Fonti, data ed evidenze
+      description: Non allegare dati privati o screenshot senza consenso.
+    validations:
+      required: true

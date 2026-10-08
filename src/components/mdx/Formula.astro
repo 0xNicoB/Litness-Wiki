@@ -1,0 +1,11 @@
+---
+interface Props {
+  expression: string;
+  label?: string;
+}
+const { expression, label = "Calcolo" } = Astro.props;
+---
+
+<div class="formula">
+  <span class="eyebrow">{label}</span><code>{expression}</code><slot />
+</div>

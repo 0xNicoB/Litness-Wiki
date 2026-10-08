@@ -1,0 +1,77 @@
+[
+  {
+    "id": "LIT-HOME",
+    "title": "Sito ufficiale Litness",
+    "url": "https://litness.gg/",
+    "type": "ufficiale",
+    "accessed": "2026-10-08"
+  },
+  {
+    "id": "LIT-ABOUT",
+    "title": "Informazioni sul server",
+    "url": "https://litness.gg/about",
+    "type": "ufficiale",
+    "accessed": "2026-10-08"
+  },
+  {
+    "id": "LIT-PLAY",
+    "title": "Come entrare",
+    "url": "https://litness.gg/play",
+    "type": "ufficiale",
+    "accessed": "2026-10-08"
+  },
+  {
+    "id": "LIT-RULES",
+    "title": "Regolamento (aggiornato 3 ottobre)",
+    "url": "https://litness.gg/rules",
+    "type": "ufficiale",
+    "accessed": "2026-10-08",
+    "published": "2026-10-03"
+  },
+  {
+    "id": "LIT-PATCH-05",
+    "title": "Changelog 5 ottobre 2026",
+    "url": "https://litness.gg/blog/changelog-5-october-2026",
+    "type": "ufficiale",
+    "accessed": "2026-10-08",
+    "published": "2026-10-05"
+  },
+  {
+    "id": "LIT-PATCH-07",
+    "title": "Changelog 7 ottobre 2026",
+    "url": "https://litness.gg/blog/changelog-7-october-2026",
+    "type": "ufficiale",
+    "accessed": "2026-10-08",
+    "published": "2026-10-07"
+  },
+  {
+    "id": "LIT-PATCH-08",
+    "title": "Changelog 8 ottobre 2026",
+    "url": "https://litness.gg/blog/changelog-8-october-2026",
+    "type": "ufficiale",
+    "accessed": "2026-10-08",
+    "published": "2026-10-08"
+  },
+  {
+    "id": "LIT-ENCHANT-05",
+    "title": "Enchantment update 1",
+    "url": "https://litness.gg/blog/enchantment-update-1",
+    "type": "ufficiale",
+    "accessed": "2026-10-08",
+    "published": "2026-10-05"
+  },
+  {
+    "id": "COMM-07",
+    "title": "Osservazioni community del 7 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-07",
+    "note": "Dati forniti per la prima release. Screenshot originali non allegati a questa repository: rilettura e consenso alla pubblicazione ancora necessari."
+  },
+  {
+    "id": "COMM-GUIDES",
+    "title": "Guide in-game riportate dalla community",
+    "type": "riferito",
+    "observed": "2026-10-07",
+    "note": "Resoconto fornito per la wiki; evidenze visive da riesaminare. Nessuna verifica diretta durante questa realizzazione."
+  }
+]

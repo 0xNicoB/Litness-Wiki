@@ -1,0 +1,11 @@
+---
+interface Props {
+  version: string;
+  verified?: string;
+}
+const { version, verified } = Astro.props;
+---
+
+<span class="version-badge"
+  >{version}{verified && ` · Verifica ${verified}`}</span
+>

@@ -1,0 +1,34 @@
+---
+title: "Comandi documentati"
+description: "I comandi con una fonte, la loro sintassi nota e i limiti di ciò che sappiamo."
+lang: "it"
+category: "comandi"
+order: 10
+tags: ["comandi", "dungeon", "balance", "near"]
+status: "riferito"
+published: "2026-10-08"
+updated: "2026-10-08"
+lastVerified: null
+sources: ["LIT-PATCH-07", "LIT-PATCH-08", "COMM-GUIDES"]
+related: ["it/pve/dungeon", "it/economia/auction-house"]
+featured: false
+---
+
+import Callout from '../../../../components/mdx/Callout.astro';
+import Command from '../../../../components/mdx/Command.astro';
+
+## Economia e utilità
+<Command syntax="/balance" description="Senza argomenti, riepiloga le valute." source="UFFICIALE · changelog 7 ottobre" />
+<Command syntax="/near" description="Indica i giocatori vicini e la loro direzione. Disponibilità e permessi non sono specificati dalla patch." source="UFFICIALE · changelog 7 ottobre" />
+<Command syntax="/ah" description="Apre la casa d’aste. Accesso riferito dalle osservazioni community; non documentiamo una sintassi di pubblicazione." source="RIFERITO · COMM-GUIDES" />
+<Command syntax="/pay" description="Sistema di trasferimento Money. La sintassi completa con destinatario e importo non è stata riesaminata: consulta l’help in-game." source="RIFERITO · COMM-GUIDES" />
+<Command syntax="/trade" description="GUI di scambio diretto. Argomenti, garanzie e commissioni richiedono conferma." source="RIFERITO · COMM-GUIDES" />
+
+## Dungeon
+<Command syntax="/dungeon queue &lt;dungeon&gt;" description="Visualizza chi è in attesa. Sostituisci il parametro con l’identificativo riconosciuto dal server: gli identificativi esatti non sono documentati qui." source="UFFICIALE · changelog 7 ottobre" />
+<Command syntax="/dungeon leave" description="Abbandona la coda per l’intero party e rimborsa l’ingresso. Non è documentato come uscita da un dungeon già avviato." source="UFFICIALE · changelog 8 ottobre" />
+
+## Home, claim e ricompense
+Il changelog cita home senza limite giornaliero e notifiche delle playtime reward. Non fornisce però un catalogo completo dei comandi e dei loro argomenti. Per questo la wiki non elenca comandi operativi non verificati per claim, quest o Battlepass.
+
+<Callout type="info">I pulsanti copiano la sintassi visibile. Un parametro tra parentesi angolari è un segnaposto da sostituire, non un valore eseguibile.</Callout>

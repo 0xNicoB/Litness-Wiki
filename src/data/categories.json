@@ -1,0 +1,50 @@
+[
+  {
+    "id": "iniziare",
+    "title": "Iniziare a giocare",
+    "description": "Il primo passo nel tuo nuovo survival.",
+    "icon": "Compass"
+  },
+  {
+    "id": "comandi",
+    "title": "Comandi",
+    "description": "Sintassi verificata, pronta da copiare.",
+    "icon": "Terminal"
+  },
+  {
+    "id": "economia",
+    "title": "Economia",
+    "description": "Valute, mercati e scambi consapevoli.",
+    "icon": "Coins"
+  },
+  {
+    "id": "territori",
+    "title": "Territori e costruzioni",
+    "description": "Uno spazio da chiamare casa.",
+    "icon": "House"
+  },
+  {
+    "id": "progressione",
+    "title": "Progressione",
+    "description": "Quest, ricompense e obiettivi.",
+    "icon": "TrendingUp"
+  },
+  {
+    "id": "pve",
+    "title": "PvE e avventura",
+    "description": "Preparati a esplorare e affrontare i dungeon.",
+    "icon": "Swords"
+  },
+  {
+    "id": "equipaggiamento",
+    "title": "Equipaggiamento",
+    "description": "Comprendi gli enchant e i loro limiti.",
+    "icon": "Pickaxe"
+  },
+  {
+    "id": "informazioni",
+    "title": "Regole e informazioni",
+    "description": "Gioca informato. Contribuisci alla wiki.",
+    "icon": "BookOpen"
+  }
+]

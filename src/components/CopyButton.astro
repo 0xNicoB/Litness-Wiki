@@ -1,0 +1,17 @@
+---
+import Icon from "./Icon.astro";
+interface Props {
+  value: string;
+  label?: string;
+  class?: string;
+}
+const { value, label = "Copia", class: className = "" } = Astro.props;
+---
+
+<button
+  type="button"
+  class:list={["copy-control", className]}
+  data-copy={value}
+  aria-label={`${label}: ${value}`}
+  ><Icon name="Copy" size={17} /><span>{label}</span></button
+>

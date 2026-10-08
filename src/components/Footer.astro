@@ -1,0 +1,32 @@
+---
+import { site } from "../config/site";
+import Icon from "./Icon.astro";
+---
+
+<footer class="site-footer" data-pagefind-ignore>
+  <div class="footer-main">
+    <div>
+      <a class="brand" href="/"
+        ><Icon name="Flame" size={28} /><span
+          >Litness <span class="brand-wiki">WIKI</span></span
+        ></a
+      ><p>{site.disclaimer}</p>
+    </div><nav aria-label="La wiki">
+      <strong>La wiki</strong><a href="/wiki/it/informazioni/la-wiki/"
+        >Informazioni</a
+      ><a href="/wiki/it/informazioni/fonti/">Fonti e metodo</a><a
+        href="/wiki/it/informazioni/contribuire/">Contribuisci</a>
+    </nav><nav aria-label="Link ufficiali">
+      <strong>Litness ufficiale</strong><a href={site.official}
+        >Sito del server <Icon name="ArrowUpRight" size={14} /></a
+      ><a href={site.discord}>Discord <Icon name="ArrowUpRight" size={14} /></a
+      ><a href="https://litness.gg/rules"
+        >Regolamento <Icon name="ArrowUpRight" size={14} /></a>
+    </nav>
+  </div><div class="footer-bottom">
+    <span>Fatta dalla community, per la community.</span><a
+      href={site.repository}
+      ><Icon name="Github" size={16} />Codice e contributi su GitHub</a
+    ><span>Minecraft è un marchio di Mojang e Microsoft.</span>
+  </div>
+</footer>

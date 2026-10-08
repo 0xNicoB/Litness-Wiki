@@ -1,0 +1,33 @@
+---
+interface Props {
+  images: Array<{
+    src: string;
+    alt: string;
+    caption: string;
+    width: number;
+    height: number;
+  }>;
+}
+const { images } = Astro.props;
+---
+
+<div class="screenshot-gallery">
+  {
+    images.map((image) => (
+      <figure>
+        <>
+          <a href={image.src}>
+            <img
+              src={image.src}
+              alt={image.alt}
+              width={image.width}
+              height={image.height}
+              loading="lazy"
+            />
+          </a>
+          <figcaption>{image.caption}</figcaption>
+        </>
+      </figure>
+    ))
+  }
+</div>

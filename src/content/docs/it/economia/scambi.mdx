@@ -1,0 +1,34 @@
+---
+title: "Scambi diretti e /pay"
+description: "Distingui lo scambio tramite GUI dal trasferimento Money e verifica le condizioni prima di confermare."
+lang: "it"
+category: "economia"
+order: 60
+tags: []
+status: "riferito"
+published: "2026-10-08"
+updated: "2026-10-08"
+lastVerified: null
+sources: ["COMM-GUIDES", "LIT-RULES"]
+related: ["it/economia/commissioni", "it/informazioni/regole"]
+featured: false
+---
+
+import Callout from '../../../../components/mdx/Callout.astro';
+import GuideLink from '../../../../components/mdx/GuideLink.astro';
+
+## Due operazioni differenti
+`/pay` trasferisce Money; `/trade` è riportato come interfaccia di scambio. Non sono automaticamente intercambiabili. Le sintassi complete e le funzionalità della GUI non sono ancora documentate.
+
+## Prima di inviare Money
+Accertati di aver selezionato il destinatario corretto e concorda se il prezzo riguarda la somma inviata o quella ricevuta. Nelle guide riportate, il destinatario sostiene la tassa del 3%.
+
+<GuideLink href="/wiki/it/economia/commissioni/" title="Calcola l’effetto della tassa /pay" />
+
+## Prima di confermare un trade
+Leggi gli oggetti, le quantità e qualsiasi riepilogo presente nella GUI. Non assumere una garanzia di atomicità o protezione dalle truffe: non l’abbiamo verificata. La commissione della GUI resta sconosciuta.
+
+## Rapporto con il regolamento
+Gli accordi tra giocatori non sono garantiti dallo staff. Per le condizioni ufficiali e le eccezioni relative alla fiducia nei claim, leggi il [regolamento](https://litness.gg/rules). Non sono consentiti scambi di beni di gioco per denaro reale.
+
+<Callout type="verify">Il solo trasferimento `/pay` non costituisce evidenza delle condizioni economiche di `/trade`.</Callout>

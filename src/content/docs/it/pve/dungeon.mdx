@@ -1,0 +1,36 @@
+---
+title: "Dungeon: ingresso, coda e cooldown"
+description: "Costi individuali, comandi di coda e rimborso: una guida con patch ufficiali ed esempi storici."
+lang: "it"
+category: "pve"
+order: 10
+tags: ["dungeon", "party", "cooldown"]
+status: "riferito"
+published: "2026-10-08"
+updated: "2026-10-08"
+lastVerified: null
+sources: ["LIT-PATCH-07", "LIT-PATCH-08", "COMM-GUIDES"]
+related: ["it/comandi/indice", "it/economia/valute"]
+featured: false
+---
+
+import Command from '../../../../components/mdx/Command.astro';
+import DataTable from '../../../../components/mdx/DataTable.astro';
+import SourceRef from '../../../../components/mdx/SourceRef.astro';
+
+## Prima di entrare
+Dal 7 ottobre, il costo è a carico di **ogni partecipante** e il cooldown è visibile nel menu dungeon. Verifica l’importo nella GUI prima di preparare il party. <SourceRef id="LIT-PATCH-07" />
+
+## Dungeon riportati dalla community
+<DataTable caption="Tariffe e nomi riferiti alle guide del periodo 7 ottobre · non verificati come correnti"><table><thead><tr><th scope="col">Nome riportato{' '}</th><th scope="col">Costo per partecipante{' '}</th><th scope="col">Cooldown riportato{' '}</th></tr></thead><tbody><tr><th scope="row">Cavaliere Medievale{' '}</th><td>500 Money{' '}</td><td>1 giorno{' '}</td></tr><tr><th scope="row">Nido di Ragni{' '}</th><td>1.000 Souls{' '}</td><td>2 giorni{' '}</td></tr></tbody></table></DataTable>
+Denominazioni esatte e tariffe attuali richiedono una verifica del menu. Questi sono almeno due dungeon osservati nel resoconto, non un catalogo esaustivo.
+
+## Consultare la coda
+<Command syntax="/dungeon queue &lt;dungeon&gt;" description="Mostra i giocatori in attesa. L’identificativo del dungeon da usare al posto del parametro deve essere verificato in-game." source="LIT-PATCH-07" />
+
+## Lasciare la coda
+<Command syntax="/dungeon leave" description="Dall’8 ottobre, l’uscita dalla coda coinvolge tutto il party e rimborsa il costo di ingresso." source="LIT-PATCH-08" />
+Accordati con il party prima di usarlo: la modifica riguarda il gruppo intero. Il changelog non documenta questo comando come uscita rimborsata da una partita già avviata.
+
+## Ricompense e preparazione
+Non disponiamo di loot table, tattiche dei boss, numero massimo di partecipanti o dettagli sull’avvio del cooldown. Non promettiamo un guadagno netto: costo, risultato e ricompense devono essere valutati separatamente.

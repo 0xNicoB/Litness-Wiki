@@ -1,0 +1,10 @@
+---
+interface Props {
+  caption: string;
+}
+const { caption } = Astro.props;
+---
+
+<div class="data-table" role="region" aria-label={caption} tabindex="0">
+  <slot />
+</div><p class="data-caption">{caption}</p>

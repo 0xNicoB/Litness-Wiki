@@ -1,0 +1,15 @@
+---
+import CopyButton from "../CopyButton.astro";
+interface Props {
+  syntax: string;
+  description: string;
+  source?: string;
+}
+const { syntax, description, source } = Astro.props;
+---
+
+<div class="command-block">
+  <div><code>{syntax}</code><CopyButton value={syntax} /></div><p>
+    {description}
+  </p>{source && <small>Fonte: {source}</small>}<slot />
+</div>

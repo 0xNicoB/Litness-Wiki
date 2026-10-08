@@ -1,0 +1,76 @@
+---
+import {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  ChevronRight,
+  Coins,
+  Compass,
+  Copy,
+  ExternalLink,
+  Flame,
+  House,
+  Info,
+  Menu,
+  Moon,
+  Pickaxe,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Sun,
+  Swords,
+  Terminal,
+  TrendingUp,
+  X,
+  TriangleAlert,
+  Clock,
+  GitFork as Github,
+  MessageCircle,
+  ScrollText,
+} from "@lucide/astro";
+const icons = {
+  ArrowRight,
+  ArrowUpRight,
+  BookOpen,
+  Check,
+  ChevronRight,
+  Coins,
+  Compass,
+  Copy,
+  ExternalLink,
+  Flame,
+  House,
+  Info,
+  Menu,
+  Moon,
+  Pickaxe,
+  Search,
+  ShieldCheck,
+  Sparkles,
+  Sun,
+  Swords,
+  Terminal,
+  TrendingUp,
+  X,
+  TriangleAlert,
+  Clock,
+  Github,
+  MessageCircle,
+  ScrollText,
+};
+interface Props {
+  name?: string;
+  size?: number;
+  class?: string;
+}
+const { name = "BookOpen", size = 20, class: className } = Astro.props;
+const Component = icons[name as keyof typeof icons] ?? BookOpen;
+---
+
+<Component
+  size={size}
+  stroke-width={1.8}
+  aria-hidden="true"
+  class={className}
+/>

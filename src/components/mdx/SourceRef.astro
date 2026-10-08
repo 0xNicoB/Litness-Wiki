@@ -1,0 +1,21 @@
+---
+import sources from "../../data/sources.json";
+interface Props {
+  id: string;
+}
+const { id } = Astro.props;
+const source = sources.find((s) => s.id === id);
+if (!source) throw new Error(`Unknown source: ${id}`);
+---
+
+<span class="source-ref"
+  >[{
+    source.url ? (
+      <a href={source.url} rel="noopener">
+        {source.title}
+      </a>
+    ) : (
+      <a href="#fonti">{source.title}</a>
+    )
+  }]</span
+>

@@ -1,0 +1,44 @@
+---
+import Base from "../../layouts/Base.astro";
+import Icon from "../../components/Icon.astro";
+import { categories, articles, articleUrl, categoryUrl } from "../../lib/wiki";
+const pages = await articles();
+---
+
+<Base title="Esplora la wiki"
+  ><main id="main" class="portal">
+    <span class="eyebrow">LA TUA MAPPA DI LITNESS</span><h1>
+      Esplora la wiki
+    </h1><p class="portal-description">
+      Guide ragionate, meccaniche documentate e fonti sempre a portata di mano.
+    </p><div class="index-grid">
+      {
+        categories.map((cat) => (
+          <section class="index-category">
+            <>
+              <a href={categoryUrl(cat.id)}>
+                <>
+                  <Icon name={cat.icon} size={25} />
+                  <h2>{cat.title}</h2>
+                </>
+              </a>
+              <p>{cat.description}</p>
+              <ul>
+                {pages
+                  .filter((p) => p.data.category === cat.id)
+                  .map((p) => (
+                    <li>
+                      <a href={articleUrl(p.id)}>
+                        {p.data.title}
+                        <Icon name="ArrowRight" size={15} />
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </>
+          </section>
+        ))
+      }
+    </div>
+  </main></Base
+>

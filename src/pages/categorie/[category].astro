@@ -1,0 +1,31 @@
+---
+import Base from "../../layouts/Base.astro";
+import ArticleCard from "../../components/ArticleCard.astro";
+import Icon from "../../components/Icon.astro";
+import { categories, articles } from "../../lib/wiki";
+export function getStaticPaths() {
+  return categories.map((category) => ({
+    params: { category: category.id },
+    props: { category },
+  }));
+}
+const { category } = Astro.props;
+const pages = (await articles()).filter((p) => p.data.category === category.id);
+---
+
+<Base title={category.title} description={category.description}
+  ><main id="main" class="portal">
+    <nav class="breadcrumbs" aria-label="Percorso">
+      <a href="/">Home</a><Icon name="ChevronRight" size={14} /><a href="/wiki/"
+        >Wiki</a
+      ><Icon name="ChevronRight" size={14} /><span aria-current="page"
+        >{category.title}</span>
+    </nav><span class="category-icon large"
+      ><Icon name={category.icon} size={32} /></span
+    ><h1>{category.title}</h1><p class="portal-description">
+      {category.description}
+    </p><div class="article-grid">
+      {pages.map((article) => <ArticleCard article={article} />)}
+    </div>
+  </main></Base
+>

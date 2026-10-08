@@ -1,0 +1,12 @@
+---
+interface Props {
+  name: string;
+  category: string;
+  status?: string;
+}
+const { name, category, status = "Fonte ufficiale" } = Astro.props;
+---
+
+<section class="item-card">
+  <span class="eyebrow">{category} · {status}</span><h3>{name}</h3><slot />
+</section>

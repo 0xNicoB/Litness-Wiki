@@ -1,0 +1,98 @@
+---
+import market from "../../data/market.json";
+import { numberLabel, dateLabel } from "../../lib/wiki";
+import DataTable from "./DataTable.astro";
+interface Props {
+  kind?: "shop" | "auction" | "charcoal";
+}
+const { kind = "shop" } = Astro.props;
+---
+
+<DataTable
+  caption={`Storico del ${dateLabel(market.date)} · Money · dati riferiti, screenshot da riesaminare`}
+>
+  {
+    kind === "shop" ? (
+      <table>
+        <>
+          <caption class="sr-only">Prezzi storici shop, 7 ottobre 2026</caption>
+          <thead>
+            <tr>
+              <>
+                <th scope="col">Oggetto </th>
+                <th scope="col">Buy </th>
+                <th scope="col">Sell </th>
+                <th scope="col">Market </th>
+              </>
+            </tr>
+          </thead>
+          <tbody>
+            {market.shop.map((row) => (
+              <tr>
+                <th scope="row">{row.item} </th>
+                <td>{numberLabel(row.buy)} </td>
+                <td>{numberLabel(row.sell)} </td>
+                <td>
+                  {row.market > 0 ? "+" : ""}
+                  {numberLabel(row.market)}%{" "}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </>
+      </table>
+    ) : kind === "auction" ? (
+      <table>
+        <>
+          <caption class="sr-only">Annunci storici Auction House</caption>
+          <thead>
+            <tr>
+              <>
+                <th scope="col">Oggetto </th>
+                <th scope="col">Quantità </th>
+                <th scope="col">Prezzo richiesto </th>
+                <th scope="col">Money / oggetto </th>
+              </>
+            </tr>
+          </thead>
+          <tbody>
+            {market.auctionListings.map((row) => (
+              <tr>
+                <th scope="row">{row.item} </th>
+                <td>{row.quantity} </td>
+                <td>{numberLabel(row.asking)} </td>
+                <td>{numberLabel(row.asking / row.quantity)} </td>
+              </tr>
+            ))}
+          </tbody>
+        </>
+      </table>
+    ) : (
+      <table>
+        <>
+          <caption class="sr-only">Osservazioni storiche Charcoal</caption>
+          <thead>
+            <tr>
+              <>
+                <th scope="col">Quota riportata </th>
+                <th scope="col">Market </th>
+                <th scope="col">Buy </th>
+                <th scope="col">Sell </th>
+              </>
+            </tr>
+          </thead>
+          <tbody>
+            {market.charcoal.map((row) => (
+              <tr>
+                <th scope="row">{row.quantity} </th>
+                <td>{numberLabel(row.market)}% </td>
+                <td>{numberLabel(row.buy)} </td>
+                <td>{numberLabel(row.sell)} </td>
+              </tr>
+            ))}
+          </tbody>
+        </>
+      </table>
+    )
+  }
+</DataTable>

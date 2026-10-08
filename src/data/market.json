@@ -1,0 +1,130 @@
+{
+  "date": "2026-10-07",
+  "status": "riferito",
+  "source": "COMM-07",
+  "unit": "Money",
+  "shop": [
+    {
+      "item": "Diamond",
+      "buy": 19.74,
+      "sell": 4.93,
+      "market": -21
+    },
+    {
+      "item": "Netherite Scrap",
+      "buy": 149.48,
+      "sell": 37.37,
+      "market": -0.4
+    },
+    {
+      "item": "Gold Ingot",
+      "buy": 7.53,
+      "sell": 1.88,
+      "market": -24.7
+    },
+    {
+      "item": "Iron Ingot",
+      "buy": 4.98,
+      "sell": 1.04,
+      "market": -17
+    },
+    {
+      "item": "Emerald",
+      "buy": 12.46,
+      "sell": 3.11,
+      "market": -16.9
+    },
+    {
+      "item": "Bread",
+      "buy": 3.12,
+      "sell": 0.49,
+      "market": -2.4
+    },
+    {
+      "item": "Enchanted Golden Apple",
+      "buy": 400.31,
+      "sell": 75.05,
+      "market": 0.1
+    }
+  ],
+  "auctionListings": [
+    {
+      "item": "Diamond",
+      "quantity": 64,
+      "asking": 1350
+    },
+    {
+      "item": "Block of Diamond",
+      "quantity": 32,
+      "asking": 2000
+    },
+    {
+      "item": "Iron Ingot",
+      "quantity": 64,
+      "asking": 99
+    },
+    {
+      "item": "Iron Ingot",
+      "quantity": 64,
+      "asking": 200
+    },
+    {
+      "item": "Block of Iron",
+      "quantity": 64,
+      "asking": 800
+    },
+    {
+      "item": "Block of Iron",
+      "quantity": 64,
+      "asking": 850
+    },
+    {
+      "item": "Emerald",
+      "quantity": 64,
+      "asking": 650
+    }
+  ],
+  "charcoal": [
+    {
+      "quantity": 0,
+      "market": -4.1,
+      "buy": 0.48,
+      "sell": 0.12
+    },
+    {
+      "quantity": 1,
+      "market": -4.1,
+      "buy": 0.48,
+      "sell": 0.12
+    },
+    {
+      "quantity": 11,
+      "market": -4.1,
+      "buy": 0.48,
+      "sell": 0.12
+    },
+    {
+      "quantity": 140,
+      "market": -4.6,
+      "buy": 0.48,
+      "sell": 0.12
+    }
+  ],
+  "ironSales": [
+    {
+      "quantity": 64,
+      "gross": 139,
+      "status": "riferito"
+    },
+    {
+      "quantity": 64,
+      "gross": 145,
+      "status": "riferito"
+    },
+    {
+      "quantity": 64,
+      "gross": 145,
+      "status": "riferito"
+    }
+  ]
+}

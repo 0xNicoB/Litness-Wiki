@@ -1,0 +1,43 @@
+---
+title: "Auction House"
+description: "Leggi gli annunci, confronta quantità e prezzi e distingui un’offerta da una vendita."
+lang: "it"
+category: "economia"
+order: 50
+tags: ["mercato", "auction-house", "ah"]
+status: "riferito"
+published: "2026-10-08"
+updated: "2026-10-08"
+lastVerified: null
+sources: ["COMM-GUIDES", "COMM-07", "LIT-PATCH-05"]
+related: ["it/economia/commissioni", "it/economia/storico"]
+featured: true
+---
+
+import Command from '../../../../components/mdx/Command.astro';
+import Formula from '../../../../components/mdx/Formula.astro';
+import GuideLink from '../../../../components/mdx/GuideLink.astro';
+import SourceRef from '../../../../components/mdx/SourceRef.astro';
+
+## Aprire il mercato
+<Command syntax="/ah" description="Accesso alla casa d’aste riportato dalla community." source="COMM-GUIDES" />
+Il changelog del **5 ottobre** documenta un’interfaccia aggiornata con categorie sempre visibili in alto. <SourceRef id="LIT-PATCH-05" />
+
+## Prezzo richiesto e prezzo realizzato
+Un annuncio ancora presente prova solo che qualcuno chiede quel prezzo. Non prova domanda sufficiente, una transazione conclusa o un valore di equilibrio.
+
+Un venditore può rinnovare gli annunci: la loro ricomparsa non dimostra, da sola, né mancata vendita né vendita riuscita. Per confrontare una transazione serve un riscontro esplicito.
+
+## Confrontare gli oggetti
+<Formula expression="Prezzo unitario = Prezzo totale / Quantità" label="CALCOLATO" />
+Uno stack di 64 Iron Ingot a 99 Money richiede circa **1,55 Money per lingotto**. È un esempio storico; qualità, enchant e altri attributi devono essere uguali per rendere confrontabili gli annunci.
+
+Per i blocchi di materiale, considera anche la conversione di crafting: quantità di blocchi e quantità di lingotti non sono direttamente equivalenti. Verifica le ricette e gli attributi dell’oggetto prima del confronto.
+
+## Commissioni e tempo di vendita
+Il 12% è riportato dalle guide; la modalità esatta di addebito è ancora da verificare. Un prezzo più alto rispetto allo shop può richiedere attesa e può non trovare compratori.
+
+## Pubblicazione e annullamento
+Questa release non documenta comandi per creare o cancellare annunci: non sono stati verificati. Leggi le indicazioni della GUI e dell’help in-game.
+
+<GuideLink href="/wiki/it/economia/storico/" title="Esempi di annunci e vendite del 7 ottobre" />

@@ -1,0 +1,15 @@
+---
+import Icon from "../Icon.astro";
+interface Props {
+  href: string;
+  title: string;
+  description?: string;
+}
+const { href, title, description } = Astro.props;
+---
+
+<a class="guide-link" href={href}
+  ><Icon name="BookOpen" /><span
+    ><strong>{title}</strong>{description && <small>{description}</small>}</span
+  ><Icon name="ArrowRight" /></a
+>

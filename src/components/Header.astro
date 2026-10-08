@@ -1,0 +1,133 @@
+---
+import Icon from "./Icon.astro";
+import CopyButton from "./CopyButton.astro";
+import { site } from "../config/site";
+import { articles, categories, articleUrl, categoryUrl } from "../lib/wiki";
+const pages = await articles();
+---
+
+<header class="site-header" data-pagefind-ignore>
+  <a class="brand" href="/"
+    ><span class="brand-mark"><Icon name="Flame" size={27} /></span><span
+      >Litness<span class="brand-wiki"> WIKI</span><small
+        >INDIPENDENTE · NON UFFICIALE</small
+      ></span
+    ></a
+  >
+  <nav class="header-links" aria-label="Navigazione principale">
+    <a href="/wiki/">Esplora</a><a href="/wiki/it/iniziare/primi-passi/"
+      >Inizia da qui</a
+    ><a href="/wiki/it/informazioni/aggiornamenti/">Aggiornamenti</a>
+  </nav>
+  <div class="header-actions">
+    <button
+      class="search-trigger"
+      data-open-search
+      aria-label="Cerca nella wiki"
+      ><Icon name="Search" size={18} /><span>Cerca</span><kbd>⌘ K</kbd></button
+    ><button
+      class="icon-button"
+      id="theme-toggle"
+      aria-label="Attiva modalità scura"
+      ><Icon name="Moon" class="moon-icon" /><Icon
+        name="Sun"
+        class="sun-icon"
+      /></button
+    ><CopyButton
+      value={site.serverIp}
+      label="Copia IP"
+      class="header-ip"
+    /><button
+      class="icon-button menu-trigger"
+      id="open-navigation"
+      aria-label="Apri navigazione"
+      aria-controls="navigation-dialog"
+      aria-expanded="false"><Icon name="Menu" /></button>
+  </div>
+</header>
+<dialog
+  id="navigation-dialog"
+  aria-labelledby="navigation-title"
+  data-pagefind-ignore
+>
+  <div class="drawer-top">
+    <h2 id="navigation-title">Esplora la wiki</h2><button
+      class="icon-button"
+      id="close-navigation"
+      aria-label="Chiudi navigazione"><Icon name="X" /></button>
+  </div>
+  <nav aria-label="Navigazione mobile">
+    <a class="drawer-home" href="/">Homepage</a>{
+      categories.map((cat) => (
+        <details open={cat.id === "iniziare"}>
+          <summary><Icon name={cat.icon} size={18} /><span>{cat.title}</span><Icon name="ChevronRight" size={16} class="drawer-chevron" /></summary>
+          <a href={categoryUrl(cat.id)}>Panoramica</a>
+          {pages
+            .filter((p) => p.data.category === cat.id)
+            .map((p) => (
+              <a href={articleUrl(p.id)}>{p.data.title}</a>
+            ))}
+        </details>
+      ))
+    }
+  </nav>
+  <p class="drawer-disclaimer">{site.disclaimer}</p>
+</dialog>
+<script>
+  const navigation =
+    document.querySelector<HTMLDialogElement>("#navigation-dialog")!;
+  const open = document.querySelector<HTMLButtonElement>("#open-navigation")!;
+  open.addEventListener("click", () => {
+    navigation.showModal();
+    open.setAttribute("aria-expanded", "true");
+  });
+  document
+    .querySelector("#close-navigation")
+    ?.addEventListener("click", () => navigation.close());
+  navigation.addEventListener("close", () => {
+    open.setAttribute("aria-expanded", "false");
+    open.focus();
+  });
+  const theme = document.querySelector<HTMLButtonElement>("#theme-toggle")!;
+  function setTheme(dark: boolean) {
+    document.documentElement.dataset.theme = dark ? "dark" : "light";
+    theme.setAttribute(
+      "aria-label",
+      dark ? "Attiva modalità chiara" : "Attiva modalità scura",
+    );
+    theme.setAttribute("aria-pressed", String(dark));
+  }
+  setTheme(document.documentElement.dataset.theme === "dark");
+  theme.addEventListener("click", () => {
+    const dark = document.documentElement.dataset.theme !== "dark";
+    setTheme(dark);
+    try {
+      localStorage.setItem("litness-theme", dark ? "dark" : "light");
+    } catch {
+      /* Theme still works without storage. */
+    }
+  });
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-copy]")
+    .forEach((button) =>
+      button.addEventListener("click", async () => {
+        const value = button.dataset.copy;
+        if (!value) return;
+        const label = button.querySelector("span")!;
+        const original = label.textContent;
+        try {
+          await navigator.clipboard.writeText(value);
+          label.textContent = "Copiato!";
+          document.querySelector("#copy-status")!.textContent =
+            `Copiato: ${value}`;
+        } catch {
+          label.textContent = "Copia manuale";
+          document.querySelector("#copy-status")!.textContent =
+            `Copia manualmente: ${value}`;
+        }
+        window.setTimeout(() => {
+          label.textContent = original;
+        }, 2200);
+      }),
+    );
+</script>

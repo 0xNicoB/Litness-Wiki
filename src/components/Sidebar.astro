@@ -1,0 +1,35 @@
+---
+import { articles, categories, articleUrl, categoryUrl } from "../lib/wiki";
+import Icon from "./Icon.astro";
+const { current = "" } = Astro.props;
+const pages = await articles();
+---
+
+<aside class="wiki-sidebar" data-pagefind-ignore>
+  <a href="/wiki/" class="sidebar-heading"
+    ><Icon name="BookOpen" size={17} />Indice della wiki</a
+  ><nav aria-label="Categorie e articoli">
+    {
+      categories.map((cat) => (
+        <section>
+          <a class="sidebar-category" href={categoryUrl(cat.id)}>
+            <Icon name={cat.icon} size={16} />
+            {cat.title}
+          </a>
+          {pages
+            .filter((p) => p.data.category === cat.id)
+            .map((p) => (
+              <a
+                class:list={["sidebar-article", { active: p.id === current }]}
+                href={articleUrl(p.id)}
+                aria-current={p.id === current ? "page" : undefined}
+              >
+                {p.data.title}
+              </a>
+            ))}
+        </section>
+      ))
+    }
+  </nav><a class="sidebar-help" href="/wiki/it/informazioni/contribuire/"
+    ><Icon name="Github" size={17} />Hai qualcosa da aggiungere?</a>
+</aside>
