@@ -1,0 +1,294 @@
+[
+  {
+    "id": "nether-prospector",
+    "name": "Nether Prospector",
+    "description": "Detriti antichi naturali: +110% di resa media aggiuntiva al livello II. Non è una probabilità di attivazione del 110% né un drop aggiuntivo garantito.",
+    "maxLevel": 2,
+    "rarity": "Raro",
+    "compatibleItems": [
+      "Picconi"
+    ],
+    "conflicts": [
+      "Fortune",
+      "Silk Touch"
+    ],
+    "restrictions": [
+      "Non funziona su blocchi piazzati dai giocatori."
+    ],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 38.75,
+    "verificationStatus": "osservato",
+    "averageYieldBonusPct": 110
+  },
+  {
+    "id": "blast-mining",
+    "name": "Blast Mining",
+    "description": "Al livello III: 15% di probabilità di scavare un’area 3×3×3.",
+    "maxLevel": 3,
+    "rarity": "Speciale",
+    "compatibleItems": [
+      "Picconi"
+    ],
+    "conflicts": [
+      "Veinminer",
+      "Auger"
+    ],
+    "restrictions": [
+      "Non si attiva accovacciandosi.",
+      "Esclude determinati blocchi più duri; elenco completo da verificare.",
+      "Unico: massimo 1 per oggetto."
+    ],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 4.25,
+    "verificationStatus": "osservato",
+    "procChance": 15
+  },
+  {
+    "id": "lumberjack",
+    "name": "Lumberjack",
+    "description": "Al livello VI abbatte fino a 24 tronchi collegati dello stesso tipo in un colpo; foglie escluse.",
+    "maxLevel": 6,
+    "rarity": "Raro",
+    "compatibleItems": [
+      "Asce"
+    ],
+    "conflicts": [
+      "Timber"
+    ],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 36.75,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "veinminer",
+    "name": "Veinminer",
+    "description": "Al livello IV estrae fino a 14 minerali collegati dello stesso tipo in un colpo; il tooltip include pietra luminosa e pietranera dorata.",
+    "maxLevel": 4,
+    "rarity": "Raro",
+    "compatibleItems": [
+      "Picconi"
+    ],
+    "conflicts": [
+      "Blast Mining",
+      "Auger"
+    ],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 68.75,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "cluster-shot",
+    "name": "Cluster Shot",
+    "description": "Al livello III scocca 6 frecce aggiuntive a ventaglio consumando una sola freccia.",
+    "maxLevel": 3,
+    "rarity": "Epico",
+    "compatibleItems": [
+      "Archi",
+      "Balestre"
+    ],
+    "conflicts": [],
+    "restrictions": [
+      "Unico: massimo 1 per oggetto."
+    ],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 7.25,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "frost-arrow",
+    "name": "Frost Arrow",
+    "description": "Al livello III: 50% di probabilità di congelare il bersaglio e applicare Slowness IV (Lentezza IV) per 6 secondi.",
+    "maxLevel": 3,
+    "rarity": "Raro",
+    "compatibleItems": [
+      "Archi",
+      "Balestre"
+    ],
+    "conflicts": [
+      "Frost"
+    ],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 20.75,
+    "verificationStatus": "osservato",
+    "procChance": 50
+  },
+  {
+    "id": "first-strike",
+    "name": "First Strike",
+    "description": "Al livello V: +50% danno contro bersagli con vita piena.",
+    "maxLevel": 5,
+    "rarity": "Non comune",
+    "compatibleItems": [
+      "Spade",
+      "Asce"
+    ],
+    "conflicts": [],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 23.75,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "nether-affinity",
+    "name": "Nether Affinity",
+    "description": "Al livello IV: +60% danno nel Nether.",
+    "maxLevel": 4,
+    "rarity": "Non comune",
+    "compatibleItems": [
+      "Spade",
+      "Archi",
+      "Tridenti"
+    ],
+    "conflicts": [
+      "End Affinity"
+    ],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 38.25,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "overclock",
+    "name": "Overclock",
+    "description": "Al livello III: +45% velocità di scavo.",
+    "maxLevel": 3,
+    "rarity": "Raro",
+    "compatibleItems": [
+      "Picconi",
+      "Asce",
+      "Pale"
+    ],
+    "conflicts": [],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 52.25,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "rapid",
+    "name": "Rapid",
+    "description": "Al livello VI il tiro raggiunge la massima potenza già intorno al 40% della carica dell’arco.",
+    "maxLevel": 6,
+    "rarity": "Raro",
+    "compatibleItems": [
+      "Archi"
+    ],
+    "conflicts": [],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 40.75,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "soulbound",
+    "name": "Soulbound",
+    "description": "Conserva l’oggetto alla morte, secondo il tooltip. Interazioni con regole specifiche dei mondi da verificare.",
+    "maxLevel": 1,
+    "rarity": "Molto speciale",
+    "compatibleItems": [
+      "Tutti"
+    ],
+    "conflicts": [],
+    "restrictions": [
+      "Unico: massimo 1 per oggetto."
+    ],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 63.75,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "stamina",
+    "name": "Stamina",
+    "description": "Al livello IV riduce dell’80% la perdita di sazietà durante lo sprint. La trascrizione menziona fame e saturazione: il tooltip non separa questi due consumi.",
+    "maxLevel": 4,
+    "rarity": "Comune",
+    "compatibleItems": [
+      "Corazze"
+    ],
+    "conflicts": [],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 65.25,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "thor",
+    "name": "Thor",
+    "description": "Al livello VI: 6% di probabilità, colpo da 15 danni. Il tooltip lo descrive come un fulmine; la patch ufficiale distingue il danno al bersaglio da un fulmine reale.",
+    "maxLevel": 6,
+    "rarity": "Raro",
+    "compatibleItems": [
+      "Archi",
+      "Balestre"
+    ],
+    "conflicts": [],
+    "restrictions": [
+      "La patch del 5 ottobre indica il rispetto di PvP, team e claim."
+    ],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 67.75,
+    "verificationStatus": "osservato",
+    "procChance": 6,
+    "officialSource": "LIT-ENCHANT-05"
+  },
+  {
+    "id": "wisdom",
+    "name": "Wisdom",
+    "description": "Al livello III: +60% XP mentre tieni questo oggetto in mano. Non è documentato come bonus universale a qualunque forma di XP.",
+    "maxLevel": 3,
+    "rarity": "Non comune",
+    "compatibleItems": [
+      "Spade",
+      "Asce",
+      "Picconi",
+      "Pale",
+      "Zappe",
+      "Archi",
+      "Balestre",
+      "Tridenti"
+    ],
+    "conflicts": [
+      "Resonance"
+    ],
+    "restrictions": [],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 73,
+    "verificationStatus": "osservato"
+  },
+  {
+    "id": "xray",
+    "name": "Xray",
+    "description": "Al livello III, clic destro: i minerali entro 9 blocchi brillano attraverso i muri per 4 secondi; ricarica 90 secondi.",
+    "maxLevel": 3,
+    "rarity": "Speciale",
+    "compatibleItems": [
+      "Picconi"
+    ],
+    "conflicts": [],
+    "restrictions": [
+      "L’enchant non autorizza mod o texture X-Ray vietate dal regolamento."
+    ],
+    "source": "VIDEO-09-ENCHANT",
+    "observed": "2026-10-09",
+    "timestampSeconds": 74.25,
+    "verificationStatus": "osservato",
+    "cooldownSeconds": 90
+  }
+]

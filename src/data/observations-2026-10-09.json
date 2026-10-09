@@ -1,0 +1,163 @@
+[
+  {
+    "id": "mondo-risorse",
+    "page": "it/pve/risorse",
+    "source": "COMM-09-SUMMARY",
+    "status": "riferito",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Minerali 30 secondi–5 minuti; raccolta, PvP e perdita inventario.",
+    "limitations": "Tooltip completo non individuato; non estendere il tempo a ogni blocco."
+  },
+  {
+    "id": "rtp-home",
+    "page": "it/territori/home",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "RTP: 15/30/60/1 minuti. Home: 2 base, fino a 75.",
+    "limitations": "Distribuzione per rank e comandi home completi non verificati; home leggibili a 00:44.",
+    "timestampSeconds": 69
+  },
+  {
+    "id": "vault",
+    "page": "it/territori/vault",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "1 pagina base, fino a 10; ricerca, ordinamento, /vault.",
+    "limitations": "Numero di slot e altre restrizioni non noti.",
+    "timestampSeconds": 49
+  },
+  {
+    "id": "dungeon",
+    "page": "it/pve/dungeon",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Illusionista: 2.000, 4+tesoro, 36 ore; altri menu a 00:16 e 00:28.",
+    "limitations": "Valuta di Nido corroborata dalla trascrizione; condizioni complete tagliate. Party a 00:07, Media a 00:24, Difficile a 00:19.",
+    "timestampSeconds": 9
+  },
+  {
+    "id": "entita",
+    "page": "it/territori/entita",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Animali 15–30, villager 5, minecart/barche 5, armor stand 8.",
+    "limitations": "Suddivisione animali e conteggio combinato veicoli da verificare.",
+    "timestampSeconds": 52
+  },
+  {
+    "id": "quest",
+    "page": "it/progressione/percorsi",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "16 giornaliere, 10 settimanali, 10 sfide; facili/medie/difficili.",
+    "limitations": "Battlepass XP e esclusioni specifiche restano COMM-09-SUMMARY.",
+    "timestampSeconds": 53
+  },
+  {
+    "id": "eventi",
+    "page": "it/pve/eventi",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "6 eventi, frequenza indicativa 6–8 ore, /event.",
+    "limitations": "Orari e nomi completi non noti.",
+    "timestampSeconds": 4
+  },
+  {
+    "id": "ah",
+    "page": "it/economia/auction-house",
+    "source": "COMM-09-SUMMARY",
+    "status": "riferito",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Durata 3 giorni, recupero scaduti una settimana, slot 1–10.",
+    "limitations": "Tooltip AH non individuato. /sell non confermato come comando di pubblicazione AH."
+  },
+  {
+    "id": "plot-commissioni",
+    "page": "it/territori/plot",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Migliore offerta, affitto, pay 3%, AH 12%, bauli 0,5%.",
+    "limitations": "Soggetto debitore di AH/bauli e condizioni affitto ignoti; destinatario pay resta fonte precedente.",
+    "timestampSeconds": 50
+  },
+  {
+    "id": "afk",
+    "page": "it/progressione/ricompense",
+    "source": "COMM-09-SUMMARY",
+    "status": "riferito",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Reward ogni 10 minuti; trasferimento dopo 5 minuti; 1 account/IP.",
+    "limitations": "Condizioni complete non individuate; nessuna ricompensa garantita."
+  },
+  {
+    "id": "playtime",
+    "page": "it/progressione/ricompense",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Reward progressive sulle ore complessive; /playtimeinfo.",
+    "limitations": "Soglie e premi non noti.",
+    "timestampSeconds": 62
+  },
+  {
+    "id": "personalizzazione",
+    "page": "it/progressione/personalizzazione",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "35 colori e 5 animazioni; Negozio Sparks rank e chiavi a 00:38.",
+    "limitations": "Listini e distribuzione benefici rank non verificati.",
+    "timestampSeconds": 42
+  },
+  {
+    "id": "shop-enchant",
+    "page": "it/equipaggiamento/catalogo",
+    "source": "VIDEO-09-GUIDE",
+    "status": "osservato",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Libri casuali da Comune a Molto Speciale; prezzo per rarità.",
+    "limitations": "Nessun prezzo o probabilità pubblicati.",
+    "timestampSeconds": 76
+  },
+  {
+    "id": "conteggio-enchant",
+    "page": "it/equipaggiamento/catalogo",
+    "source": "VIDEO-09-GUIDE",
+    "status": "da-verificare",
+    "sourceDate": "2026-10-09",
+    "reviewed": "2026-10-09",
+    "information": "Help dichiara 81; trascrizione conteggio preliminare 102.",
+    "limitations": "Censimento deduplicato non completato; ricerche sul dominio ufficiale non hanno trovato chiarimenti.",
+    "timestampSeconds": 40
+  },
+  {
+    "id": "riavvio-08",
+    "page": "it/informazioni/aggiornamenti",
+    "source": "LIT-PATCH-08",
+    "status": "ufficiale",
+    "sourceDate": "2026-10-08",
+    "reviewed": "2026-10-09",
+    "information": "Bug shop, uscita coda/rimborso party, cap senza eccezioni, villager 5 e countdown 15 minuti.",
+    "limitations": "Evento 08/10; consultazione 09/10. Guide shop, dungeon, entità aggiornate."
+  }
+]

@@ -113,3 +113,24 @@ Pagefind segnala che il file Google non ha un elemento HTML e lo ignora: è prev
 Il browser cloud mostra Search Console non autenticata e il collegamento di accesso Google. Non sono state completate verifica della proprietà, invio sitemap o richiesta di indicizzazione. I passaggi dal proprio account autorizzato sono in [DEPLOYMENT.md](DEPLOYMENT.md). I controlli locali non provano l’indicizzazione da parte di Google; lo stato del deployment finale e i controlli HTTP di produzione sono riportati nella consegna dell’intervento.
 
 Il commit di correzione `27f35ac` ha superato GitHub Actions (run `37849134380`) e il deployment Cloudflare `bfeb10bf-4f81-454d-9845-19e13d43adf4`, completato alle 21:47:43 UTC. Il controllo HTTP senza seguire redirect ha poi rilevato un 308 dall’URL Google `.html` alla versione senza estensione; il browser mostrava il token corretto all’URL finale. Per soddisfare anche il 200 diretto, è stata aggiunta una regola statica e circoscritta in `public/_redirects`, senza alterare il file o introdurre Functions.
+
+## Revisione contenuti del 9 ottobre 2026
+
+La revisione è descritta in [UPDATE_2026-10-09.md](UPDATE_2026-10-09.md). Stack, origine SEO, integrazione Git e file Google conservati. Due registrazioni originali sono state recuperate ed esaminate direttamente; le informazioni non leggibili mantengono una fonte secondaria distinta.
+
+Verifiche locali con Node **22.23.3** e `PUBLIC_SITE_URL=https://litness-wiki.pages.dev`:
+
+- Astro/TypeScript: **0 errori, 0 warning, 0 hint**.
+- ESLint: passato.
+- Node: **17 test passati**, inclusi provenienza, limiti delle probabilità, bonus medio Nether Prospector separato, conflitti reciproci e destinazioni del registro revisione.
+- Build: **43 pagine HTML**, **32 articoli Pagefind**, **42 URL in sitemap** e **4.417 riferimenti interni/asset/anchor validi**.
+- SEO e file statici controllati dal validatore ordinario; il file Google rimane identico all’originale.
+- Suite Playwright desktop/Pixel 7: **31 passati, 1 skip previsto** (drawer nel progetto desktop). Test su filtri combinati, reset e nessun risultato; lettura senza JavaScript; ricerca reale di Illusionista e Prospector; categorie, copia, indice, menu mobile, tema e reduced motion.
+- Axe: nessuna violazione rilevata nelle pagine/stati testati, inclusi catalogo, dungeon, homepage, fonti, tabella storica, 404, ricerca, drawer e tema scuro. Nessuna certificazione completa di accessibilità implicita.
+- Screenshot reali del catalogo e del dungeon aperti su desktop e mobile. La tabella dungeon ha una larghezza minima opzionale e scorrimento nel contenitore sui telefoni per non spezzare i nomi. Nessun redesign generale.
+
+Il Chromium locale preesistente era incompleto e terminava prima di aprire le pagine. È stato ripristinato fuori dalla repository usando Chromium **143.0.7499.0** del pacchetto temporaneo `@sparticuz/chromium@143.0.4`. I tentativi falliti non sono contati come test superati. Il primo test funzionale ha rilevato il reset dei filtri prima del ripristino nativo dei valori: corretto e verificato. La CI continua a usare il proprio Chromium Playwright, senza dipendenze temporanee aggiunte al progetto.
+
+Non è stato ripetuto Lighthouse per questa revisione. I risultati dell’8 ottobre restano misure della release precedente. I test remoti e lo stato finale di GitHub/Cloudflare sono comunicati nel report di consegna; nessuna modifica a DNS, credenziali o impostazioni di sicurezza.
+
+Dopo l’adeguamento finale della tabella dungeon, `npm run verify` è stato ripetuto con esito positivo. Quattro test mirati desktop/mobile (dungeon, axe, screenshot e viewport 320 px) sono passati. La suite completa precedente rimane 31 passati e 1 skip previsto.

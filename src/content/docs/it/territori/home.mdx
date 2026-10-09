@@ -1,30 +1,36 @@
 ---
-title: "Home e teletrasporto"
-description: "Le modifiche documentate alle home e ciò che resta da verificare sulla loro gestione."
+title: "Home e RTP: limiti e cooldown"
+description: "Home base e benefici dei rank, cooldown RTP per mondo e modifiche ufficiali ai teletrasporti."
 lang: "it"
 category: "territori"
 order: 20
 tags: []
-status: "ufficiale"
+status: "osservato"
 published: "2026-10-08"
-updated: "2026-10-08"
-lastVerified: "2026-10-08"
-sources: ["LIT-PATCH-05"]
-related: ["it/territori/claim"]
+updated: "2026-10-09"
+lastVerified: "2026-10-09"
+sources: ["LIT-PATCH-05", "VIDEO-09-GUIDE"]
+related: ["it/territori/claim", "it/territori/vault", "it/pve/risorse"]
 featured: false
 version: "Patch 5 ottobre 2026"
 ---
 
-import Callout from '../../../../components/mdx/Callout.astro';
+import DataTable from '../../../../components/mdx/DataTable.astro';
 import SourceRef from '../../../../components/mdx/SourceRef.astro';
 
-## Cosa cambia dal 5 ottobre
-Il primo claim imposta automaticamente anche una home. È stato inoltre rimosso il limite giornaliero ai teletrasporti home. Queste due modifiche sono documentate nel changelog. <SourceRef id="LIT-PATCH-05" />
+Le home e l’RTP svolgono funzioni diverse: le prime sono destinazioni memorizzate; l’RTP è un teletrasporto casuale. I valori riportati qui si riferiscono alla guida del **9 ottobre 2026**. <SourceRef id="VIDEO-09-GUIDE" />
 
-## Cosa non implica la rimozione del limite
-L’assenza di un limite giornaliero non dimostra che siano rimossi costi, cooldown, condizioni di accesso o differenze tra rank. La patch non precisa questi dettagli.
+## Home base e rank
+Sono riportate **2 home base per giocatore**, con un limite che può arrivare a **75 home tramite i rank**. Non è verificata la distribuzione dei benefici tra i singoli rank.
 
-## Gestire le home
-Questa pagina non elenca una sintassi operativa: creazione aggiuntiva, eliminazione, rinomina e costi non sono ancora verificati. Usa il menu e l’help in-game prima di modificare la tua configurazione.
+## Cooldown RTP
+<DataTable caption="Cooldown RTP osservati il 9 ottobre 2026 · non limiti di accesso ai mondi"><table><thead><tr><th scope="col">Mondo{' '}</th><th scope="col">Cooldown{' '}</th></tr></thead><tbody><tr><th scope="row">Overworld{' '}</th><td>15 minuti{' '}</td></tr><tr><th scope="row">Nether{' '}</th><td>30 minuti{' '}</td></tr><tr><th scope="row">End{' '}</th><td>1 ora{' '}</td></tr><tr><th scope="row">Mondo Risorse{' '}</th><td>1 minuto{' '}</td></tr></tbody></table></DataTable>
+Questi tempi riguardano il sistema RTP. Non dimostrano un blocco di ingresso nei mondi attraverso altri mezzi. Costi e sintassi operativa completa restano da verificare.
 
-<Callout type="info">Una modifica annunciata è una fonte datata. Se la GUI attuale mostra condizioni diverse, segnala la differenza con una prova e un riferimento temporale.</Callout>
+## Modifiche ufficiali alle home
+Dal **5 ottobre** il primo claim imposta automaticamente anche una home ed è rimosso il limite giornaliero ai teletrasporti home. <SourceRef id="LIT-PATCH-05" />
+La rimozione del limite giornaliero non elimina automaticamente costi, cooldown o condizioni. Non sono documentati qui comandi di creazione, eliminazione o rinomina.
+
+Vedi anche [Mondo Risorse](/wiki/it/pve/risorse/) e [Vault](/wiki/it/territori/vault/).
+
+Il menu RTP è leggibile intorno a **01:09**; il tooltip Home intorno a **00:44** nel video Help.

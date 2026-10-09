@@ -61,3 +61,13 @@ Per tabelle JSX mantieni i tag annidati nello stesso blocco senza paragrafi Mark
 6. Eseguire verify ed E2E, poi richiedere revisione della PR.
 
 Non viene eseguito alcun import automatico della dashboard privata. Nessuno screenshot community è incluso nella prima release.
+
+## Catalogo enchant e revisioni video
+
+Le schede provengono da `src/data/enchants.json`, validato dalla Content Collection `enchants`. Aggiungi una voce con ID stabile, descrizione originale, fonte, data osservazione e timestamp approssimativo. Campi non conosciuti si omettono o si impostano a `null`; un array conflitti vuoto significa soltanto che il tooltip mostra esplicitamente nessun conflitto. Le rarità e compatibilità derivano dai tooltip, non dal nome.
+
+`procChance` è una percentuale tra 0 e 100; `averageYieldBonusPct` è un bonus medio separato e può superare 100. Non convertirli l’uno nell’altro. I valori descrivono il livello indicato, senza estrapolare scaling. Il catalogo filtra HTML statico con JavaScript minimo; tutte le schede restano leggibili e indicizzabili senza script. I collegamenti alle schede usano l’ID come anchor.
+
+`src/data/observations-2026-10-09.json` conserva affermazioni, destinazione, provenienza, date e limiti della revisione. Una verifica parziale del video non promuove l’intero resoconto a osservazione diretta. I dettagli tagliati o assenti restano riferiti con una fonte separata; nella pagina il paragrafo o la scheda distingue i diversi stati. Il totale 81/102 richiede un censimento manuale deduplicato e un chiarimento sull’ambito del conteggio.
+
+Non caricare le registrazioni originali nella repository pubblica: possono contenere nickname, chat e inventari privati. Conserva riferimenti testuali alle evidenze e sottoponi eventuali screenshot a revisione e consenso.

@@ -7,9 +7,9 @@ order: 30
 tags: ["tasse", "commissioni", "pay"]
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-09"
 lastVerified: null
-sources: ["COMM-GUIDES", "COMM-07"]
+sources: ["COMM-GUIDES", "COMM-07", "VIDEO-09-GUIDE"]
 related: ["it/economia/scambi", "it/economia/auction-house"]
 featured: true
 ---
@@ -17,6 +17,7 @@ featured: true
 import Callout from '../../../../components/mdx/Callout.astro';
 import Formula from '../../../../components/mdx/Formula.astro';
 import FeeSummary from '../../../../components/mdx/FeeSummary.astro';
+import SourceRef from '../../../../components/mdx/SourceRef.astro';
 
 ## Commissioni riportate
 <FeeSummary />
@@ -34,4 +35,8 @@ Le percentuali sono riportate, ma non è stabilito in questa release se l’adde
 ## La GUI /trade è un canale separato
 La sua commissione è sconosciuta. Usare `/pay` durante uno scambio applica le condizioni di `/pay`; non prova che la GUI `/trade` abbia la stessa tassa. Verifica ogni riepilogo di conferma prima dello scambio.
 
-<Callout type="verify">Valori riferiti al materiale del 7 ottobre 2026. Per confermarli servono schermate delle guide, del riepilogo e dei saldi prima/dopo, senza dati personali pubblicabili.</Callout>
+<Callout type="verify">Aliquote riscontrate nel menu del 9 ottobre; destinatario della tassa /pay riferito dal materiale precedente. Per verificare gli addebiti servono riepiloghi e saldi prima/dopo, senza dati personali pubblicabili.</Callout>
+
+
+## Riscontro nel menu Plot del 9 ottobre
+Il tooltip intorno a **00:50** mostra `/pay` **3%**, AH **12%** e bauli **0,5%**. Questo conferma le aliquote, senza identificare il soggetto debitore per AH e bauli. La regola del destinatario per `/pay` rimane attribuita alla fonte community precedente. La tassa della GUI `/trade` resta sconosciuta. <SourceRef id="VIDEO-09-GUIDE" />

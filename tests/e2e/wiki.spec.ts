@@ -108,6 +108,8 @@ for (const route of [
   "/",
   "/wiki/it/informazioni/fonti/",
   "/wiki/it/economia/storico/",
+  "/wiki/it/equipaggiamento/catalogo/",
+  "/wiki/it/pve/dungeon/",
   "/404.html",
 ])
   test(`layout, accessibility and screenshot ${route}`, async ({ page }) => {
@@ -129,7 +131,7 @@ for (const route of [
       .analyze();
     expect(results.violations).toEqual([]);
     await page.screenshot({
-      path: `test-results/visual-${test.info().project.name}-${route === "/" ? "home" : route.includes("storico") ? "table" : route.includes("404") ? "404" : "article"}.png`,
+      path: `test-results/visual-${test.info().project.name}-${route === "/" ? "home" : route.includes("storico") ? "table" : route.includes("404") ? "404" : route.includes("catalogo") ? "catalogo" : route.includes("dungeon") ? "dungeon" : "article"}.png`,
       fullPage: true,
     });
   });
@@ -175,7 +177,12 @@ test("dark mode and reduced motion preserve readable layouts", async ({
 
 test("narrow 320px viewport stays within the screen", async ({ page }) => {
   await page.setViewportSize({ width: 320, height: 800 });
-  for (const route of ["/", "/wiki/it/economia/storico/"]) {
+  for (const route of [
+    "/",
+    "/wiki/it/economia/storico/",
+    "/wiki/it/equipaggiamento/catalogo/",
+    "/wiki/it/territori/home/",
+  ]) {
     await page.goto(route);
     expect(
       await page.evaluate(
@@ -190,4 +197,66 @@ test("narrow 320px viewport stays within the screen", async ({ page }) => {
       () => document.documentElement.scrollWidth <= innerWidth,
     ),
   ).toBe(true);
+});
+
+test("enchant filters combine name, rarity and equipment, reset and empty states", async ({
+  page,
+}) => {
+  await page.goto("/wiki/it/equipaggiamento/catalogo/");
+  const catalog = page.locator("[data-enchant-catalog]");
+  const visibleCards = catalog.locator("[data-enchant-card]:visible");
+  await expect(visibleCards).toHaveCount(15);
+  await catalog.getByLabel("Cerca nome, effetto o conflitto").fill("Fortune");
+  await expect(visibleCards).toHaveCount(1);
+  await expect(visibleCards).toContainText("Nether Prospector II");
+  await catalog.getByLabel("Rarità").selectOption("Raro");
+  await catalog.getByLabel("Equipaggiamento").selectOption("Picconi");
+  await expect(visibleCards).toHaveCount(1);
+  await catalog.getByLabel("Rarità").selectOption("Comune");
+  await expect(visibleCards).toHaveCount(0);
+  await expect(catalog.locator(".catalog-empty")).toBeVisible();
+  await catalog.getByRole("button", { name: "Azzera filtri" }).click();
+  await expect(visibleCards).toHaveCount(15);
+  await expect(catalog.getByLabel("Rarità")).toHaveValue("");
+  await catalog.getByLabel("Cerca nome, effetto o conflitto").focus();
+  await page.keyboard.press("Tab");
+  await expect(catalog.getByLabel("Rarità")).toBeFocused();
+  await expect(page.locator("#nether-prospector")).toContainText("resa media");
+});
+
+test("new content is reachable and Pagefind indexes Illusionista and enchant effects", async ({
+  page,
+}) => {
+  await page.goto("/categorie/pve/");
+  await page
+    .getByRole("link", { name: /Mondo Risorse/ })
+    .first()
+    .click();
+  await expect(page.locator("h1")).toHaveText("Mondo Risorse");
+  await page.getByRole("button", { name: "Cerca nella wiki" }).click();
+  const input = page.locator('#search-dialog input[type="text"]');
+  await input.fill("Illusionista");
+  await expect(
+    page.locator(".pagefind-ui__result-link").first(),
+  ).toHaveAttribute("href", /\/pve\/dungeon\//);
+  await input.fill("Prospector");
+  await expect(
+    page
+      .locator(".pagefind-ui__result-link")
+      .filter({ hasText: "Catalogo enchant" }),
+  ).toBeVisible();
+});
+
+test("enchant cards remain available without JavaScript", async ({
+  browser,
+}) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto(
+    `${test.info().project.use.baseURL}/wiki/it/equipaggiamento/catalogo/`,
+  );
+  await expect(page.locator("[data-enchant-card]")).toHaveCount(15);
+  await expect(page.locator("#xray")).toContainText("90 secondi");
+  await expect(page.locator(".catalog-filters")).not.toBeVisible();
+  await context.close();
 });

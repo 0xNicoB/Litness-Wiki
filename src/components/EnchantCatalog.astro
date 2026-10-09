@@ -1,0 +1,149 @@
+---
+import { getCollection } from "astro:content";
+import SourceRef from "./mdx/SourceRef.astro";
+const entries = (await getCollection("enchants")).sort((a, b) =>
+  a.data.name.localeCompare(b.data.name, "it"),
+);
+const rarities = [
+  ...new Set(entries.flatMap(({ data }) => (data.rarity ? [data.rarity] : []))),
+];
+const equipment = [
+  ...new Set(entries.flatMap(({ data }) => data.compatibleItems ?? [])),
+].sort();
+const roman = (level: number) =>
+  ["", "I", "II", "III", "IV", "V", "VI"][level] ?? String(level);
+const timestamp = (seconds: number) =>
+  `${Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0")}:${Math.floor(seconds % 60)
+    .toString()
+    .padStart(2, "0")}`;
+---
+
+<section data-enchant-catalog aria-label="Catalogo degli incantesimi">
+  <form class="catalog-filters" data-pagefind-ignore hidden>
+    <label
+      >Cerca nome, effetto o conflitto<input
+        type="search"
+        name="query"
+        placeholder="Es. Fortune, Nether, scavo"
+        autocomplete="off"
+      /></label
+    >
+    <label
+      >Rarità<select name="rarity"
+        ><option value="">Tutte le rarità</option>{
+          rarities.map((r) => <option value={r}>{r}</option>)
+        }</select
+      ></label
+    >
+    <label
+      >Equipaggiamento<select name="equipment"
+        ><option value="">Tutti gli oggetti</option>{
+          equipment.map((e) => <option value={e}>{e}</option>)
+        }</select
+      ></label
+    >
+    <button type="reset" class="button button-ghost">Azzera filtri</button>
+  </form>
+  <p
+    class="catalog-count"
+    role="status"
+    aria-live="polite"
+    data-pagefind-ignore
+  >
+    {entries.length} schede documentate
+  </p>
+  <p class="catalog-empty" hidden data-pagefind-ignore>
+    Nessun enchant corrisponde ai filtri. Prova un termine diverso o azzera i
+    filtri.
+  </p>
+  <div class="enchant-list">
+    {
+      entries.map(({ id, data: d }) => (
+        <section
+          class="item-card enchant-card"
+          id={id}
+          data-enchant-card
+          data-rarity={d.rarity ?? ""}
+          data-equipment={JSON.stringify(d.compatibleItems ?? [])}
+          data-search={[
+            d.name,
+            d.description,
+            ...(d.conflicts ?? []),
+            ...(d.compatibleItems ?? []),
+          ].join(" ")}
+        >
+          <span class="eyebrow">
+            {d.rarity ?? "Rarità da verificare"} ·{" "}
+            {d.verificationStatus === "osservato"
+              ? "Osservato in gioco"
+              : "Da verificare"}
+          </span>
+          <h3>
+            <a href={`#${id}`}>
+              {d.name}
+              {d.maxLevel ? ` ${roman(d.maxLevel)}` : ""}
+            </a>
+          </h3>
+          <p>{d.description}</p>
+          <dl class="enchant-details">
+            <div>
+              <>
+                <dt>Livello massimo</dt>
+                <dd>{d.maxLevel ? roman(d.maxLevel) : "Da verificare"}</dd>
+              </>
+            </div>
+            <div>
+              <>
+                <dt>Compatibilità</dt>
+                <dd>{d.compatibleItems?.join(", ") ?? "Da verificare"}</dd>
+              </>
+            </div>
+            <div>
+              <>
+                <dt>Conflitti</dt>
+                <dd>
+                  {d.conflicts
+                    ? d.conflicts.length
+                      ? d.conflicts.join(", ")
+                      : "Nessuno nel tooltip"
+                    : "Da verificare"}
+                </dd>
+              </>
+            </div>
+            {d.procChance != null && (
+              <div>
+                <dt>Probabilità al livello indicato</dt>
+                <dd>{d.procChance.toLocaleString("it-IT")}%</dd>
+              </div>
+            )}
+            {d.cooldownSeconds != null && (
+              <div>
+                <dt>Cooldown</dt>
+                <dd>{d.cooldownSeconds.toLocaleString("it-IT")} secondi</dd>
+              </div>
+            )}
+          </dl>
+          {d.restrictions.length > 0 && (
+            <ul>
+              {d.restrictions.map((r) => (
+                <li>{r}</li>
+              ))}
+            </ul>
+          )}
+          <p class="enchant-evidence">
+            Osservazione: <time datetime={d.observed}>09/10/2026</time> · video
+            ≈ {timestamp(d.timestampSeconds)} <SourceRef id={d.source} />
+            {d.officialSource && (
+              <>
+                {" "}
+                <SourceRef id={d.officialSource} />
+              </>
+            )}
+          </p>
+        </section>
+      ))
+    }
+  </div>
+</section>

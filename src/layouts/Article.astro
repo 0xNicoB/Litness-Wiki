@@ -80,7 +80,7 @@ const jsonLd = Astro.site
                 </time>
               </span>
             ) : (
-              <span>Verifica diretta in attesa</span>
+              <span>{sources.some((s) => s.data.type === "osservato") ? "Verifica parziale: vedi le fonti" : "Verifica diretta in attesa"}</span>
             )
           }{article.data.version && <span>{article.data.version}</span>}
         </div>
@@ -204,3 +204,7 @@ const jsonLd = Astro.site
     </aside>
   </div>
 </Base>
+
+<script>
+  import "../scripts/enchant-catalog";
+</script>

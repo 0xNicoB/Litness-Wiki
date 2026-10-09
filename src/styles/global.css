@@ -1135,6 +1135,10 @@ kbd {
   line-height: 1.5 !important;
   margin-top: 8px !important;
 }
+.data-table[style] table {
+  min-width: var(--table-min-width);
+  overflow-wrap: normal;
+}
 .callout {
   display: flex;
   gap: 13px;
@@ -2127,3 +2131,19 @@ dialog::backdrop {
     font-size: 9px;
   }
 }
+
+/* Enchant catalog: static MDX content and progressive filters. */
+  .catalog-filters { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr); gap: .75rem; padding: 1rem; background: var(--surface-strong); border: 1px solid var(--border); border-radius: 1rem; }
+  .catalog-filters label { display: grid; gap: .4rem; font-size: .85rem; font-weight: 800; min-width: 0; }
+  .catalog-filters input, .catalog-filters select { width: 100%; min-width: 0; min-height: 44px; border: 1px solid var(--border); border-radius: .6rem; background: var(--surface); color: var(--text); padding: .6rem; font: inherit; }
+  .catalog-filters button { justify-self: start; }
+  .catalog-count, .enchant-evidence { font-size: .8rem; color: var(--muted); }
+  .enchant-list { display: grid; gap: 1rem; }
+  .enchant-card { scroll-margin-top: 6rem; overflow-wrap: anywhere; }
+  .enchant-card h3 { margin-top: .5rem; }
+  .enchant-details { display: grid; gap: .5rem; }
+  .enchant-details div { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: .6rem; }
+  .enchant-details dt { font-weight: 800; }
+  .enchant-details dd { margin: 0; }
+  [hidden] { display: none !important; }
+  @media (max-width: 600px) { .catalog-filters { grid-template-columns: minmax(0, 1fr); } .enchant-details div { grid-template-columns: minmax(0, 1fr); gap: .15rem; } }

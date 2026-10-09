@@ -7,12 +7,15 @@ order: 20
 tags: []
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-09"
 lastVerified: null
-sources: ["LIT-ABOUT", "LIT-PATCH-05", "LIT-PATCH-07", "COMM-07", "COMM-GUIDES"]
-related: ["it/progressione/ricompense", "it/economia/valute"]
+sources: ["LIT-ABOUT", "LIT-PATCH-05", "LIT-PATCH-07", "COMM-07", "COMM-GUIDES", "COMM-09-SUMMARY", "VIDEO-09-GUIDE"]
+related: ["it/progressione/ricompense", "it/territori/home", "it/territori/vault", "it/territori/claim", "it/progressione/personalizzazione"]
 featured: false
 ---
+
+import DataTable from '../../../../components/mdx/DataTable.astro';
+import SourceRef from '../../../../components/mdx/SourceRef.astro';
 
 ## Quest
 Le quest fanno parte del percorso Survival. Il changelog del 5 ottobre indica l’aggiunta di missioni per ottenere XP, senza fornire un catalogo completo. La wiki non inventa nomi, prerequisiti o ricompense delle quest non osservate.
@@ -25,3 +28,16 @@ Sono presenti rank e cosmetici. Alcune dotazioni di chunk sono riportate nelle g
 
 ## Pianificare la progressione
 Prima di investire risorse, scegli un obiettivo verificabile nel tuo menu e controlla che il requisito sia ancora valido. La pagina non propone un ordine ottimale universale: mancano evidenze sui percorsi completi.
+
+
+## Struttura delle quest al 9 ottobre
+<DataTable caption="Quantità e difficoltà riferite dalla trascrizione del 9 ottobre"><table><thead><tr><th scope="col">Percorso{' '}</th><th scope="col">Numero{' '}</th><th scope="col">Classificazione{' '}</th></tr></thead><tbody><tr><th scope="row">Quest giornaliere{' '}</th><td>16{' '}</td><td>Facili{' '}</td></tr><tr><th scope="row">Quest settimanali{' '}</th><td>10{' '}</td><td>Medie{' '}</td></tr><tr><th scope="row">Sfide a lungo termine{' '}</th><td>10{' '}</td><td>Difficili{' '}</td></tr></tbody></table></DataTable>
+**Alcune** quest assegnano Battlepass XP. Alcune escludono esplicitamente blocchi piazzati dai giocatori o mob generati da spawner: leggi il requisito della singola missione, senza estenderlo a tutte le quest. Non è disponibile un elenco completo. <SourceRef id="COMM-09-SUMMARY" />
+
+## Benefici dei rank documentati
+I limiti riferiti arrivano a **75 home**, **10 pagine Vault** e **10 slot AH**, partendo rispettivamente da 2, 1 e 1. Questi massimi non identificano una distribuzione per rank.
+Le dotazioni claim già riportate restano distinte: 6 chunk iniziali, progressione ordinaria fino a 50 e dotazioni rank da 60/80/120, con evidenze originali ancora da corroborare.
+Vedi [Home e RTP](/wiki/it/territori/home/), [Vault](/wiki/it/territori/vault/), [Auction House](/wiki/it/economia/auction-house/) e [personalizzazione](/wiki/it/progressione/personalizzazione/).
+
+## Riscontro del menu Quest
+La schermata Help intorno a **00:53** conferma direttamente **16 giornaliere facili, 10 settimanali medie e 10 sfide difficili a lungo termine**. Le esclusioni e l’assegnazione di Battlepass XP a specifiche quest restano riferite dalla trascrizione. <SourceRef id="VIDEO-09-GUIDE" />

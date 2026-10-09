@@ -59,4 +59,35 @@ const sources = defineCollection({
     note: z.string().optional(),
   }),
 });
-export const collections = { docs, sources };
+const enchants = defineCollection({
+  loader: file("./src/data/enchants.json"),
+  schema: z.object({
+    name: z.string().min(2),
+    description: z.string().min(20),
+    maxLevel: z.number().int().positive().nullable().optional(),
+    rarity: z
+      .enum([
+        "Comune",
+        "Non comune",
+        "Raro",
+        "Epico",
+        "Leggendario",
+        "Speciale",
+        "Molto speciale",
+      ])
+      .nullable()
+      .optional(),
+    compatibleItems: z.array(z.string()).nullable().optional(),
+    conflicts: z.array(z.string()).nullable().optional(),
+    procChance: z.number().min(0).max(100).nullable().optional(),
+    averageYieldBonusPct: z.number().nonnegative().nullable().optional(),
+    cooldownSeconds: z.number().positive().nullable().optional(),
+    restrictions: z.array(z.string()),
+    source: z.string(),
+    officialSource: z.string().optional(),
+    observed: date,
+    timestampSeconds: z.number().nonnegative(),
+    verificationStatus: z.enum(["osservato", "riferito", "da-verificare"]),
+  }),
+});
+export const collections = { docs, sources, enchants };

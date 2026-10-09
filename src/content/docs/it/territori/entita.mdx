@@ -5,26 +5,32 @@ lang: "it"
 category: "territori"
 order: 40
 tags: []
-status: "ufficiale"
+status: "osservato"
 published: "2026-10-08"
-updated: "2026-10-08"
-lastVerified: "2026-10-08"
-sources: ["LIT-PATCH-08", "LIT-RULES"]
+updated: "2026-10-09"
+lastVerified: "2026-10-09"
+sources: ["LIT-PATCH-08", "LIT-RULES", "VIDEO-09-GUIDE"]
 related: ["it/informazioni/regole", "it/territori/claim"]
 featured: false
 version: "Patch 8 ottobre 2026"
 ---
 
+import DataTable from '../../../../components/mdx/DataTable.astro';
 import SourceRef from '../../../../components/mdx/SourceRef.astro';
 
-## Villager: limite e preavviso
-L’8 ottobre è indicato un massimo di **5 villager per chunk**. Gli eccedenti mostrano un conto alla rovescia rosso di **15 minuti** prima della rimozione; cliccare un villager mostra il conteggio nel suo chunk. <SourceRef id="LIT-PATCH-08" />
+Prima di ampliare una farm, controlla quanti mob e oggetti sono nello stesso chunk. Il menu Help del **9 ottobre**, intorno a **00:52**, mostra questi limiti. <SourceRef id="VIDEO-09-GUIDE" />
 
-## Nomi e passeggeri non escludono il cap
-Il cap viene applicato anche alle entità con name tag e a quelle che trasportano un passeggero o sono esse stesse passeggeri. I limiti numerici delle altre specie non sono documentati in questa pagina.
+## Limiti per chunk
+<DataTable caption="Menu Help · osservazione 9 ottobre 2026"><table><thead><tr><th scope="col">Categoria{' '}</th><th scope="col">Limite per chunk{' '}</th></tr></thead><tbody><tr><th scope="row">Animali{' '}</th><td>15–30{' '}</td></tr><tr><th scope="row">Villager{' '}</th><td>5{' '}</td></tr><tr><th scope="row">Minecart e barche{' '}</th><td>5{' '}</td></tr><tr><th scope="row">Armor stand (supporti per armature){' '}</th><td>8{' '}</td></tr></tbody></table></DataTable>
+L’intervallo degli animali non permette di assegnare soglie a specie specifiche. Il menu presenta minecart e barche nella stessa voce: non è verificato come venga combinato il loro conteggio.
 
-## Prima di ampliare una farm
-Controlla i chunk coinvolti e il conteggio mostrato. Conserva margine per gestire le entità prima della scadenza. Non presumere che un nome protegga un mob dal limite.
+## Villager: conteggio e preavviso
+La patch dell’**8 ottobre** conferma **5 villager per chunk**. Cliccando su un villager si vede quanti sono presenti nel relativo chunk. Quelli eccedenti mostrano un **countdown rosso di 15 minuti sopra la testa**, poi vengono rimossi: spostali in tempo in un chunk con spazio. <SourceRef id="LIT-PATCH-08" />
+Non sono documentati qui countdown o modalità di rimozione per le altre categorie.
 
-## Lag e redstone
-Il regolamento vieta farm che compromettono le prestazioni e flying machine. Un limite di entità non è un’autorizzazione a costruire qualsiasi impianto sotto quella soglia: fai riferimento alle regole ufficiali.
+## Nomi, minecart e passeggeri
+Dal riavvio dell’8 ottobre il cap include anche entità **con nametag**, **nei minecart** e **in sella**; la patch comprende sia passeggeri sia entità che li trasportano. Queste condizioni non costituiscono eccezioni al conteggio.
+
+## Farm e regole
+Non progettare allevamenti contando su vecchie eccezioni. Conserva margine tra i chunk e controlla il conteggio dei villager. Restare sotto il limite non autorizza impianti che causano lag o flying machine vietate dal [regolamento](/wiki/it/informazioni/regole/).
+Consulta il [changelog dell’8 ottobre](/wiki/it/informazioni/aggiornamenti/#8-ottobre-2026).

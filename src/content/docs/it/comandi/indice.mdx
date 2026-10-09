@@ -7,10 +7,10 @@ order: 10
 tags: ["comandi", "dungeon", "balance", "near"]
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-09"
 lastVerified: null
-sources: ["LIT-PATCH-07", "LIT-PATCH-08", "COMM-GUIDES"]
-related: ["it/pve/dungeon", "it/economia/auction-house"]
+sources: ["LIT-PATCH-07", "LIT-PATCH-08", "COMM-GUIDES", "VIDEO-09-GUIDE", "COMM-09-SUMMARY"]
+related: ["it/pve/dungeon", "it/economia/auction-house", "it/territori/vault", "it/pve/eventi", "it/progressione/ricompense"]
 featured: false
 ---
 
@@ -20,7 +20,7 @@ import Command from '../../../../components/mdx/Command.astro';
 ## Economia e utilità
 <Command syntax="/balance" description="Senza argomenti, riepiloga le valute." source="UFFICIALE · changelog 7 ottobre" />
 <Command syntax="/near" description="Indica i giocatori vicini e la loro direzione. Disponibilità e permessi non sono specificati dalla patch." source="UFFICIALE · changelog 7 ottobre" />
-<Command syntax="/ah" description="Apre la casa d’aste. Accesso riferito dalle osservazioni community; non documentiamo una sintassi di pubblicazione." source="RIFERITO · COMM-GUIDES" />
+<Command syntax="/ah" description="Apre la casa d’aste. Accesso riferito dalle osservazioni community. Il contesto di /sell resta da verificare nella guida AH." source="RIFERITO · COMM-GUIDES" />
 <Command syntax="/pay" description="Sistema di trasferimento Money. La sintassi completa con destinatario e importo non è stata riesaminata: consulta l’help in-game." source="RIFERITO · COMM-GUIDES" />
 <Command syntax="/trade" description="GUI di scambio diretto. Argomenti, garanzie e commissioni richiedono conferma." source="RIFERITO · COMM-GUIDES" />
 
@@ -32,3 +32,10 @@ import Command from '../../../../components/mdx/Command.astro';
 Il changelog cita home senza limite giornaliero e notifiche delle playtime reward. Non fornisce però un catalogo completo dei comandi e dei loro argomenti. Per questo la wiki non elenca comandi operativi non verificati per claim, quest o Battlepass.
 
 <Callout type="info">I pulsanti copiano la sintassi visibile. Un parametro tra parentesi angolari è un segnaposto da sostituire, non un valore eseguibile.</Callout>
+
+## Comandi riferiti o osservati nelle guide del 9 ottobre
+<Command syntax="/vault" description="Apre l’inventario personale; comando leggibile nel menu Vault." source="OSSERVATO · video Help, 00:49" />
+<Command syntax="/event" description="Partecipa all’evento in corso; condizioni complete da controllare nel menu." source="OSSERVATO · video Help, 00:04" />
+<Command syntax="/playtimeinfo" description="Consulta le ore giocate." source="OSSERVATO · video Help, 01:02" />
+<Command syntax="/ah expired" description="Recupera gli oggetti delle inserzioni scadute, secondo la trascrizione. Finestra riportata: una settimana." source="RIFERITO · trascrizione 9 ottobre" />
+La sintassi `/sell <prezzo>` resta da contestualizzare: consulta [Auction House](/wiki/it/economia/auction-house/#pubblicare-un-annuncio-contesto-da-confermare) prima di usarla.

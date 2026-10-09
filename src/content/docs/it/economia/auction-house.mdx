@@ -7,9 +7,9 @@ order: 50
 tags: ["mercato", "auction-house", "ah"]
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-09"
 lastVerified: null
-sources: ["COMM-GUIDES", "COMM-07", "LIT-PATCH-05"]
+sources: ["COMM-GUIDES", "COMM-07", "LIT-PATCH-05", "COMM-09-SUMMARY"]
 related: ["it/economia/commissioni", "it/economia/storico"]
 featured: true
 ---
@@ -37,7 +37,15 @@ Per i blocchi di materiale, considera anche la conversione di crafting: quantit�
 ## Commissioni e tempo di vendita
 Il 12% è riportato dalle guide; la modalità esatta di addebito è ancora da verificare. Un prezzo più alto rispetto allo shop può richiedere attesa e può non trovare compratori.
 
-## Pubblicazione e annullamento
-Questa release non documenta comandi per creare o cancellare annunci: non sono stati verificati. Leggi le indicazioni della GUI e dell’help in-game.
+## Durata, scadenza e slot
+La trascrizione del **9 ottobre** riporta inserzioni di **3 giorni** e recupero degli oggetti scaduti per **1 settimana** tramite il comando seguente. Gli slot simultanei vanno da **1 a 10 secondo il rank**; non è documentata la distribuzione per singolo rank. <SourceRef id="COMM-09-SUMMARY" />
+<Command syntax="/ah expired" description="Recupero delle inserzioni scadute, riferito dalla trascrizione: finestra riportata di una settimana. Verifica il tempo residuo nel menu." source="RIFERITO · 9 ottobre" />
+
+## Pubblicare un annuncio: contesto da confermare
+La trascrizione associa `/sell <prezzo>` all’oggetto tenuto in mano e alla Casa d’Aste. Questo passaggio non è leggibile nei video esaminati: **la relazione con AH resta da verificare**. Non lo presentiamo come comando operativo confermato e non lo confondiamo con la voce Sell dello shop NPC.
+Comandi di annullamento, restrizioni degli oggetti e momento di decorrenza delle scadenze non sono verificati.
 
 <GuideLink href="/wiki/it/economia/storico/" title="Esempi di annunci e vendite del 7 ottobre" />
+
+## Fonti dei nuovi limiti
+Le durate e gli slot sopra indicati restano **riferiti**, in attesa di una schermata completa del tooltip AH. I prezzi negli [esempi storici](/wiki/it/economia/storico/) non sono quotazioni permanenti.

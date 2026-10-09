@@ -1,5 +1,5 @@
 ---
-title: "Daily e Playtime Rewards"
+title: "Daily, AFK e Playtime Rewards"
 description: "Ricompense riportate, esempi datati e promemoria ufficiali: come evitare di confondere una rotazione con una promessa."
 lang: "it"
 category: "progressione"
@@ -7,15 +7,16 @@ order: 10
 tags: []
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-09"
 lastVerified: null
-sources: ["COMM-07", "COMM-GUIDES", "LIT-PATCH-07"]
+sources: ["COMM-07", "COMM-GUIDES", "LIT-PATCH-07", "COMM-09-SUMMARY", "VIDEO-09-GUIDE"]
 related: ["it/progressione/percorsi", "it/informazioni/regole"]
 featured: false
 ---
 
 import DataTable from '../../../../components/mdx/DataTable.astro';
 import SourceRef from '../../../../components/mdx/SourceRef.astro';
+import Command from '../../../../components/mdx/Command.astro';
 
 ## Ricompense giornaliere
 Le guide riportano Daily Rewards tra le fonti di Money e di alcune altre ricompense. Gli esempi seguenti appartengono al periodo osservato il 7 ottobre, non a una rotazione garantita per le settimane successive.
@@ -29,3 +30,14 @@ Dal 7 ottobre il server notifica quando ci sono Playtime Rewards da riscattare. 
 
 ## Controlla il menu corrente
 Prima di pianificare entrate, verifica condizioni, scadenze e ricompensa effettivamente mostrata. Non usare automazioni anti-AFK per maturare tempo: consulta il regolamento.
+
+
+## Zona AFK
+La guida riferita del 9 ottobre indica ricompense passive ogni **10 minuti** nella zona AFK e il trasferimento in questa zona dopo **5 minuti di inattività altrove**. È indicato **1 account per IP**. Non sono verificati tutti i requisiti di assegnazione: la ricompensa non è una promessa valida in ogni circostanza.
+Il sistema AFK non autorizza macro, autoclicker o altri metodi anti-AFK vietati: il [regolamento ufficiale](/wiki/it/informazioni/regole/) prevale.
+
+## Consultare il playtime
+Sono riportate ricompense riscattabili progressivamente in base al tempo complessivo di gioco; non sono disponibili tutte le soglie e i premi.
+<Command syntax="/playtimeinfo" description="Consulta le ore giocate, secondo la guida riferita del 9 ottobre." source="RIFERITO · trascrizione 9 ottobre" />
+
+Il comando `/playtimeinfo` e la progressione dei premi legati alle ore complessive sono leggibili intorno a **01:02** nel video Help. Le condizioni AFK sopra descritte restano riferite. <SourceRef id="VIDEO-09-GUIDE" />

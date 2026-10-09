@@ -4,7 +4,7 @@ Wiki italiana indipendente del server Minecraft Litness. Non affiliata o gestita
 
 Sito pubblico: **https://litness-wiki.pages.dev/**. Cloudflare Pages è collegato a `main` tramite l’integrazione GitHub.
 
-Prima release: **27 articoli**, 8 categorie, HTML statico Astro, ricerca locale Pagefind, font self-hosted e layout responsive. Nessun database, login o servizio indispensabile esterno.
+Aggiornamento 9 ottobre: **32 articoli**, 8 categorie, HTML statico Astro, ricerca locale Pagefind, font self-hosted e layout responsive. Nessun database, login o servizio indispensabile esterno.
 
 ## Sviluppo
 
@@ -22,7 +22,7 @@ npm run verify
 npm run preview
 ```
 
-`verify` esegue Astro/TypeScript strict, ESLint, 5 controlli editoriali, 8 test di regressione del validatore e build. `build` produce `dist`, genera Pagefind e verifica pagine, link interni, anchor, asset e metadata. I file Google nella root sono confrontati byte per byte con gli originali in `public/` e separati dalle pagine della wiki. E2E, clipboard, accessibilità axe e screenshot:
+`verify` esegue Astro/TypeScript strict, ESLint, controlli editoriali, validazione del catalogo e test di regressione del validatore e build. `build` produce `dist`, genera Pagefind e verifica pagine, link interni, anchor, asset e metadata. I file Google nella root sono confrontati byte per byte con gli originali in `public/` e separati dalle pagine della wiki. E2E, clipboard, accessibilità axe e screenshot:
 
 ```bash
 npx playwright install --with-deps chromium
@@ -50,16 +50,18 @@ I push su main attivano le build automatiche; gli altri branch possono generare 
 - `src/content/docs/it`: articoli MDX con metadati validati.
 - `src/data/sources.json`: registro delle fonti e provenienza.
 - `src/data/market.json`: osservazioni storiche del 7 ottobre 2026, stato RIFERITO.
+- `src/data/enchants.json`: tooltip verificati, valori opzionali e riferimenti temporali; Content Collection validata.
+- `src/data/observations-2026-10-09.json`: registro di revisione, destinazioni e incertezze.
 - `src/data/categories.json`: categorie e ordine della navigazione.
 - `src/config/site.ts`: identità, link e disclaimer.
 - `src/components/mdx`: callout, comandi, formule, tabelle, fonti, oggetti e gallerie.
 
 Aggiungere un articolo non richiede modifiche ai router o alla sidebar. Gli URL iniziano con `/wiki/it/`, predisposti per nuove lingue ma non con traduzioni incomplete pubblicate.
 
-Le fonti ufficiali del 5–8 ottobre sono consultate l’8 ottobre 2026. Prezzi, commissioni e altre osservazioni community restano **riferite**, perché gli screenshot originali non sono stati riesaminati. L’indice ricerca non legge prezzi o dati dal server. Le date di verifica non dipendono dalla build.
+Le fonti hanno date di consultazione esplicite. I due video del 9 ottobre sono stati esaminati direttamente: le parti leggibili ricevono lo stato **osservato**. Tooltip assenti o tagliati restano **riferiti**, così come lo storico del 7 ottobre. Il catalogo mostra 15 schede verificate, senza dichiarare un totale certo degli enchant. L’indice ricerca non legge prezzi o dati dal server. Le date di verifica non dipendono dalla build.
 
 ## Documentazione
 
-[Design system](docs/DESIGN_SYSTEM.md) · [Architettura](docs/ARCHITECTURE.md) · [Guida contenuti](docs/CONTENT_GUIDE.md) · [Deployment](docs/DEPLOYMENT.md) · [Contribuire](CONTRIBUTING.md) · [Verifiche](docs/QA.md) · [Asset](docs/ASSETS.md)
+[Design system](docs/DESIGN_SYSTEM.md) · [Architettura](docs/ARCHITECTURE.md) · [Guida contenuti](docs/CONTENT_GUIDE.md) · [Deployment](docs/DEPLOYMENT.md) · [Contribuire](CONTRIBUTING.md) · [Verifiche](docs/QA.md) · [Revisione 9 ottobre](docs/UPDATE_2026-10-09.md) · [Asset](docs/ASSETS.md)
 
 Codice originale: MIT. Testi originali: CC BY 4.0, salvo diritti di terzi. Font OFL e icone ISC mantengono le loro licenze. Il paesaggio illustrato è originale, non uno screenshot o un asset ufficiale di Litness.

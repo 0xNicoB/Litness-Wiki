@@ -29,3 +29,9 @@ Nessun segreto e nessun analytics. Preferenza tema in localStorage. `_headers` a
 ## Limiti intenzionali
 
 Nessun feed automatico delle patch, quotazione corrente, import automatico di evidenze private o garanzia del comportamento in-game. Asset community futuri passano dalla revisione documentata in CONTENT_GUIDE.
+
+## Aggiornamento contenuti del 9 ottobre 2026
+
+La terza Content Collection, `enchants`, usa il loader JSON esistente. `EnchantCatalog.astro` legge la collezione durante la build: niente backend o richieste a servizi esterni. I filtri per testo, rarità e compatibilità sono progressivi; senza JavaScript il form resta nascosto e le schede sono disponibili. Pagefind indicizza il contenuto statico delle schede; i controlli dei filtri sono esclusi dall’indice.
+
+Le cinque nuove pagine MDX sono integrate automaticamente da routing, sidebar, categorie, articoli correlati, sitemap e ricerca. Il registro osservazioni documenta la revisione e non è una nuova sorgente di navigazione. Deployment, URL preesistenti, file Google e relativa regola statica rimangono invariati.

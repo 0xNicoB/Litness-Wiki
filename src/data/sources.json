@@ -25,7 +25,7 @@
     "title": "Regolamento (aggiornato 3 ottobre)",
     "url": "https://litness.gg/rules",
     "type": "ufficiale",
-    "accessed": "2026-10-08",
+    "accessed": "2026-10-09",
     "published": "2026-10-03"
   },
   {
@@ -49,7 +49,7 @@
     "title": "Changelog 8 ottobre 2026",
     "url": "https://litness.gg/blog/changelog-8-october-2026",
     "type": "ufficiale",
-    "accessed": "2026-10-08",
+    "accessed": "2026-10-09",
     "published": "2026-10-08"
   },
   {
@@ -57,7 +57,7 @@
     "title": "Enchantment update 1",
     "url": "https://litness.gg/blog/enchantment-update-1",
     "type": "ufficiale",
-    "accessed": "2026-10-08",
+    "accessed": "2026-10-09",
     "published": "2026-10-05"
   },
   {
@@ -73,5 +73,28 @@
     "type": "riferito",
     "observed": "2026-10-07",
     "note": "Resoconto fornito per la wiki; evidenze visive da riesaminare. Nessuna verifica diretta durante questa realizzazione."
+  },
+  {
+    "id": "VIDEO-09-ENCHANT",
+    "title": "Catalogo Enchanter · video del 9 ottobre",
+    "type": "osservato",
+    "observed": "2026-10-09",
+    "accessed": "2026-10-09",
+    "note": "Recording 2026-10-09 142650.mp4. Esame diretto dei tooltip leggibili. Le registrazioni originali restano private; i riferimenti temporali sono approssimativi."
+  },
+  {
+    "id": "VIDEO-09-GUIDE",
+    "title": "Help e menu · video del 9 ottobre",
+    "type": "osservato",
+    "observed": "2026-10-09",
+    "accessed": "2026-10-09",
+    "note": "Recording 2026-10-09 144134.mp4. Esame diretto dei menu leggibili; alcuni tooltip sono tagliati sul margine destro."
+  },
+  {
+    "id": "COMM-09-SUMMARY",
+    "title": "Trascrizione preliminare dei video · 9 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-09",
+    "note": "Informazioni fornite dal contributore nel mandato di aggiornamento. Dati non leggibili nei video disponibili, o ancora non corroborati, restano riferiti; nessuna verifica diretta implicita."
   }
 ]
