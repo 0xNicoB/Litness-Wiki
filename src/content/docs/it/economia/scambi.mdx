@@ -7,15 +7,16 @@ order: 60
 tags: []
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-12"
 lastVerified: null
-sources: ["COMM-GUIDES", "LIT-RULES"]
+sources: ["COMM-GUIDES", "LIT-RULES", "LIT-PATCH-11"]
 related: ["it/economia/commissioni", "it/informazioni/regole"]
 featured: false
 ---
 
 import Callout from '../../../../components/mdx/Callout.astro';
 import GuideLink from '../../../../components/mdx/GuideLink.astro';
+import SourceRef from '../../../../components/mdx/SourceRef.astro';
 
 ## Due operazioni differenti
 `/pay` trasferisce Money; `/trade` è riportato come interfaccia di scambio. Non sono automaticamente intercambiabili. Le sintassi complete e le funzionalità della GUI non sono ancora documentate.
@@ -32,3 +33,10 @@ Leggi gli oggetti, le quantità e qualsiasi riepilogo presente nella GUI. Non as
 Gli accordi tra giocatori non sono garantiti dallo staff. Per le condizioni ufficiali e le eccezioni relative alla fiducia nei claim, leggi il [regolamento](https://litness.gg/rules). Non sono consentiti scambi di beni di gioco per denaro reale.
 
 <Callout type="verify">Il solo trasferimento `/pay` non costituisce evidenza delle condizioni economiche di `/trade`.</Callout>
+
+
+## Cooldown e minimo di /pay
+Dall’**11 ottobre** il cooldown è **10 secondi** e l’importo minimo indicato è **10**. La patch non modifica esplicitamente l’aliquota del 3% precedentemente riportata né chiarisce come il minimo interagisca con la commissione: non deduciamo una soglia netta diversa. <SourceRef id="LIT-PATCH-11" />
+
+## Regali e servizi
+Il regolamento distingue regali in-game legittimi da pagamenti per kill/statistiche e RMT, che sono vietati. Un accordo privato o un libro firmato non garantisce tutela o rimborso automatico. Consulta anche le [attività economiche osservate](/wiki/it/economia/attivita/).

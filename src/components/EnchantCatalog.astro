@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import SourceRef from "./mdx/SourceRef.astro";
+import { dateLabel } from "../lib/wiki";
 const entries = (await getCollection("enchants")).sort((a, b) =>
   a.data.name.localeCompare(b.data.name, "it"),
 );
@@ -76,7 +77,7 @@ const timestamp = (seconds: number) =>
         >
           <span class="eyebrow">
             {d.rarity ?? "Rarità da verificare"} ·{" "}
-            {d.verificationStatus === "osservato"
+            {d.verificationStatus === "ufficiale" ? "Fonte ufficiale" : d.verificationStatus === "osservato"
               ? "Osservato in gioco"
               : "Da verificare"}
           </span>
@@ -118,6 +119,7 @@ const timestamp = (seconds: number) =>
                 <dd>{d.procChance.toLocaleString("it-IT")}%</dd>
               </div>
             )}
+            {d.procChanceRange && <div><dt>Probabilità secondo livello</dt><dd>{d.procChanceRange.min}–{d.procChanceRange.max}%</dd></div>}
             {d.cooldownSeconds != null && (
               <div>
                 <dt>Cooldown</dt>
@@ -133,8 +135,11 @@ const timestamp = (seconds: number) =>
             </ul>
           )}
           <p class="enchant-evidence">
-            Osservazione: <time datetime={d.observed}>09/10/2026</time> · video
-            ≈ {timestamp(d.timestampSeconds)} <SourceRef id={d.source} />
+            {d.observed && <>Osservazione: <time datetime={d.observed}>{dateLabel(d.observed)}</time></>}
+            {d.sourceDate && <>Fonte del <time datetime={d.sourceDate}>{dateLabel(d.sourceDate)}</time></>}
+            {d.timestampSeconds != null && <> · video ≈ {timestamp(d.timestampSeconds)}</>}
+            {d.verified && <> · consultata {dateLabel(d.verified)}</>}
+            {" "}<SourceRef id={d.source} />
             {d.officialSource && (
               <>
                 {" "}
@@ -142,6 +147,7 @@ const timestamp = (seconds: number) =>
               </>
             )}
           </p>
+          {d.changes?.length && <details><summary>Modifiche documentate</summary><ul>{d.changes.map(c => <li><time datetime={c.date}>{dateLabel(c.date)}</time>: {c.note} <SourceRef id={c.source} /></li>)}</ul></details>}
         </section>
       ))
     }

@@ -1,0 +1,245 @@
+[
+  {
+    "id": "claim-membership",
+    "page": "it/territori/claim",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-10",
+      "LIT-PATCH-11"
+    ],
+    "sourceDate": "2026-10-11",
+    "statement": "Multi-claim, limite personale ripartito e selezione del claim.",
+    "previous": "Il 10 ottobre era previsto un solo claim per giocatore.",
+    "openQuestions": [
+      "Ripartizione automatica dei contributi al leave",
+      "Gratuità e formula completa affitti"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "claim-shape",
+    "page": "it/territori/claim",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-10",
+      "LIT-RULES"
+    ],
+    "sourceDate": "2026-10-10",
+    "statement": "Forme connesse entro raggio del centro; distanza minima 5 chunk.",
+    "previous": "Distanza precedente 7 chunk; forma quadrata transitoria nella chat.",
+    "openQuestions": [
+      "Raggio per ogni dimensione non estrapolato"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "dungeon-cooldown",
+    "page": "it/pve/dungeon",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-10"
+    ],
+    "sourceDate": "2026-10-10",
+    "statement": "Tutti i dungeon: 8 ore successo, 6 ore sconfitta.",
+    "previous": "Video 9 ottobre: 24/36/48 ore.",
+    "supersedes": [
+      "observations-2026-10-09:dungeon"
+    ],
+    "openQuestions": [
+      "Decorrenza completa in tutti i casi di interruzione"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "dungeon-party",
+    "page": "it/pve/dungeon",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-11"
+    ],
+    "sourceDate": "2026-10-11",
+    "statement": "Chi avvia sceglie il party indipendente dal claim.",
+    "previous": "Il 10 ottobre il claim era il gruppo del dungeon; annuncio community per il giorno successivo.",
+    "openQuestions": [
+      "Durata inviti del 9 da riconfermare",
+      "Persistenza e massimo partecipanti"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "dungeon-refund",
+    "page": "it/pve/dungeon",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-08",
+      "LIT-PATCH-09"
+    ],
+    "sourceDate": "2026-10-09",
+    "statement": "Rimborso coda party e correzione countdown iniziale.",
+    "previous": "La guida precedente descriveva solo il caso coda.",
+    "openQuestions": [
+      "Nessuna estensione a run iniziate o disconnessioni generiche"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "resource-death",
+    "page": "it/pve/risorse",
+    "status": "riferito",
+    "sources": [
+      "COMM-DISCORD-04",
+      "COMM-DISCORD-06",
+      "COMM-DISCORD-08"
+    ],
+    "sourceDate": "2026-10-08",
+    "statement": "Primi tre slot hotbar e armatura conservati secondo risposte coerenti; restante inventario perso.",
+    "previous": "Perdita inventario senza eccezioni nella trascrizione.",
+    "supersedes": [
+      "observations-2026-10-09:mondo-risorse"
+    ],
+    "openQuestions": [
+      "Ruoli staff non provati",
+      "XP, casistiche e test attuale"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "resource-boss",
+    "page": "it/pve/risorse",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-10",
+      "LIT-PATCH-11"
+    ],
+    "sourceDate": "2026-10-11",
+    "statement": "Messaggio sotto 5% danni, hover partecipanti boss/minion.",
+    "previous": null,
+    "openQuestions": [
+      "Drop e contributo minion al premio non dedotti"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "pay",
+    "page": "it/economia/scambi",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-11"
+    ],
+    "sourceDate": "2026-10-11",
+    "statement": "Minimo 10 e cooldown 10 secondi.",
+    "previous": null,
+    "openQuestions": [
+      "Minimo lordo/netto e arrotondamenti; aliquota resta separata"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "home-claim",
+    "page": "it/territori/home",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-11"
+    ],
+    "sourceDate": "2026-10-11",
+    "statement": "/home claim personale, /claim home condivisa; TPA 30 s e cinque warp.",
+    "previous": null,
+    "openQuestions": [
+      "Sintassi completa accesso warp non pubblicata"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "anvil",
+    "page": "it/equipaggiamento/incudine",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-09"
+    ],
+    "sourceDate": "2026-10-09",
+    "statement": "Usura 15/39 distinta da numero lavorazioni, massimo 12 enchant.",
+    "previous": null,
+    "openQuestions": [
+      "Formula completa costo non dedotta"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "confusion",
+    "page": "it/equipaggiamento/catalogo",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-09"
+    ],
+    "sourceDate": "2026-10-09",
+    "statement": "Nausea e visuale; 1–4%, cooldown 20 s, Epico; hotbar non rimescolata.",
+    "previous": "Effetto e probabilità della patch 5 e video 9 precedenti al rework.",
+    "openQuestions": [
+      "Mappatura probabilità per singolo livello"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "farming",
+    "page": "it/equipaggiamento/enchant",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-PATCH-11",
+      "LIT-PATCH-10"
+    ],
+    "sourceDate": "2026-10-11",
+    "statement": "Green Thumb/Harvest Hoe ripiantano e non rompono colture immature; fix Prospector/Furnace senza nuovi numeri.",
+    "previous": null,
+    "openQuestions": [],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "ah-command",
+    "page": "it/economia/auction-house",
+    "status": "riferito",
+    "sources": [
+      "COMM-DISCORD-07",
+      "COMM-DISCORD-09"
+    ],
+    "sourceDate": "2026-10-09",
+    "statement": "/ah sell prezzo quantità riferito; un acquirente riferisce maggiorazione 12%.",
+    "previous": "Nessuna sintassi di pubblicazione documentata.",
+    "openQuestions": [
+      "Prezzo unitario/totale",
+      "Relazione con /sell",
+      "Addebito completo AH"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "daily",
+    "page": "it/progressione/ricompense",
+    "status": "riferito",
+    "sources": [
+      "COMM-DISCORD-06"
+    ],
+    "sourceDate": "2026-10-06",
+    "statement": "Riscatto daily richiesto per mantenere streak secondo risposta community.",
+    "previous": "Alcuni messaggi parlano solo di login; la conversazione distingue il riscatto.",
+    "openQuestions": [
+      "Eccezioni rank",
+      "Reward e rotazioni correnti"
+    ],
+    "reviewed": "2026-10-12"
+  },
+  {
+    "id": "rules",
+    "page": "it/informazioni/regole",
+    "status": "ufficiale",
+    "sources": [
+      "LIT-RULES"
+    ],
+    "sourceDate": "2026-10-10",
+    "statement": "Regolamento vigente: distanza 5, trust e truffe distinti, prove video, no rimborso, multi-account legittimi senza vantaggi/reward transfer.",
+    "previous": "Sintesi della versione 3 ottobre.",
+    "openQuestions": [
+      "Per controversie prevale il testo ufficiale"
+    ],
+    "reviewed": "2026-10-12"
+  }
+]

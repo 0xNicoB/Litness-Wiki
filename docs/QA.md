@@ -1,3 +1,7 @@
+# Verifiche del progetto
+
+La revisione corrente è documentata in [UPDATE_2026-10-12.md](UPDATE_2026-10-12.md). Le sezioni dell’8 e 9 ottobre qui sotto descrivono verifiche storiche e non sostituiscono quelle del 12.
+
 # Verifica della prima release
 
 Verifiche eseguite l’8 ottobre 2026 sulla build statica locale, nella CI GitHub e sulla produzione Cloudflare. Il sito è pubblicato su **https://litness-wiki.pages.dev/**. I risultati locali e quelli di produzione sono distinti nelle sezioni seguenti.
@@ -134,3 +138,28 @@ Il Chromium locale preesistente era incompleto e terminava prima di aprire le pa
 Non è stato ripetuto Lighthouse per questa revisione. I risultati dell’8 ottobre restano misure della release precedente. I test remoti e lo stato finale di GitHub/Cloudflare sono comunicati nel report di consegna; nessuna modifica a DNS, credenziali o impostazioni di sicurezza.
 
 Dopo l’adeguamento finale della tabella dungeon, `npm run verify` è stato ripetuto con esito positivo. Quattro test mirati desktop/mobile (dungeon, axe, screenshot e viewport 320 px) sono passati. La suite completa precedente rimane 31 passati e 1 skip previsto.
+
+
+## Revisione del 12 ottobre 2026 — build locale
+
+Node 22.23.3, dipendenze esistenti e lockfile invariati. Eseguiti `npm run check`, `npm run lint`, `npm test`, `PUBLIC_SITE_URL=https://litness-wiki.pages.dev npm run build` e `npm run test:e2e`.
+
+| Verifica | Risultato |
+|---|---|
+| Astro/TypeScript | 0 errori, 0 warning, 0 hint |
+| ESLint | Exit 0 |
+| Test Node | 22 superati; cronologia, fonte, privacy, dati enchant e regressioni sitemap |
+| Build | 45 pagine HTML del sito + 1 file Google immutato |
+| Pagefind | 34 articoli italiani indicizzati |
+| Riferimenti interni | 4.962 risorse/anchor controllati, nessun riferimento mancante |
+| Sitemap | 44 URL indicizzabili esatti, origine reale, 404 e file Google esclusi |
+| Playwright | 41 superati, 1 skip intenzionale: drawer mobile nel progetto desktop |
+| Axe | Nessuna violazione nelle pagine/stati testati, inclusi claim, incudine e changelog |
+
+Chromium 143.0.7499.0 estratto da `@sparticuz/chromium@143.0.4` in una directory temporanea esterna alla repository, con `LD_LIBRARY_PATH=/tmp` e `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH=/tmp/chromium`. Non aggiunto alle dipendenze del progetto; CI usa Chromium Playwright standard.
+
+Testati ricerca multi-claim/incudine/Illusionista/Prospector, copia del deposito banca e dungeon leave, categorie, drawer, tema, anchor, filtri cumulativi e contenuto senza JavaScript. Verificato overflow a 320 px; tabelle con scorrimento locale. Screenshot generati su desktop e Pixel 7; aperti per il controllo visivo claim desktop, dungeon/incudine mobile e rispettive tabelle. Controlli aggiuntivi sul catalogo, cronologia, homepage, ricerca, drawer e 404 fanno parte della suite.
+
+Durante la verifica sono stati corretti un import MDX mancante e i selettori dei nuovi test (sottorisultati Pagefind e date in formato italiano). La prima suite completa riportava 37 pass/4 fail/1 skip; dopo la correzione tutti i 41 casi applicabili sono passati. Non sono rimasti test falliti. Lighthouse non rieseguito: i punteggi precedenti restano misure della release precedente.
+
+Questi risultati sono locali. Pubblicazione Cloudflare, CI e risposte HTTP pubbliche vanno registrate separatamente nel report della revisione. Sitemap valida non equivale a indicizzazione Google. Nessun accesso diretto al gioco o verifica di ruoli staff Discord.

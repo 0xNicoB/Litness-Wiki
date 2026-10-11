@@ -1,16 +1,16 @@
 ---
 title: "Mondo Risorse"
-description: "Raccolta, rigenerazione dei minerali e rischi del Mondo Risorse: PvP attivo e perdita dell’inventario alla morte."
+description: "Raccolta e rigenerazione, PvP, perdita parziale dell’inventario riferita dalla community e condizioni dei boss documentate."
 lang: "it"
 category: "pve"
 order: 30
 tags: []
 status: "riferito"
 published: "2026-10-09"
-updated: "2026-10-09"
+updated: "2026-10-12"
 lastVerified: null
-sources: ["COMM-09-SUMMARY"]
-related: ["it/territori/home", "it/equipaggiamento/catalogo", "it/pve/mondi"]
+sources: ["COMM-09-SUMMARY", "COMM-DISCORD-04", "COMM-DISCORD-05", "COMM-DISCORD-06", "COMM-DISCORD-08", "LIT-PATCH-10", "LIT-PATCH-11", "LIT-PATCH-09"]
+related: ["it/territori/home", "it/pve/dungeon", "it/equipaggiamento/catalogo", "it/informazioni/regole"]
 featured: false
 ---
 
@@ -18,19 +18,27 @@ import Callout from '../../../../components/mdx/Callout.astro';
 import GuideLink from '../../../../components/mdx/GuideLink.astro';
 import SourceRef from '../../../../components/mdx/SourceRef.astro';
 
-Il Mondo Risorse è dedicato alla raccolta di minerali, colture e legno. Le informazioni seguenti provengono dalla trascrizione delle interfacce del **9 ottobre 2026** e richiedono conferma delle condizioni complete. <SourceRef id="COMM-09-SUMMARY" />
+Il Mondo Risorse permette raccolta e combattimento. Le risposte community del **4, 6 e 8 ottobre** correggono la descrizione precedente della perdita alla morte: indicano alcune protezioni dell’inventario, senza costituire un test diretto attuale.
 
 ## Raccolta e rigenerazione
-Per raccogliere i blocchi serve lo **strumento appropriato**. Per i minerali è riportata una rigenerazione tra **30 secondi e 5 minuti**. Questo intervallo non descrive automaticamente legno, colture o ogni altro blocco: i loro tempi non sono documentati.
+Minerali, colture e legno richiedono gli **strumenti appropriati**. La trascrizione del 9 ottobre riporta per i **minerali** un tempo di rigenerazione di **30 secondi–5 minuti**: non estendiamo questo intervallo a tutti i blocchi. <SourceRef id="COMM-09-SUMMARY" />
+La chat dell’8 distingue minerali che si rigenerano qui e raccolta ordinaria in Overworld; riferisce anche che le risorse raccolte possono essere portate in Survival. Non è necessario raccogliere tutto nel Mondo Risorse. <SourceRef id="COMM-DISCORD-08" />
+Il cooldown RTP riferito è **1 minuto**, distinto da una limitazione generale d’accesso.
 
-Rispetto alla normale estrazione, la rigenerazione permette di tornare sulle risorse minerarie. Non sono note le regole di reset dell’intero mondo, né eventuali restrizioni di costruzione o claim: non considerarlo un terreno per una base permanente senza controllare il menu.
+## PvP e cosa si perde alla morte
+<Callout type="warning">Il PvP è attivo. Più risposte community riferiscono che restano i **primi 3 slot della hotbar** e l’**armatura equipaggiata**, mentre si perde il **restante inventario**. Queste condizioni sono riferite: controllale prima di rischiare oggetti di valore.</Callout>
+Le tre risposte trattano espressamente il Mondo Risorse; non autorizzano a estendere le protezioni ai dungeon. Gli autori e i ruoli staff non sono verificabili tramite l’export, quindi la wiki non attribuisce il chiarimento ufficialmente allo staff. <SourceRef id="COMM-DISCORD-04" /> <SourceRef id="COMM-DISCORD-06" /> <SourceRef id="COMM-DISCORD-08" />
+Sono ancora da verificare XP, tutte le condizioni PvE/PvP e l’interazione con Soulbound. Non promettiamo la conservazione universale di ogni oggetto né conversioni delle valute alla morte.
 
-## PvP, mob e morte
-<Callout type="warning">Il PvP è attivo e alla morte si perde l’inventario, secondo la guida riferita. Possono comparire mob speciali e boss. Prepara l’equipaggiamento considerando questi rischi.</Callout>
-Non sono documentate eccezioni generali alla perdita, protezioni temporanee o ricompense dei boss. L’enchant Soulbound ha una funzione distinta: non dedurre interazioni garantite in questo mondo senza una verifica specifica.
+## Boss e partecipazione
+Possono comparire mob speciali e boss. Dal **10 ottobre**, se infliggi **meno del 5% dei danni al boss**, un messaggio spiega perché non ricevi premi. Questo non dimostra che il solo superamento della soglia garantisca qualunque ricompensa. <SourceRef id="LIT-PATCH-10" />
+Dall’**11 ottobre**, passando il cursore sul messaggio di uccisione del boss puoi vedere il riepilogo di chi ha danneggiato il boss o i suoi minion. La patch non fornisce una formula che converta i danni ai minion in premio. <SourceRef id="LIT-PATCH-11" />
+La barra del boss che restava dopo il reset è stata corretta il 9 ottobre, come indicato nella [cronologia](/wiki/it/informazioni/aggiornamenti/#9-ottobre-2026).
 
-## Teletrasporto e strumenti
-Il cooldown RTP riferito per il Mondo Risorse è **1 minuto**; è il tempo del teletrasporto casuale, non un limite generale di accesso.
-<GuideLink href="/wiki/it/territori/home/#cooldown-rtp" title="Confronta i cooldown RTP dei mondi" />
-<GuideLink href="/wiki/it/equipaggiamento/enchant/" title="Mining e farming: patch degli enchant" />
+## Chest: segnalazione storica
+Il **5 ottobre** una risposta riferiva chest vuote che non si rigeneravano. Non è una regola permanente accertata; nell’archivio non è emersa una conferma ufficiale successiva che risolva il punto. Reset del mondo e ricompense delle chest restano da verificare. <SourceRef id="COMM-DISCORD-05" />
+
+## Guide correlate
+<GuideLink href="/wiki/it/territori/home/#cooldown-rtp" title="RTP e ritorno allo spawn" />
 <GuideLink href="/wiki/it/equipaggiamento/catalogo/" title="Enchant per strumenti e combattimento" />
+<GuideLink href="/wiki/it/pve/dungeon/" title="Dungeon: protezioni e rischi distinti" />

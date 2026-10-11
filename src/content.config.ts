@@ -61,33 +61,66 @@ const sources = defineCollection({
 });
 const enchants = defineCollection({
   loader: file("./src/data/enchants.json"),
-  schema: z.object({
-    name: z.string().min(2),
-    description: z.string().min(20),
-    maxLevel: z.number().int().positive().nullable().optional(),
-    rarity: z
-      .enum([
-        "Comune",
-        "Non comune",
-        "Raro",
-        "Epico",
-        "Leggendario",
-        "Speciale",
-        "Molto speciale",
-      ])
-      .nullable()
-      .optional(),
-    compatibleItems: z.array(z.string()).nullable().optional(),
-    conflicts: z.array(z.string()).nullable().optional(),
-    procChance: z.number().min(0).max(100).nullable().optional(),
-    averageYieldBonusPct: z.number().nonnegative().nullable().optional(),
-    cooldownSeconds: z.number().positive().nullable().optional(),
-    restrictions: z.array(z.string()),
-    source: z.string(),
-    officialSource: z.string().optional(),
-    observed: date,
-    timestampSeconds: z.number().nonnegative(),
-    verificationStatus: z.enum(["osservato", "riferito", "da-verificare"]),
-  }),
+  schema: z
+    .object({
+      name: z.string().min(2),
+      description: z.string().min(20),
+      maxLevel: z.number().int().positive().nullable().optional(),
+      rarity: z
+        .enum([
+          "Comune",
+          "Non comune",
+          "Raro",
+          "Epico",
+          "Leggendario",
+          "Speciale",
+          "Molto speciale",
+        ])
+        .nullable()
+        .optional(),
+      compatibleItems: z.array(z.string()).nullable().optional(),
+      conflicts: z.array(z.string()).nullable().optional(),
+      procChance: z.number().min(0).max(100).nullable().optional(),
+      procChanceRange: z
+        .object({
+          min: z.number().min(0).max(100),
+          max: z.number().min(0).max(100),
+        })
+        .refine((r) => r.min <= r.max)
+        .optional(),
+      averageYieldBonusPct: z.number().nonnegative().nullable().optional(),
+      cooldownSeconds: z.number().positive().nullable().optional(),
+      restrictions: z.array(z.string()),
+      source: z.string(),
+      officialSource: z.string().optional(),
+      observed: date.optional(),
+      timestampSeconds: z.number().nonnegative().optional(),
+      sourceDate: date.optional(),
+      verified: date.optional(),
+      version: z.string().optional(),
+      changes: z
+        .array(z.object({ date, source: z.string(), note: z.string() }))
+        .optional(),
+      verificationStatus: z.enum([
+        "ufficiale",
+        "osservato",
+        "riferito",
+        "da-verificare",
+      ]),
+    })
+    .refine(
+      (data) =>
+        data.verificationStatus !== "osservato" ||
+        (data.observed !== undefined && data.timestampSeconds !== undefined),
+      "Observed evidence needs an observation date and video timestamp",
+    )
+    .refine(
+      (data) =>
+        data.verificationStatus !== "ufficiale" ||
+        (data.sourceDate !== undefined &&
+          data.verified !== undefined &&
+          data.verified >= data.sourceDate),
+      "Official evidence needs chronological source and review dates",
+    ),
 });
 export const collections = { docs, sources, enchants };

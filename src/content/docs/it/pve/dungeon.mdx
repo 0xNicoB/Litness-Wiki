@@ -1,45 +1,58 @@
 ---
 title: "Dungeon: ingresso, coda e cooldown"
-description: "Tre dungeon documentati, costi per membro, difficoltà del party, cooldown e rimborso della coda."
+description: "Costi, party indipendenti dai claim, nuovi cooldown 8/6 ore, ricompense e rimborsi della coda e del countdown."
 lang: "it"
 category: "pve"
 order: 10
 tags: ["dungeon", "party", "cooldown"]
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-09"
+updated: "2026-10-12"
 lastVerified: null
-sources: ["LIT-PATCH-07", "LIT-PATCH-08", "VIDEO-09-GUIDE", "COMM-09-SUMMARY"]
-related: ["it/comandi/indice", "it/economia/valute", "it/equipaggiamento/catalogo"]
+sources: ["LIT-PATCH-07", "LIT-PATCH-08", "LIT-PATCH-09", "LIT-PATCH-10", "LIT-PATCH-11", "VIDEO-09-GUIDE", "COMM-09-SUMMARY", "COMM-DISCORD-06"]
+related: ["it/territori/claim", "it/comandi/indice", "it/economia/valute", "it/equipaggiamento/incudine"]
 featured: false
+version: "Patch 11 ottobre 2026"
 ---
 
 import Command from '../../../../components/mdx/Command.astro';
 import DataTable from '../../../../components/mdx/DataTable.astro';
 import SourceRef from '../../../../components/mdx/SourceRef.astro';
+import Callout from '../../../../components/mdx/Callout.astro';
 
-I menu del **9 ottobre 2026** mostrano Cavaliere Medievale, Illusionista e Nido di Ragni. I valori sono datati: controlla sempre la GUI prima di entrare. <SourceRef id="VIDEO-09-GUIDE" />
+Dall’**11 ottobre** chi avvia un dungeon può scegliere il party: l’appartenenza allo stesso claim non è più un requisito rigido per comporre il gruppo. Costi, cooldown e ricompense sono aspetti separati. <SourceRef id="LIT-PATCH-11" />
 
 ## Dungeon documentati
-<DataTable minWidth={640} caption="Menu dungeon del 9 ottobre · costi individuali e cooldown distinti"><table><thead><tr><th scope="col">Dungeon{' '}</th><th scope="col">Costo per membro{' '}</th><th scope="col">Stanze e boss{' '}</th><th scope="col">Cooldown{' '}</th></tr></thead><tbody><tr><th scope="row">Cavaliere Medievale{' '}</th><td>500 Money{' '}</td><td>4 + tesoro; Cavaliere Oscuro{' '}</td><td>1 giorno (24 ore){' '}</td></tr><tr><th scope="row">Illusionista{' '}</th><td>2.000 Money{' '}</td><td>4 + tesoro; Illusionista{' '}</td><td>1 giorno e mezzo (36 ore){' '}</td></tr><tr><th scope="row">Nido di Ragni{' '}</th><td>1.000 Souls{' '}</td><td>4 + tesoro; Ragno della Terra{' '}</td><td>2 giorni (48 ore){' '}</td></tr></tbody></table></DataTable>
-Su schermi piccoli puoi scorrere la tabella orizzontalmente.
+<DataTable minWidth={640} caption="Costi e struttura osservati il 9 ottobre · cooldown aggiornati nella sezione seguente"><table><thead><tr><th scope="col">Dungeon{' '}</th><th scope="col">Costo per membro{' '}</th><th scope="col">Stanze e boss{' '}</th></tr></thead><tbody><tr><th scope="row">Cavaliere Medievale{' '}</th><td>500 Money{' '}</td><td>4 + tesoro; Cavaliere Oscuro{' '}</td></tr><tr><th scope="row">Illusionista{' '}</th><td>2.000 Money{' '}</td><td>4 + tesoro; Illusionista{' '}</td></tr><tr><th scope="row">Nido di Ragni{' '}</th><td>1.000 Souls{' '}</td><td>4 + tesoro; Ragno della Terra{' '}</td></tr></tbody></table></DataTable>
+I menu mostrano difficoltà **1–5**; timestamp nel video Help: Cavaliere **00:16**, Illusionista **00:09**, Nido **00:28**. Alcune parti, inclusa la valuta del Nido, sono corroborate dalla trascrizione. <SourceRef id="VIDEO-09-GUIDE" /> <SourceRef id="COMM-09-SUMMARY" />
+Il costo è addebitato individualmente a **ogni partecipante**, secondo la patch del 7 ottobre. Non è stata trovata una modifica ufficiale successiva agli importi riportati: verifica sempre la GUI corrente.
 
-Illusionista è visibile intorno a **00:09**, Cavaliere Medievale a **00:16** e Nido di Ragni a **00:28**. I menu indicano difficoltà **1–5**. La valuta degli ingressi, parzialmente tagliata nel tooltip di Nido di Ragni, è corroborata dalla trascrizione fornita. <SourceRef id="COMM-09-SUMMARY" />
-Questa è una selezione documentata, non una promessa di catalogo esaustivo. Il costo di ciascun partecipante è confermato ufficialmente dalla patch del 7 ottobre. <SourceRef id="LIT-PATCH-07" />
+## Cooldown correnti
+Dal **10 ottobre** valgono gli stessi tempi per tutti i dungeon:
+<DataTable caption="Cooldown ufficiali del 10 ottobre · sostituiscono quelli del video del 9"><table><thead><tr><th scope="col">Esito della run{' '}</th><th scope="col">Cooldown{' '}</th></tr></thead><tbody><tr><th scope="row">Completamento riuscito{' '}</th><td>8 ore{' '}</td></tr><tr><th scope="row">Party sconfitto{' '}</th><td>6 ore{' '}</td></tr></tbody></table></DataTable>
+I cooldown del video del 9 ottobre sono superati e restano soltanto nelle evidenze storiche. La GUI mostra l’attesa disponibile. Non sono documentate qui tutte le condizioni di avvio del timer o degli abbandoni.
+<SourceRef id="LIT-PATCH-10" />
 
 ## Party e difficoltà
-La guida in-game intorno a **00:07** indica **30 secondi per accettare un invito** e una difficoltà che cresce con il numero di partecipanti. Ogni membro sostiene il proprio costo di ingresso.
-<DataTable caption="Scelte di difficoltà visibili nel menu"><table><thead><tr><th scope="col">Scelta{' '}</th><th scope="col">Livello relativo al gruppo{' '}</th></tr></thead><tbody><tr><th scope="row">Media{' '}</th><td>+1 livello{' '}</td></tr><tr><th scope="row">Difficile{' '}</th><td>+2 livelli{' '}</td></tr></tbody></table></DataTable>
-Si tratta della difficoltà del sistema dungeon: non del livello XP del personaggio né della difficoltà vanilla. Non è disponibile una formula completa di scaling.
+<Command syntax="/dungeon invite &lt;player&gt;" description="Chi avvia il dungeon sceglie chi invitare al party, anche fuori dal proprio claim." source="UFFICIALE · 11 ottobre" />
+<Command syntax="/dungeon uninvite" description="Comando per gestire gli inviti. La patch non specifica argomenti aggiuntivi: consulta la sintassi corrente prima dell’uso." source="UFFICIALE · 11 ottobre" />
+Il video del 9 ottobre indica inviti validi **30 secondi**; questo dato precede il nuovo party e va riconfermato. Non sono noti limiti massimi, persistenza o ruoli completi del gruppo.
+<DataTable caption="Difficoltà relative al gruppo · video 9 ottobre"><table><thead><tr><th scope="col">Scelta{' '}</th><th scope="col">Variazione documentata{' '}</th></tr></thead><tbody><tr><th scope="row">Media{' '}</th><td>+1 livello{' '}</td></tr><tr><th scope="row">Difficile{' '}</th><td>+2 livelli{' '}</td></tr></tbody></table></DataTable>
+Il numero dei membri influenza la difficoltà. Non è una formula di scaling dimostrata, né il livello del personaggio o la difficoltà vanilla.
+
+## Ricompense dal 10 ottobre
+Ogni giocatore riceve il **proprio forziere finale**. Il premio in valuta cresce con la difficoltà: **Money** per Cavaliere e Illusionista, **Souls** per Nido. Il premio speciale della run è invece **unico per party**, con annuncio al server.
+<DataTable minWidth={600} caption="Premi speciali e dicitura delle probabilità nella patch ufficiale"><table><thead><tr><th scope="col">Dungeon{' '}</th><th scope="col">Premio{' '}</th><th scope="col">Probabilità indicata{' '}</th></tr></thead><tbody><tr><th scope="row">Cavaliere Medievale{' '}</th><td>Flash Key{' '}</td><td>1% per membro del party{' '}</td></tr><tr><th scope="row">Illusionista{' '}</th><td>Blast Key{' '}</td><td>1% per membro del party{' '}</td></tr><tr><th scope="row">Nido di Ragni{' '}</th><td>Elytra{' '}</td><td>1,5%{' '}</td></tr></tbody></table></DataTable>
+“1% per membro” non prova estrazioni indipendenti né una chiave per giocatore. La formula complessiva non è pubblicata qui. Menu d’ingresso e riepilogo finale in chat mostrano premi e probabilità. <SourceRef id="LIT-PATCH-10" />
 
 ## Consultare la coda
-<Command syntax="/dungeon queue &lt;dungeon&gt;" description="Mostra i giocatori in attesa. L’identificativo del dungeon da usare al posto del parametro deve essere verificato in-game." source="LIT-PATCH-07" />
-Il cooldown è consultabile nella GUI. Costo d’ingresso, difficoltà e attesa per rientrare sono informazioni diverse.
+<Command syntax="/dungeon queue &lt;dungeon&gt;" description="Mostra i giocatori in attesa. Gli identificativi esatti dei dungeon vanno controllati in-game." source="UFFICIALE · 7 ottobre" />
 
 ## Lasciare la coda
-<Command syntax="/dungeon leave" description="Dall’8 ottobre, l’uscita dalla coda coinvolge tutto il party e rimborsa il costo di ingresso." source="LIT-PATCH-08" />
-Accordati con il gruppo prima di usarlo. Il rimborso documentato riguarda **un party in coda**: non è esteso a dungeon già iniziati, disconnessioni o sconfitte. <SourceRef id="LIT-PATCH-08" />
-Vedi il [changelog dell’8 ottobre](/wiki/it/informazioni/aggiornamenti/#novità).
+<Command syntax="/dungeon leave" description="In coda, fa uscire tutto il party e rimborsa l’ingresso. Dal 9 ottobre è corretto anche il rimborso durante il countdown iniziale." source="UFFICIALE · 8 e 9 ottobre" />
+La patch dell’8 riguarda il party **in coda**; quella del 9 corregge il rimborso **nel conto alla rovescia di avvio**. Il rimborso non è documentato per dungeon già iniziati, sconfitte o disconnessioni generiche. Accordati con il gruppo prima di uscire.
 
-## Ricompense e preparazione
-Non disponiamo di loot table complete, tattiche dei boss o numero massimo dei partecipanti. Non promettiamo un guadagno netto: costo e ricompense vanno valutati separatamente. Il momento preciso da cui decorre il cooldown richiede una verifica delle condizioni complete.
+## Morte e preparazione
+Una risposta del **6 ottobre** riferisce perdita dell’intero inventario alla morte nei dungeon. Non disponiamo di un test attuale delle eventuali eccezioni: non trasferire al dungeon la protezione hotbar/armatura riferita per il Mondo Risorse. <SourceRef id="COMM-DISCORD-06" />
+Prepara equipaggiamento e spazio per le ricompense; non sono disponibili tattiche complete dei boss o un guadagno netto garantito. La patch del 10 corregge anche il blocco dei partecipanti che erano a letto alla fine del countdown.
+Vedi il [changelog](/wiki/it/informazioni/aggiornamenti/) e la guida [incudine](/wiki/it/equipaggiamento/incudine/).

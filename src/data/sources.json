@@ -22,18 +22,18 @@
   },
   {
     "id": "LIT-RULES",
-    "title": "Regolamento (aggiornato 3 ottobre)",
+    "title": "Regolamento (aggiornato 10 ottobre)",
     "url": "https://litness.gg/rules",
     "type": "ufficiale",
-    "accessed": "2026-10-09",
-    "published": "2026-10-03"
+    "accessed": "2026-10-12",
+    "published": "2026-10-10"
   },
   {
     "id": "LIT-PATCH-05",
     "title": "Changelog 5 ottobre 2026",
     "url": "https://litness.gg/blog/changelog-5-october-2026",
     "type": "ufficiale",
-    "accessed": "2026-10-08",
+    "accessed": "2026-10-12",
     "published": "2026-10-05"
   },
   {
@@ -41,7 +41,7 @@
     "title": "Changelog 7 ottobre 2026",
     "url": "https://litness.gg/blog/changelog-7-october-2026",
     "type": "ufficiale",
-    "accessed": "2026-10-08",
+    "accessed": "2026-10-12",
     "published": "2026-10-07"
   },
   {
@@ -49,7 +49,7 @@
     "title": "Changelog 8 ottobre 2026",
     "url": "https://litness.gg/blog/changelog-8-october-2026",
     "type": "ufficiale",
-    "accessed": "2026-10-09",
+    "accessed": "2026-10-12",
     "published": "2026-10-08"
   },
   {
@@ -57,7 +57,7 @@
     "title": "Enchantment update 1",
     "url": "https://litness.gg/blog/enchantment-update-1",
     "type": "ufficiale",
-    "accessed": "2026-10-09",
+    "accessed": "2026-10-12",
     "published": "2026-10-05"
   },
   {
@@ -79,7 +79,7 @@
     "title": "Catalogo Enchanter · video del 9 ottobre",
     "type": "osservato",
     "observed": "2026-10-09",
-    "accessed": "2026-10-09",
+    "accessed": "2026-10-12",
     "note": "Recording 2026-10-09 142650.mp4. Esame diretto dei tooltip leggibili. Le registrazioni originali restano private; i riferimenti temporali sono approssimativi."
   },
   {
@@ -87,7 +87,7 @@
     "title": "Help e menu · video del 9 ottobre",
     "type": "osservato",
     "observed": "2026-10-09",
-    "accessed": "2026-10-09",
+    "accessed": "2026-10-12",
     "note": "Recording 2026-10-09 144134.mp4. Esame diretto dei menu leggibili; alcuni tooltip sono tagliati sul margine destro."
   },
   {
@@ -96,5 +96,132 @@
     "type": "riferito",
     "observed": "2026-10-09",
     "note": "Informazioni fornite dal contributore nel mandato di aggiornamento. Dati non leggibili nei video disponibili, o ancora non corroborati, restano riferiti; nessuna verifica diretta implicita."
+  },
+  {
+    "id": "LIT-PATCH-09",
+    "title": "Changelog 9 ottobre 2026",
+    "url": "https://litness.gg/blog/changelog-9-october-2026",
+    "type": "ufficiale",
+    "accessed": "2026-10-12",
+    "published": "2026-10-09"
+  },
+  {
+    "id": "LIT-PATCH-10",
+    "title": "Changelog 10 ottobre 2026",
+    "url": "https://litness.gg/blog/changelog-10-october-2026",
+    "type": "ufficiale",
+    "accessed": "2026-10-12",
+    "published": "2026-10-10"
+  },
+  {
+    "id": "LIT-PATCH-11",
+    "title": "Changelog 11 ottobre 2026",
+    "url": "https://litness.gg/blog/changelog-11-october-2026",
+    "type": "ufficiale",
+    "accessed": "2026-10-12",
+    "published": "2026-10-11"
+  },
+  {
+    "id": "LIT-BLOG",
+    "title": "Archivio news Litness",
+    "url": "https://litness.gg/blog",
+    "type": "ufficiale",
+    "accessed": "2026-10-12"
+  },
+  {
+    "id": "LIT-CONSOLE-01",
+    "title": "Guida ufficiale PS4 e PS5",
+    "url": "https://litness.gg/blog/join-on-ps4-ps5",
+    "type": "ufficiale",
+    "published": "2026-10-01",
+    "accessed": "2026-10-12"
+  },
+  {
+    "id": "COMM-DISCORD-01",
+    "title": "Conversazioni community · 1 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-01",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-03",
+    "title": "Conversazioni community · 3 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-03",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-04",
+    "title": "Conversazioni community · 4 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-04",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-05",
+    "title": "Conversazioni community · 5 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-05",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-06",
+    "title": "Conversazioni community · 6 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-06",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-07",
+    "title": "Conversazioni community · 7 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-07",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-08",
+    "title": "Conversazioni community · 8 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-08",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-09",
+    "title": "Conversazioni community · 9 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-09",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-10",
+    "title": "Conversazioni community · 10 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-10",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-11",
+    "title": "Conversazioni community · 11 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-11",
+    "accessed": "2026-10-12",
+    "note": "Fonte secondaria: archivio italian_chat di un canale, letto nel contesto cronologico. L’export non prova i ruoli staff. Identità, ID dei messaggi e materiali originali conservati nel registro privato; nessuna verifica diretta in gioco implicita."
+  },
+  {
+    "id": "COMM-DISCORD-02",
+    "title": "Conversazioni community · 2 ottobre",
+    "type": "riferito",
+    "observed": "2026-10-02",
+    "accessed": "2026-10-12",
+    "note": "Risposte community lette nel contesto; ruoli staff non verificabili e probabilità AFK non disponibili. ID conservati nel registro privato."
   }
 ]

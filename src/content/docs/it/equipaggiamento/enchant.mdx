@@ -1,42 +1,47 @@
 ---
-title: "Enchant personalizzati: strumenti"
-description: "Le modifiche documentate a mining, farming e woodcutting nella patch del 5 ottobre."
+title: "Enchant custom: patch e limiti correnti"
+description: "Modifiche ufficiali a strumenti, armi, archi, armature e maledizioni; rework Confusion e correzioni fino all’11 ottobre."
 lang: "it"
 category: "equipaggiamento"
 order: 10
 tags: ["enchant", "mining", "farming", "veinminer", "catalyst"]
-status: "ufficiale"
+status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-09"
-lastVerified: "2026-10-08"
-sources: ["LIT-ENCHANT-05"]
-related: ["it/equipaggiamento/catalogo", "it/informazioni/mod", "it/pve/risorse"]
+updated: "2026-10-12"
+lastVerified: null
+sources: ["LIT-ENCHANT-05", "LIT-PATCH-09", "LIT-PATCH-10", "LIT-PATCH-11", "VIDEO-09-ENCHANT", "COMM-DISCORD-01", "COMM-DISCORD-04", "COMM-DISCORD-06"]
+related: ["it/equipaggiamento/catalogo", "it/equipaggiamento/incudine", "it/pve/risorse"]
 featured: false
-version: "Patch 5 ottobre 2026"
+version: "Patch 5–11 ottobre 2026"
 ---
 
 import DataTable from '../../../../components/mdx/DataTable.astro';
-import ItemCard from '../../../../components/mdx/ItemCard.astro';
-import VersionBadge from '../../../../components/mdx/VersionBadge.astro';
+import SourceRef from '../../../../components/mdx/SourceRef.astro';
+import GuideLink from '../../../../components/mdx/GuideLink.astro';
 
-## Leggere questo catalogo
-La tabella riassume le **modifiche** della patch, non ogni effetto base. La categoria ufficiale è strumenti: mining, farming e woodcutting. Non attribuiamo compatibilità specifiche, livelli massimi o probabilità assenti dalla fonte.
+Questa guida distingue **patch** e **tooltip osservati**: la modifica ufficiale pertinente più recente prevale. La rassegna completa del 5 ottobre è stata letta, incluse armi, archi, armature, strumenti e maledizioni; i dettagli correnti prioritari sono nelle schede, senza completare campi ignoti.
 
-<VersionBadge version="Enchantment update 1 · 5 ottobre 2026" verified="8 ottobre 2026" />
+## Modifiche del 9–11 ottobre
+**Confusion:** dal 9 non rimescola la hotbar; nausea e lieve alterazione visuale, **1–4% secondo livello**, **20 secondi** tra attivazioni, **Epico**. Questa versione sostituisce il valore per livello della patch del 5. <SourceRef id="LIT-PATCH-09" />
+**Nether Prospector e Ignis Furnace:** fix del 10, senza nuovi bonus o probabilità dichiarati. **Green Thumb e Harvest Hoe:** fix dell’11, reimpianto corretto e colture immature non rotte. <SourceRef id="LIT-PATCH-10" /> <SourceRef id="LIT-PATCH-11" />
 
-## Mining
-<DataTable caption="Modifiche ufficiali del 5 ottobre; non schede complete degli effetti"><table><thead><tr><th scope="col">Enchant{' '}</th><th scope="col">Modifica e limite documentato{' '}</th></tr></thead><tbody><tr><th scope="row">Catalyst{' '}</th><td>Probabilità 20/40/60%; solo drop Fortune, esclusi blocchi piazzati.{' '}</td></tr><tr><th scope="row">Nether Prospector{' '}</th><td>Ancient debris: bonus medio 60/110%.{' '}</td></tr><tr><th scope="row">Veinminer{' '}</th><td>Inclusi minerali di smeraldo.{' '}</td></tr><tr><th scope="row">Prospector{' '}</th><td>Escluse stone, cobblestone e gravel; inclusi tuff e rocce naturali indicate nella fonte.{' '}</td></tr><tr><th scope="row">Auger, Excavation, Blast Mining{' '}</th><td>Non rompono contenitori o blocchi preziosi.{' '}</td></tr><tr><th scope="row">Ignis Furnace{' '}</th><td>Fonde minerali naturali di ferro, oro, rame e ancient debris.{' '}</td></tr><tr><th scope="row">Infernal Touch{' '}</th><td>Fonde ferro, oro e ancient debris naturali.{' '}</td></tr><tr><th scope="row">Overclock{' '}</th><td>Bonus 15% per livello, senza sprint.{' '}</td></tr><tr><th scope="row">Xray{' '}</th><td>Scansione 5/7/9 blocchi; inclusi quarzo e oro Nether.{' '}</td></tr></tbody></table></DataTable>
+## Mining, farming e woodcutting
+<DataTable caption="Dati ufficiali del 5 ottobre · eventuali fix successivi indicati sopra"><table><thead><tr><th scope="col">Enchant{' '}</th><th scope="col">Condizione documentata{' '}</th></tr></thead><tbody><tr><th scope="row">Catalyst{' '}</th><td>20/40/60%; drop Fortune, non blocchi piazzati{' '}</td></tr><tr><th scope="row">Nether Prospector{' '}</th><td>Detriti antichi: +60/+110% medio; non una probabilità del 110%{' '}</td></tr><tr><th scope="row">Prospector{' '}</th><td>Rocce naturali indicate dalla fonte; esclusi stone, cobblestone, gravel e cobbled deepslate{' '}</td></tr><tr><th scope="row">Ignis Furnace{' '}</th><td>Ferro, oro, rame e detriti antichi naturali{' '}</td></tr><tr><th scope="row">Infernal Touch{' '}</th><td>Ferro, oro e detriti antichi naturali{' '}</td></tr><tr><th scope="row">Overclock{' '}</th><td>15% per livello, senza requisito di sprint{' '}</td></tr><tr><th scope="row">Xray{' '}</th><td>Raggio 5/7/9; inclusi quarzo e oro Nether{' '}</td></tr></tbody></table></DataTable>
+Auger, Blast Mining, Excavation e Dynamite escludono contenitori/blocchi preziosi; Dynamite usa sneak + clic destro. Foraging esclude foglie piazzate. Green Thumb/Replenish agiscono su colture mature; Resonance esclude blocchi piazzati. Veinminer include smeraldi. Timber riguarda alberi naturali e si disattiva in sneak; Lumberjack supporta i tipi di legno della patch. <SourceRef id="LIT-ENCHANT-05" />
 
-## Farming e woodcutting
-<ItemCard name="Green Thumb e Replenish" category="Farming">Agiscono solo su colture mature.</ItemCard>
-<ItemCard name="Timber" category="Woodcutting">Tutti i legni; solo alberi naturali; disattivato in sneak.</ItemCard>
-<ItemCard name="Lumberjack" category="Woodcutting">Supporta ogni tipo di legno.</ItemCard>
+## Armi, archi e armature
+First Strike è stato ridotto: il tooltip V osservato mostra **+50%**, coerente con l’estremo superiore della patch. Arrow Storm ha raffiche e cooldown documentati nella [scheda](/wiki/it/equipaggiamento/catalogo/#arrow-storm). Cluster Shot apre le frecce a ventaglio; Rapid modifica la carica; Thor applica danni al bersaglio anziché fulmini reali.
+Vitality richiede **salute ≤60%**, cooldown **7,5 minuti**. La rassegna include anche correzioni di attivazione, PvP, team, bersagli ostili e protezioni: una vecchia descrizione non autorizza a ignorarle.
 
-## Xray enchant e client
-La presenza dell’enchant Xray non autorizza mod o texture X-Ray. Per il client vale il [regolamento ufficiale](https://litness.gg/rules).
+## Tutte le categorie della patch del 5 ottobre
+La fonte comprende anche Adrenaline, Arcane Defence, Aura, Block Breather, Escape, Gill Lungs, Glacier Stomp, Graviton, Haunting, Iron Stance, Metabolism, Molten Heart, Night Stalker, Poison Ivy, Rebounding, Satiety, Shadow Step, Static Barrier e Vanish; oltre ai cambiamenti su spade e archi. Sono stati esaminati nella revisione, senza attribuire livelli o equipaggiamento non documentati alle schede incomplete.
+Per ogni dettaglio consultabile apri la [rassegna ufficiale completa](https://litness.gg/blog/enchantment-update-1). Il catalogo locale è una selezione con campi verificati, non una trascrizione integrale o un totale del server.
 
-## Dettagli ancora da documentare
-Per ogni strumento occorre leggere la descrizione corrente in-game. L’ordine dei valori nella patch non prova da solo un livello massimo né descrive tutte le interazioni. Per la lista completa di modifiche a armi e armature apri la fonte ufficiale: questa pagina conserva il riepilogo della patch per gli strumenti; le schede del catalogo hanno una provenienza separata.
+## Villager e maledizioni
+La community riferisce libri custom ottenibili dai villager, senza prova di tutti i nomi o rarità. La patch del 5 esclude **Curse of Permanence** dalla vendita dei villager; Curse of Hunger aumenta il consumo di fame secondo la fonte. Le offerte della chat non sono una loot table.
 
-## Tooltip e compatibilità del 9 ottobre
-Il [catalogo enchant](/wiki/it/equipaggiamento/catalogo/) raccoglie effetti, livelli massimi, rarità, equipaggiamento e conflitti leggibili nei video. Lì sono distinti il limite totale di 12 enchant, i vincoli Unico e la discordanza sul numero complessivo. Le schede in-game non sostituiscono le modifiche ufficiali datate riassunte sopra.
+## Limiti e consultazione
+Massimo **12 enchant** per oggetto, ufficiale dal 9 ottobre, distinto dall’usura dell’incudine e dai vincoli Unico. La chat riporta `/enchantinfo <nome incantesimo>` per leggere l’effetto: sintassi riferita, nomi con spazi da verificare.
+L’enchant Xray non autorizza client o texture X-Ray: vale il [regolamento](/wiki/it/informazioni/mod/).
+<GuideLink href="/wiki/it/equipaggiamento/catalogo/" title="Schede, conflitti e compatibilità" />
+<GuideLink href="/wiki/it/equipaggiamento/incudine/" title="Usura e lavorazioni" />

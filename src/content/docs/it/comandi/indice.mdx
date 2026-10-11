@@ -1,41 +1,61 @@
 ---
 title: "Comandi documentati"
-description: "I comandi con una fonte, la loro sintassi nota e i limiti di ciò che sappiamo."
+description: "Sintassi ufficiale di claim, dungeon e utilità, con comandi community distinti e collegamenti alle guide."
 lang: "it"
 category: "comandi"
 order: 10
 tags: ["comandi", "dungeon", "balance", "near"]
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-09"
+updated: "2026-10-12"
 lastVerified: null
-sources: ["LIT-PATCH-07", "LIT-PATCH-08", "COMM-GUIDES", "VIDEO-09-GUIDE", "COMM-09-SUMMARY"]
-related: ["it/pve/dungeon", "it/economia/auction-house", "it/territori/vault", "it/pve/eventi", "it/progressione/ricompense"]
+sources: ["LIT-PATCH-07", "LIT-PATCH-08", "LIT-PATCH-09", "LIT-PATCH-10", "LIT-PATCH-11", "VIDEO-09-GUIDE", "COMM-GUIDES", "COMM-09-SUMMARY", "COMM-DISCORD-01", "COMM-DISCORD-03", "COMM-DISCORD-07", "COMM-DISCORD-09", "COMM-DISCORD-10"]
+related: ["it/territori/claim", "it/pve/dungeon", "it/economia/auction-house", "it/territori/home", "it/equipaggiamento/incudine"]
 featured: false
 ---
 
-import Callout from '../../../../components/mdx/Callout.astro';
 import Command from '../../../../components/mdx/Command.astro';
+import Callout from '../../../../components/mdx/Callout.astro';
+import GuideLink from '../../../../components/mdx/GuideLink.astro';
 
-## Economia e utilità
-<Command syntax="/balance" description="Senza argomenti, riepiloga le valute." source="UFFICIALE · changelog 7 ottobre" />
-<Command syntax="/near" description="Indica i giocatori vicini e la loro direzione. Disponibilità e permessi non sono specificati dalla patch." source="UFFICIALE · changelog 7 ottobre" />
-<Command syntax="/ah" description="Apre la casa d’aste. Accesso riferito dalle osservazioni community. Il contesto di /sell resta da verificare nella guida AH." source="RIFERITO · COMM-GUIDES" />
-<Command syntax="/pay" description="Sistema di trasferimento Money. La sintassi completa con destinatario e importo non è stata riesaminata: consulta l’help in-game." source="RIFERITO · COMM-GUIDES" />
-<Command syntax="/trade" description="GUI di scambio diretto. Argomenti, garanzie e commissioni richiedono conferma." source="RIFERITO · COMM-GUIDES" />
+I comandi seguenti distinguono **sintassi ufficiale** e **risposte community**. Parentesi angolari indicano un parametro da sostituire; parentesi quadre un parametro opzionale quando la fonte lo specifica. Un comando riportato senza argomenti completi non è un catalogo esaustivo dell’help.
+
+## Claim condivisi
+<Command syntax="/claim" description="Menu e gestione del claim." source="UFFICIALE · 10 ottobre" />
+<Command syntax="/claim select" description="Scegli il claim su cui agiscono i comandi; argomenti ulteriori non specificati nella patch." source="UFFICIALE · 11 ottobre" />
+<Command syntax="/claim bank deposit &lt;amount&gt; [claim]" description="Deposito nella banca; il nome del claim può essere specificato." source="UFFICIALE · 11 ottobre" />
+<Command syntax="/claim leave [claim]" description="Uscita dal claim. Valuta il limite e gli eventuali chunk eccedenti." source="UFFICIALE · 11 ottobre" />
+<Command syntax="/claim home" description="Home comune del claim, distinta da /home claim." source="UFFICIALE · 10 ottobre" />
+<Command syntax="/claim map" description="Mappa con il centro del territorio." source="UFFICIALE · 10 ottobre" />
+<Command syntax="/claim removechunk" description="Proprietario/officer possono rimuovere un chunk non centrale mantenendo la continuità." source="UFFICIALE · 10 ottobre" />
+<Command syntax="/claim accept &lt;claim name&gt;" description="Accetta l’invito specificando il nome del claim." source="UFFICIALE · 10 ottobre" />
+`/claim transfer` e `/claim delete` sono documentati nella [guida](/wiki/it/territori/claim/), con conseguenze e limiti della sintassi nota.
 
 ## Dungeon
-<Command syntax="/dungeon queue &lt;dungeon&gt;" description="Visualizza chi è in attesa. Sostituisci il parametro con l’identificativo riconosciuto dal server: gli identificativi esatti non sono documentati qui." source="UFFICIALE · changelog 7 ottobre" />
-<Command syntax="/dungeon leave" description="Abbandona la coda per l’intero party e rimborsa l’ingresso. Non è documentato come uscita da un dungeon già avviato." source="UFFICIALE · changelog 8 ottobre" />
+<Command syntax="/dungeon invite &lt;player&gt;" description="Chi avvia sceglie chi invitare, anche fuori dal proprio claim." source="UFFICIALE · 11 ottobre" />
+<Command syntax="/dungeon uninvite" description="Gestione inviti; eventuali argomenti aggiuntivi da controllare nell’help." source="UFFICIALE · 11 ottobre" />
+<Command syntax="/dungeon queue &lt;dungeon&gt;" description="Mostra i giocatori in attesa; identificativo del dungeon da controllare nel menu." source="UFFICIALE · 7 ottobre" />
+<Command syntax="/dungeon leave" description="In coda esce e rimborsa tutto il party; dal 9 è corretto anche il rimborso nel countdown iniziale. Non è un rimborso documentato per run già avviate." source="UFFICIALE · 8–9 ottobre" />
 
-## Home, claim e ricompense
-Il changelog cita home senza limite giornaliero e notifiche delle playtime reward. Non fornisce però un catalogo completo dei comandi e dei loro argomenti. Per questo la wiki non elenca comandi operativi non verificati per claim, quest o Battlepass.
+## Economia e utilità
+<Command syntax="/balance" description="Senza argomenti mostra tutte le valute." source="UFFICIALE · 7 ottobre" />
+<Command syntax="/near" description="Indica distanza e direzione dei giocatori vicini; permessi non specificati dalla patch." source="UFFICIALE · 7 ottobre" />
+<Command syntax="/msgtoggle" description="Disattiva i messaggi privati, secondo il changelog." source="UFFICIALE · 10 ottobre" />
+`/pay` ha **minimo 10** e **cooldown 10 secondi** dall’11 ottobre. Sintassi completa del trasferimento e commissioni sono nella [guida scambi](/wiki/it/economia/scambi/); non inventiamo argomenti mancanti dalla fonte.
+<Command syntax="/ah sell &lt;prezzo&gt; &lt;quantità&gt;" description="Pubblicazione con oggetto in mano riportata nella chat del 7 ottobre. Prezzo unitario/totale e restrizioni vanno verificati in-game." source="RIFERITO · community" />
+<Command syntax="/ah expired" description="Recupero scaduti riportato dalla trascrizione, entro una settimana. Condizioni attuali da verificare." source="RIFERITO · 9 ottobre" />
+`/ah`, `/trade` e il contesto di `/sell <prezzo>` sono descritti nelle guide economiche con le rispettive incertezze.
 
-<Callout type="info">I pulsanti copiano la sintassi visibile. Un parametro tra parentesi angolari è un segnaposto da sostituire, non un valore eseguibile.</Callout>
+## Guide in-game e spostamenti
+<Command syntax="/help" description="Apre le guide; la chat indica il tutorial tramite l’icona informativa." source="RIFERITO · chat 3 ottobre" />
+<Command syntax="/spawn" description="Ritorno allo spawn Survival, distinto dall’hub generale." source="RIFERITO · più risposte community" />
+<Command syntax="/changelog" description="Consultazione delle novità in-game, riportata il 9 ottobre." source="RIFERITO · community" />
+<Command syntax="/enchantinfo &lt;nome incantesimo&gt;" description="Consulta l’effetto di un enchant: risposta community del 1 ottobre. Nomi con spazi e sintassi esatta non provati direttamente." source="RIFERITO · community" />
+<Command syntax="/vault" description="Apre l’inventario personale." source="OSSERVATO · video Help 9 ottobre" />
+<Command syntax="/event" description="Partecipazione all’evento in corso; condizioni nel menu." source="OSSERVATO · video Help 9 ottobre" />
+<Command syntax="/playtimeinfo" description="Consulta le ore complessive giocate." source="OSSERVATO · video Help 9 ottobre" />
+<Command syntax="/sethome &lt;nome&gt;" description="Crea una destinazione personale: sintassi riferita dalla chat." source="RIFERITO · 10 ottobre" />
+<Command syntax="/home claim" description="Raggiunge la home personale chiamata claim. Non è equivalente a /claim home." source="UFFICIALE · 11 ottobre" />
+`/rtp` è riportato per la scelta casuale del mondo; `/delhome` compare senza argomenti completi. `/tpa` e `/tpahere` hanno **cooldown 30 secondi**, mentre i nuovi warp sono nomi di destinazioni, non sintassi completa verificata.
 
-## Comandi riferiti o osservati nelle guide del 9 ottobre
-<Command syntax="/vault" description="Apre l’inventario personale; comando leggibile nel menu Vault." source="OSSERVATO · video Help, 00:49" />
-<Command syntax="/event" description="Partecipa all’evento in corso; condizioni complete da controllare nel menu." source="OSSERVATO · video Help, 00:04" />
-<Command syntax="/playtimeinfo" description="Consulta le ore giocate." source="OSSERVATO · video Help, 01:02" />
-<Command syntax="/ah expired" description="Recupera gli oggetti delle inserzioni scadute, secondo la trascrizione. Finestra riportata: una settimana." source="RIFERITO · trascrizione 9 ottobre" />
-La sintassi `/sell <prezzo>` resta da contestualizzare: consulta [Auction House](/wiki/it/economia/auction-house/#pubblicare-un-annuncio-contesto-da-confermare) prima di usarla.
+<Callout type="info">I pulsanti copiano la sintassi mostrata. Verifica nel menu corrente i parametri mancanti e il contesto, soprattutto prima di azioni sul territorio o sugli oggetti.</Callout>

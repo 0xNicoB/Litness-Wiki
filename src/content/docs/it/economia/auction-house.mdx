@@ -7,9 +7,9 @@ order: 50
 tags: ["mercato", "auction-house", "ah"]
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-09"
+updated: "2026-10-12"
 lastVerified: null
-sources: ["COMM-GUIDES", "COMM-07", "LIT-PATCH-05", "COMM-09-SUMMARY"]
+sources: ["COMM-GUIDES", "COMM-07", "LIT-PATCH-05", "COMM-09-SUMMARY", "COMM-DISCORD-07", "COMM-DISCORD-09"]
 related: ["it/economia/commissioni", "it/economia/storico"]
 featured: true
 ---
@@ -41,6 +41,11 @@ Il 12% è riportato dalle guide; la modalità esatta di addebito è ancora da ve
 La trascrizione del **9 ottobre** riporta inserzioni di **3 giorni** e recupero degli oggetti scaduti per **1 settimana** tramite il comando seguente. Gli slot simultanei vanno da **1 a 10 secondo il rank**; non è documentata la distribuzione per singolo rank. <SourceRef id="COMM-09-SUMMARY" />
 <Command syntax="/ah expired" description="Recupero delle inserzioni scadute, riferito dalla trascrizione: finestra riportata di una settimana. Verifica il tempo residuo nel menu." source="RIFERITO · 9 ottobre" />
 
+## Vendere e distinguere quantità da slot
+La risposta del **7 ottobre** riporta questa sintassi, con l’oggetto in mano:
+<Command syntax="/ah sell &lt;prezzo&gt; &lt;quantità&gt;" description="Pubblicazione AH riferita dalla community. Un messaggio non sostituisce una prova in-game: controlla sintassi, unità del prezzo e limiti nel menu prima di confermare." source="RIFERITO · chat 7 ottobre" />
+La domanda successiva chiarisce che il problema era il numero di **inserzioni contemporanee**, non il numero di oggetti nella singola inserzione. Quantità e slot AH sono limiti diversi. <SourceRef id="COMM-DISCORD-07" />
+
 ## Pubblicare un annuncio: contesto da confermare
 La trascrizione associa `/sell <prezzo>` all’oggetto tenuto in mano e alla Casa d’Aste. Questo passaggio non è leggibile nei video esaminati: **la relazione con AH resta da verificare**. Non lo presentiamo come comando operativo confermato e non lo confondiamo con la voce Sell dello shop NPC.
 Comandi di annullamento, restrizioni degli oggetti e momento di decorrenza delle scadenze non sono verificati.
@@ -49,3 +54,6 @@ Comandi di annullamento, restrizioni degli oggetti e momento di decorrenza delle
 
 ## Fonti dei nuovi limiti
 Le durate e gli slot sopra indicati restano **riferiti**, in attesa di una schermata completa del tooltip AH. I prezzi negli [esempi storici](/wiki/it/economia/storico/) non sono quotazioni permanenti.
+
+## Addebito e mercato corrente
+La testimonianza sull’acquisto con un 12% aggiuntivo è spiegata nelle [commissioni](/wiki/it/economia/commissioni/#pay-dall11-ottobre-e-addebito-ah-riferito). Annunci e listini della chat sono offerte storiche, non prezzi permanenti né transazioni concluse. Vedi anche le [attività osservate](/wiki/it/economia/attivita/).

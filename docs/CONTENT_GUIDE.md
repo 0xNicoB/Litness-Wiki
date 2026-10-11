@@ -71,3 +71,12 @@ Le schede provengono da `src/data/enchants.json`, validato dalla Content Collect
 `src/data/observations-2026-10-09.json` conserva affermazioni, destinazione, provenienza, date e limiti della revisione. Una verifica parziale del video non promuove l’intero resoconto a osservazione diretta. I dettagli tagliati o assenti restano riferiti con una fonte separata; nella pagina il paragrafo o la scheda distingue i diversi stati. Il totale 81/102 richiede un censimento manuale deduplicato e un chiarimento sull’ambito del conteggio.
 
 Non caricare le registrazioni originali nella repository pubblica: possono contenere nickname, chat e inventari privati. Conserva riferimenti testuali alle evidenze e sottoponi eventuali screenshot a revisione e consenso.
+
+
+## Patch successive e Discord
+
+Per una scheda ufficiale ometti timestamp/observed e dichiara `sourceDate`, `verified` e `verificationStatus: ufficiale`. Non riempire rarità, livello o compatibilità assenti. Un intervallo di probabilità è `procChanceRange: { min, max }`, distinto da una percentuale media di resa. `changes: [{ date, source, note }]` documenta fix successivi senza presumere nuovi numeri.
+
+Ricostruisci le modifiche per meccanica: la guida descrive l’ultima patch pertinente, mentre il changelog conserva lo stato storico con una nota sulla sostituzione. Aggiungi correzione, destinazione, fonti, data e dubbi nel registro revisioni; `supersedes` può riferire un ID del precedente registro senza riscriverlo.
+
+Leggi l’archivio community nel contesto, deduplicando per ID e ordinando i timestamp. Il ruolo staff deve essere verificabile: attività o autorevolezza non sono sufficienti. Conserva ID dei messaggi e riferimenti privati fuori dalla repository pubblica. Fonti community anonime sono RIFERITO e gli articoli misti mantengono `lastVerified: null`; i singoli paragrafi citano la patch ufficiale quando pertinente. Nessun dump Discord, nickname, offerte personali o registrazione originale tra gli asset.

@@ -35,3 +35,10 @@ Nessun feed automatico delle patch, quotazione corrente, import automatico di ev
 La terza Content Collection, `enchants`, usa il loader JSON esistente. `EnchantCatalog.astro` legge la collezione durante la build: niente backend o richieste a servizi esterni. I filtri per testo, rarità e compatibilità sono progressivi; senza JavaScript il form resta nascosto e le schede sono disponibili. Pagefind indicizza il contenuto statico delle schede; i controlli dei filtri sono esclusi dall’indice.
 
 Le cinque nuove pagine MDX sono integrate automaticamente da routing, sidebar, categorie, articoli correlati, sitemap e ricerca. Il registro osservazioni documenta la revisione e non è una nuova sorgente di navigazione. Deployment, URL preesistenti, file Google e relativa regola statica rimangono invariati.
+
+
+## Aggiornamento del 12 ottobre 2026
+
+La collection `enchants` accetta evidenze ufficiali oltre ai tooltip: `sourceDate` e `verified` obbligatori per le schede ufficiali; `observed` e `timestampSeconds` per quelle osservate. Il resto dei campi resta opzionale. `procChanceRange` conserva intervalli senza inventare valori per livello; `changes` collega le patch con date e fonti. Il componente mostra questa distinzione e lo storico della scheda senza nuove dipendenze.
+
+Le due nuove guide Incudine e Commercio e servizi usano routing e navigazione esistenti. `revisions-2026-10-12.json` collega correzioni e prove storiche, senza cancellare il registro del 9 ottobre. Gli ID Discord restano nel registro privato esterno alla repository; le fonti pubbliche contengono solo data, classificazione e contesto anonimo. Nessuna modifica alla pipeline Cloudflare, sitemap, robots o file Google.

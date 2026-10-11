@@ -1,46 +1,94 @@
 ---
-title: "Aggiornamenti documentati: 5–8 ottobre"
-description: "Le patch ufficiali rilevanti per la wiki, organizzate per data e collegate alle guide."
+title: "Changelog documentati: lancio–11 ottobre"
+description: "Cronologia ufficiale delle modifiche dal lancio all’11 ottobre: claim, dungeon, enchant, economia e correzioni collegate alle guide."
 lang: "it"
 category: "informazioni"
 order: 30
 tags: []
-status: "ufficiale"
+status: "osservato"
 published: "2026-10-08"
-updated: "2026-10-09"
-lastVerified: "2026-10-08"
-sources: ["LIT-PATCH-05", "LIT-PATCH-07", "LIT-PATCH-08"]
-related: ["it/pve/dungeon", "it/territori/entita"]
+updated: "2026-10-12"
+lastVerified: "2026-10-12"
+sources: ["LIT-BLOG", "LIT-PATCH-05", "LIT-ENCHANT-05", "LIT-PATCH-07", "LIT-PATCH-08", "LIT-PATCH-09", "LIT-PATCH-10", "LIT-PATCH-11", "VIDEO-09-GUIDE"]
+related: ["it/territori/claim", "it/pve/dungeon", "it/pve/risorse", "it/equipaggiamento/incudine"]
 featured: false
 ---
 
 import GuideLink from '../../../../components/mdx/GuideLink.astro';
+import Callout from '../../../../components/mdx/Callout.astro';
 
-Questa raccolta editoriale collega le patch alle guide interessate. La data indica il **riavvio del server**, non una sincronizzazione automatica.
+Questa raccolta manuale distingue **storia delle patch** e **guide correnti**. La data è quella dell’aggiornamento del server; le fonti sono state consultate il **12 ottobre 2026**. Non è un feed automatico.
+
+## 11 ottobre 2026
+### Claim e party correnti
+- **Multi-claim:** puoi appartenere a più claim, ripartendo il tuo limite personale di chunk.
+- **Selezione:** `/claim select`; nome opzionale per `/claim bank deposit <amount> [claim]` e `/claim leave [claim]`.
+- **Affitto:** avvisi con fondi e importo mancante, anche per giocatori offline.
+- **Dungeon:** chi avvia sceglie il party con `/dungeon invite <player>` e `/dungeon uninvite`, superando il vincolo al gruppo del claim.
+
+### Destinazioni, cooldown e correzioni
+- Nuovi warp: **plots, enchant, leaderboards, cosmetics, dungeons**.
+- `/tpa` e `/tpahere`: **30 secondi**; `/pay`: **10 secondi**, minimo **10**.
+- Mondo Risorse: hover del messaggio boss con chi ha danneggiato boss o minion.
+- `/home claim` torna alla home **personale** chiamata claim.
+- Green Thumb e Harvest Hoe ripiantano correttamente e non rompono colture immature.
+
+[Patch ufficiale dell’11 ottobre](https://litness.gg/blog/changelog-11-october-2026).
+<GuideLink href="/wiki/it/territori/claim/" title="Multi-claim e banca" />
+<GuideLink href="/wiki/it/territori/home/" title="Home, RTP e teletrasporti" />
+
+## 10 ottobre 2026
+### Rework claim: stato storico
+Vecchi team rimossi e sostituiti dai claim condivisi: fino a **15 membri**, home comune e banca per l’affitto. Limiti dei chunk cumulativi; uscita di un membro riduce il limite e rimuove gli eccedenti dai più recenti. Distanza tra claim **5 chunk**; forme connesse libere entro il raggio del centro, visibile con `/claim map`; espansione alle soglie **10/26/50/82**. Rimozione chunk senza rompere la continuità, trasferimento, eliminazione e accettazione inviti.
+<Callout type="info" title="Regole sostituite l’11 ottobre">Il 10 ottobre prevedeva **un solo claim per giocatore** e collegava il party dungeon al claim. Questi limiti sono storici: l’11 introduce multi-claim e party scelti da chi avvia. Le guide correnti applicano la modifica successiva.</Callout>
+
+### Dungeon e qualità della vita
+Forziere finale personale più ricco, valuta crescente con la difficoltà e premio speciale **unico per party**: Flash Key al Cavaliere (1% per membro), Blast Key all’Illusionista (1% per membro), Elytra al Nido (1,5%). Menu e chat mostrano premi/probabilità. Cooldown comuni: **8 ore dopo successo**, **6 ore dopo sconfitta**. `/msgtoggle` disattiva i messaggi privati; regolamento aggiornato alla distanza di 5 chunk.
+
+### Correzioni del 10 ottobre
+- Fly time da crates, Daily e Battlepass non perso a mezzanotte.
+- Partecipanti a letto non più bloccati fuori dal dungeon alla fine del countdown.
+- Boss Risorse: spiegazione del mancato premio sotto il **5% dei danni**.
+- Villager: professione non più sopra la testa.
+- Oggetti di un giocatore che crasha raccoglibili dall’uccisore.
+- Attivazione del PvP negli eventi corretta.
+- Nether Prospector e Ignis Furnace corretti, senza nuovi valori numerici specificati.
+
+[Patch ufficiale del 10 ottobre](https://litness.gg/blog/changelog-10-october-2026).
+<GuideLink href="/wiki/it/pve/dungeon/" title="Cooldown e premi attuali" />
+
+## 9 ottobre 2026
+### Incudine e enchant
+Avvisi da usura **15**, blocco di lavorazione da **39** e chiusura del bug che aggirava Too Expensive!. Massimo **12 enchant per oggetto**.
+Confusion smette di riordinare la hotbar: nausea e lieve alterazione visuale, probabilità **1–4%** secondo livello, cooldown **20 secondi**, rarità **Epico**.
+
+### Correzioni del 9 ottobre
+Barra boss rimossa dopo reset; rimborso ingresso uscendo durante il countdown dungeon; rientro allo spawn dopo logout in arena e conclusione dell’evento; prefisso animato `/tag` visibile in chat.
+
+[Patch ufficiale del 9 ottobre](https://litness.gg/blog/changelog-9-october-2026).
+<GuideLink href="/wiki/it/equipaggiamento/incudine/" title="Usura e limiti dell’incudine" />
+
+### Cooldown osservati il 9 ottobre: storico
+Il video Help mostrava **24 ore Cavaliere, 36 ore Illusionista, 48 ore Nido**. Questi valori sono superati dalla patch ufficiale del 10; non sono riportati come attuali nelle guide.
 
 ## 8 ottobre 2026
 ### Bug risolti
-- **Shop, oggetti non stackabili:** l’icona mostra la quantità acquistata.
-- **Inventario pieno:** gli acquisti rispettano gli slot liberi; gli oggetti non stackabili acquistati non cadono più a terra per mancanza di spazio.
-
-<GuideLink href="/wiki/it/economia/shop/#acquisti-non-stackabili-correzioni-dell8-ottobre" title="Shop: le condizioni di acquisto" />
+Shop: quantità visibile per oggetti non stackabili; acquisti limitati agli slot liberi, senza oggetti acquistati lasciati a terra.
+<GuideLink href="/wiki/it/economia/shop/#acquisti-non-stackabili-correzioni-dell8-ottobre" title="Condizioni di acquisto dello shop" />
 
 ### Novità
-- **Coda dungeon:** `/dungeon leave` fa uscire tutto il party e rimborsa l’ingresso. Il rimborso descritto riguarda la coda.
-- **Cap entità:** anche nametag, minecart e condizioni di passeggero o cavalcatura entrano nel conteggio.
-- **Villager:** massimo 5 per chunk; cliccando un villager si vede il conteggio. Gli eccedenti hanno un countdown rosso di 15 minuti prima della rimozione.
-
-[Changelog ufficiale del riavvio 08/10/2026](https://litness.gg/blog/changelog-8-october-2026).
-<GuideLink href="/wiki/it/pve/dungeon/#lasciare-la-coda" title="Coda dungeon e rimborso" />
-<GuideLink href="/wiki/it/territori/entita/" title="Limiti per chunk e villager eccedenti" />
+`/dungeon leave` in coda fa uscire e rimborsa l’intero party. Cap entità applicato anche a nametag, passeggeri e cavalcature. Villager: massimo **5 per chunk**, conteggio al clic e countdown rosso di **15 minuti** prima della rimozione degli eccedenti.
+[Patch ufficiale dell’8 ottobre](https://litness.gg/blog/changelog-8-october-2026).
+<GuideLink href="/wiki/it/territori/entita/" title="Limiti per chunk" />
 
 ## 7 ottobre 2026
-Saldo multivaluta con `/balance`, direzione con `/near` e promemoria Battlepass/Playtime. Il costo dungeon è individuale, il cooldown compare nella GUI e la coda è consultabile. [Patch ufficiale](https://litness.gg/blog/changelog-7-october-2026).
-<GuideLink href="/wiki/it/pve/dungeon/" title="La guida ai dungeon" />
+`/near` con distanza e direzione; `/balance` senza argomenti riepiloga le valute. Scoreboard precisa sotto **10.000**, etichetta User per chi non ha rank. Primi avvisi incudine; clock redstone a un tick bloccati, con toggle non specificato. Promemoria Playtime e Battlepass. Dungeon: costo per **ogni membro**, cooldown in GUI e `/dungeon queue <dungeon>`.
+[Patch ufficiale del 7 ottobre](https://litness.gg/blog/changelog-7-october-2026).
 
 ## 5 ottobre 2026
-Categorie AH sempre visibili, home automatica al primo claim e rimozione del limite giornaliero home. Lo shop introduce soglie nascoste. Gli enchant hanno una patch dedicata. [Changelog ufficiale](https://litness.gg/blog/changelog-5-october-2026).
-<GuideLink href="/wiki/it/equipaggiamento/enchant/" title="Modifiche ufficiali agli enchant" />
+Raccolta delle modifiche dal lancio del **1 ottobre**: interventi prestazionali, categorie AH sempre visibili, notte saltata con **30% dei giocatori Overworld**, home automatica al primo claim, rimozione limite giornaliero home, nuove missioni XP, top cinque a fine evento e prezzi shop entro soglie minime/massime nascoste.
+La patch enchant esamina armi, archi, armature, strumenti e maledizioni. La precedente modifica Confusion del 5 è sostituita dalla patch del 9.
+[Changelog dal lancio al 5 ottobre](https://litness.gg/blog/changelog-5-october-2026) · [Ribilanciamento enchant](https://litness.gg/blog/enchantment-update-1).
 
 ## Come aggiorniamo questa pagina
-La selezione manuale copre i changelog fino all’8 ottobre, riletti per l’aggiornamento del 9 ottobre. Le nuove osservazioni in-game sono nelle guide tematiche, senza attribuirle alla patch. Per annunci successivi consulta le [news ufficiali](https://litness.gg/blog).
+Archivio news letto fino alle pubblicazioni dell’11 ottobre. Per annunci successivi consulta le [news ufficiali](https://litness.gg/blog). Le osservazioni della chat e dei video non diventano automaticamente comunicazioni dello staff.

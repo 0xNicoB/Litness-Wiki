@@ -19,7 +19,14 @@
     "observed": "2026-10-09",
     "timestampSeconds": 38.75,
     "verificationStatus": "osservato",
-    "averageYieldBonusPct": 110
+    "averageYieldBonusPct": 110,
+    "changes": [
+      {
+        "date": "2026-10-10",
+        "source": "LIT-PATCH-10",
+        "note": "Correzione annunciata, senza un nuovo valore numerico del bonus."
+      }
+    ]
   },
   {
     "id": "blast-mining",
@@ -290,5 +297,113 @@
     "timestampSeconds": 74.25,
     "verificationStatus": "osservato",
     "cooldownSeconds": 90
+  },
+  {
+    "id": "confusion",
+    "name": "Confusion",
+    "description": "Dal 9 ottobre provoca nausea e altera lievemente la visuale. Non riordina più la hotbar; probabilità 1–4% secondo livello, al massimo una attivazione ogni 20 secondi.",
+    "rarity": "Epico",
+    "procChanceRange": {
+      "min": 1,
+      "max": 4
+    },
+    "cooldownSeconds": 20,
+    "source": "LIT-PATCH-09",
+    "sourceDate": "2026-10-09",
+    "restrictions": [
+      "Livelli massimi e probabilità per singolo livello non specificati."
+    ],
+    "changes": [
+      {
+        "date": "2026-10-09",
+        "source": "LIT-PATCH-09",
+        "note": "Rework che sostituisce il comportamento e la probabilità della patch del 5 ottobre."
+      }
+    ],
+    "verificationStatus": "ufficiale",
+    "verified": "2026-10-12"
+  },
+  {
+    "id": "green-thumb",
+    "name": "Green Thumb",
+    "description": "Dal fix dell’11 ottobre ripianta correttamente e non rompe colture non mature.",
+    "source": "LIT-PATCH-11",
+    "sourceDate": "2026-10-11",
+    "restrictions": [
+      "Compatibilità specifica e livelli da verificare."
+    ],
+    "verificationStatus": "ufficiale",
+    "verified": "2026-10-12"
+  },
+  {
+    "id": "harvest-hoe",
+    "name": "Harvest Hoe",
+    "description": "Dal fix dell’11 ottobre ripianta correttamente e non rompe colture non mature.",
+    "source": "LIT-PATCH-11",
+    "sourceDate": "2026-10-11",
+    "restrictions": [
+      "Non dedurre altre condizioni di raccolta, livelli o rarità dal nome."
+    ],
+    "verificationStatus": "ufficiale",
+    "verified": "2026-10-12"
+  },
+  {
+    "id": "ignis-furnace",
+    "name": "Ignis Furnace",
+    "description": "La patch del 5 ottobre limita la fusione a minerali di ferro, oro, rame e detriti antichi naturali. Il 10 ottobre annuncia un fix, senza nuovi valori numerici.",
+    "source": "LIT-ENCHANT-05",
+    "sourceDate": "2026-10-05",
+    "restrictions": [
+      "Esclusi blocchi piazzati dai giocatori."
+    ],
+    "changes": [
+      {
+        "date": "2026-10-10",
+        "source": "LIT-PATCH-10",
+        "note": "Correzione annunciata senza ulteriore formula o nuove probabilità."
+      }
+    ],
+    "verificationStatus": "ufficiale",
+    "verified": "2026-10-12"
+  },
+  {
+    "id": "catalyst",
+    "name": "Catalyst",
+    "description": "La patch del 5 ottobre indica probabilità 20/40/60% e restringe l’effetto ai drop Fortune. Non ricaviamo il moltiplicatore completo.",
+    "source": "LIT-ENCHANT-05",
+    "sourceDate": "2026-10-05",
+    "restrictions": [
+      "Esclusi blocchi piazzati dai giocatori.",
+      "La sequenza dei tre valori non prova da sola il livello massimo."
+    ],
+    "verificationStatus": "ufficiale",
+    "verified": "2026-10-12"
+  },
+  {
+    "id": "arrow-storm",
+    "name": "Arrow Storm",
+    "description": "Raffiche da 6/8/10 frecce, danni 3/4/5 per freccia e cooldown 20/15/10 secondi, secondo la patch del 5 ottobre.",
+    "maxLevel": 3,
+    "source": "LIT-ENCHANT-05",
+    "sourceDate": "2026-10-05",
+    "restrictions": [
+      "Le frecce della raffica non sono raccoglibili.",
+      "Rarità, equipaggiamento specifico e conflitti non completati per supposizione."
+    ],
+    "verificationStatus": "ufficiale",
+    "verified": "2026-10-12"
+  },
+  {
+    "id": "vitality",
+    "name": "Vitality",
+    "description": "La patch del 5 ottobre limita l’uso a salute pari o inferiore al 60%; cooldown di 7,5 minuti.",
+    "cooldownSeconds": 450,
+    "source": "LIT-ENCHANT-05",
+    "sourceDate": "2026-10-05",
+    "restrictions": [
+      "Non è documentato come cura automatica ad ogni colpo o kill."
+    ],
+    "verificationStatus": "ufficiale",
+    "verified": "2026-10-12"
   }
 ]

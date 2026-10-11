@@ -1,5 +1,9 @@
 import { test, expect } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
+import { readFileSync } from "node:fs";
+const catalogCount = JSON.parse(
+  readFileSync("src/data/enchants.json", "utf8"),
+).length;
 test("home, categories, copy IP and theme work", async ({ page, context }) => {
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
   await page.goto("/");
@@ -110,6 +114,9 @@ for (const route of [
   "/wiki/it/economia/storico/",
   "/wiki/it/equipaggiamento/catalogo/",
   "/wiki/it/pve/dungeon/",
+  "/wiki/it/territori/claim/",
+  "/wiki/it/equipaggiamento/incudine/",
+  "/wiki/it/informazioni/aggiornamenti/",
   "/404.html",
 ])
   test(`layout, accessibility and screenshot ${route}`, async ({ page }) => {
@@ -131,7 +138,7 @@ for (const route of [
       .analyze();
     expect(results.violations).toEqual([]);
     await page.screenshot({
-      path: `test-results/visual-${test.info().project.name}-${route === "/" ? "home" : route.includes("storico") ? "table" : route.includes("404") ? "404" : route.includes("catalogo") ? "catalogo" : route.includes("dungeon") ? "dungeon" : "article"}.png`,
+      path: `test-results/visual-${test.info().project.name}-${route === "/" ? "home" : route.includes("storico") ? "table" : route.includes("404") ? "404" : route.includes("catalogo") ? "catalogo" : route.includes("dungeon") ? "dungeon" : route.split("/").filter(Boolean).at(-1)}.png`,
       fullPage: true,
     });
   });
@@ -182,6 +189,8 @@ test("narrow 320px viewport stays within the screen", async ({ page }) => {
     "/wiki/it/economia/storico/",
     "/wiki/it/equipaggiamento/catalogo/",
     "/wiki/it/territori/home/",
+    "/wiki/it/territori/claim/",
+    "/wiki/it/equipaggiamento/incudine/",
   ]) {
     await page.goto(route);
     expect(
@@ -205,8 +214,10 @@ test("enchant filters combine name, rarity and equipment, reset and empty states
   await page.goto("/wiki/it/equipaggiamento/catalogo/");
   const catalog = page.locator("[data-enchant-catalog]");
   const visibleCards = catalog.locator("[data-enchant-card]:visible");
-  await expect(visibleCards).toHaveCount(15);
-  await catalog.getByLabel("Cerca nome, effetto o conflitto").fill("Fortune");
+  await expect(visibleCards).toHaveCount(catalogCount);
+  await catalog
+    .getByLabel("Cerca nome, effetto o conflitto")
+    .fill("Fortune Silk Touch");
   await expect(visibleCards).toHaveCount(1);
   await expect(visibleCards).toContainText("Nether Prospector II");
   await catalog.getByLabel("Rarità").selectOption("Raro");
@@ -216,7 +227,7 @@ test("enchant filters combine name, rarity and equipment, reset and empty states
   await expect(visibleCards).toHaveCount(0);
   await expect(catalog.locator(".catalog-empty")).toBeVisible();
   await catalog.getByRole("button", { name: "Azzera filtri" }).click();
-  await expect(visibleCards).toHaveCount(15);
+  await expect(visibleCards).toHaveCount(catalogCount);
   await expect(catalog.getByLabel("Rarità")).toHaveValue("");
   await catalog.getByLabel("Cerca nome, effetto o conflitto").focus();
   await page.keyboard.press("Tab");
@@ -255,8 +266,68 @@ test("enchant cards remain available without JavaScript", async ({
   await page.goto(
     `${test.info().project.use.baseURL}/wiki/it/equipaggiamento/catalogo/`,
   );
-  await expect(page.locator("[data-enchant-card]")).toHaveCount(15);
+  await expect(page.locator("[data-enchant-card]")).toHaveCount(catalogCount);
   await expect(page.locator("#xray")).toContainText("90 secondi");
   await expect(page.locator(".catalog-filters")).not.toBeVisible();
   await context.close();
+});
+
+test("current multi-claim command copies and new articles are searchable", async ({
+  page,
+  context,
+}) => {
+  await context.grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto("/wiki/it/territori/claim/");
+  const command = page
+    .locator(".command-block")
+    .filter({ hasText: "/claim bank deposit" });
+  await command.getByRole("button", { name: /Copia/ }).click();
+  expect(await page.evaluate(() => navigator.clipboard.readText())).toBe(
+    "/claim bank deposit <amount> [claim]",
+  );
+  await page.getByRole("button", { name: "Cerca nella wiki" }).click();
+  const input = page.locator('#search-dialog input[type="text"]');
+  await input.fill("multi-claim");
+  await expect(
+    page
+      .locator(".pagefind-ui__result-link")
+      .filter({ hasText: "Claim condivisi" }),
+  ).toBeVisible();
+  await input.fill("usura");
+  await expect(
+    page.locator(
+      '.pagefind-ui__result-link[href="/wiki/it/equipaggiamento/incudine/"]',
+    ),
+  ).toBeVisible();
+  await page.keyboard.press("Escape");
+  await page.goto("/categorie/economia/");
+  await page
+    .getByRole("link", { name: /Commercio e servizi/ })
+    .first()
+    .click();
+  await expect(page.locator("h1")).toContainText("Commercio e servizi");
+});
+
+test("official catalog entries disclose partial fields and newer farming changes", async ({
+  page,
+}) => {
+  await page.goto("/wiki/it/equipaggiamento/catalogo/");
+  const catalog = page.locator("[data-enchant-catalog]");
+  await catalog.getByLabel("Cerca nome, effetto o conflitto").fill("Confusion");
+  await expect(catalog.locator("[data-enchant-card]:visible")).toHaveCount(1);
+  const card = page.locator("#confusion");
+  await expect(card).toContainText("Fonte ufficiale");
+  await expect(card).toContainText("20 secondi");
+  await expect(card).toContainText("1–4%");
+  await card.getByText("Modifiche documentate").click();
+  await expect(
+    card.locator('details time[datetime="2026-10-09"]'),
+  ).toBeVisible();
+  await catalog
+    .getByLabel("Cerca nome, effetto o conflitto")
+    .fill("Harvest Hoe");
+  await expect(catalog.locator("[data-enchant-card]:visible")).toHaveCount(1);
+  await expect(
+    page.locator('#harvest-hoe time[datetime="2026-10-11"]'),
+  ).toBeVisible();
 });

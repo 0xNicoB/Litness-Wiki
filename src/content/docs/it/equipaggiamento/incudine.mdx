@@ -1,0 +1,33 @@
+---
+title: "Incudine: usura, costi e limite enchant"
+description: "Come leggere gli avvisi dell’incudine, le soglie di usura 15 e 39 e il limite separato di 12 incantesimi."
+lang: "it"
+category: "equipaggiamento"
+order: 30
+tags: []
+status: "ufficiale"
+published: "2026-10-12"
+updated: "2026-10-12"
+lastVerified: "2026-10-12"
+sources: ["LIT-PATCH-07", "LIT-PATCH-09"]
+related: ["it/equipaggiamento/catalogo", "it/equipaggiamento/enchant", "it/informazioni/regole"]
+featured: false
+---
+
+import DataTable from '../../../../components/mdx/DataTable.astro';
+import Callout from '../../../../components/mdx/Callout.astro';
+import SourceRef from '../../../../components/mdx/SourceRef.astro';
+
+Prima di combinare libri e oggetti, leggi il tooltip: numero di enchant e usura dell’incudine sono limiti diversi. La guida riassume le patch del **7 e 9 ottobre**.
+
+## Avvisi e soglie
+<DataTable caption="Soglie documentate ufficialmente il 9 ottobre"><table><thead><tr><th scope="col">Usura{' '}</th><th scope="col">Indicazione{' '}</th></tr></thead><tbody><tr><th scope="row">Da 15{' '}</th><td>Livelli residui prima di Too Expensive!, per libro e incantesimo{' '}</td></tr><tr><th scope="row">Da 39{' '}</th><td>Avviso che l’oggetto non può più essere lavorato all’incudine{' '}</td></tr></tbody></table></DataTable>
+Il limite non significa automaticamente **39 operazioni** né un numero fisso di libri: la patch parla di usura e livelli. Non ricostruiamo una formula del costo o delle penalità.
+<SourceRef id="LIT-PATCH-09" />
+
+## Limite totale degli incantesimi
+Massimo **12 enchant** per strumento, arma o pezzo di armatura. È un vincolo distinto dalle soglie dell’incudine e dai limiti di categorie come Unico. Conflitti e compatibilità vanno controllati nel [catalogo](/wiki/it/equipaggiamento/catalogo/).
+
+## Correzioni e applicazione
+La patch del 9 chiude il bug che aggirava Too Expensive!. Un vecchio suggerimento per aggirare il limite non è una procedura valida; il regolamento vieta bug abuse.
+<Callout type="info">Un libro non applicabile non dimostra da solo una truffa o un bug: controlla equipaggiamento, conflitti, limite enchant e usura. Mancano evidenze per descrivere ogni caso particolare.</Callout>

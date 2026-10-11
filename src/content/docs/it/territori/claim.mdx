@@ -1,38 +1,69 @@
 ---
-title: "Claim e protezione del terreno"
-description: "Dotazioni riportate, distanza tra claim e differenza tra protezione, membri e permessi."
+title: "Claim condivisi: membri, banca e multi-claim"
+description: "Come distribuire i chunk tra più claim, selezionare il territorio, finanziare la banca e rispettare i vincoli di espansione."
 lang: "it"
 category: "territori"
 order: 10
 tags: []
 status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-08"
+updated: "2026-10-12"
 lastVerified: null
-sources: ["COMM-GUIDES", "LIT-RULES", "LIT-PATCH-05"]
-related: ["it/territori/home", "it/territori/plot"]
+sources: ["LIT-PATCH-10", "LIT-PATCH-11", "LIT-RULES", "LIT-PATCH-05", "COMM-GUIDES", "COMM-DISCORD-08", "COMM-DISCORD-11"]
+related: ["it/territori/home", "it/territori/plot", "it/pve/dungeon", "it/economia/commissioni"]
 featured: false
+version: "Stato documentato all’11 ottobre 2026"
 ---
 
+import Command from '../../../../components/mdx/Command.astro';
 import Callout from '../../../../components/mdx/Callout.astro';
-import GuideLink from '../../../../components/mdx/GuideLink.astro';
+import DataTable from '../../../../components/mdx/DataTable.astro';
 import SourceRef from '../../../../components/mdx/SourceRef.astro';
+import Formula from '../../../../components/mdx/Formula.astro';
 
-## Dove creare un claim
-Le guide in-game riportano claim disponibili nell’**Overworld**. Un claim protegge una zona: non confonderlo con un plot commerciale allo spawn.
+I claim proteggono il terreno e possono essere condivisi. La revisione dell’**11 ottobre** permette di appartenere a **più claim**: il limite personale di chunk va distribuito tra quelli a cui partecipi. Non è necessario eliminare il proprio territorio per il solo fatto di voler appartenere a un altro claim. <SourceRef id="LIT-PATCH-11" />
 
-## Chunk e dotazioni riportate
-Il resoconto indica una dotazione iniziale di **6 chunk**, progressione ordinaria fino a **50** tramite quest o acquisti e dotazioni di alcuni rank da **60, 80 o 120** chunk. Non sono documentati qui nomi dei rank, prezzi o equivalenze tra dotazione e massimo effettivo. <SourceRef id="COMM-GUIDES" />
+## Membri e limite dei chunk
+Dal 10 ottobre i claim sostituiscono i vecchi team e possono avere **fino a 15 membri**, una home comune e una banca. I contributi dei membri formano il limite del territorio; con il multi-claim ciascuno ripartisce il proprio limite personale, senza moltiplicarlo per il numero di claim. Ogni membro può aggiungere chunk. <SourceRef id="LIT-PATCH-10" />
+La patch non documenta qui una sintassi per assegnare una quota esatta del contributo: controlla il riepilogo del menu.
 
-<Callout type="verify">Controlla la dotazione nel menu in-game. Questi numeri richiedono la rilettura delle schermate originali e non sono presentati come limiti attuali garantiti.</Callout>
+## Selezionare il claim
+<Command syntax="/claim select" description="Seleziona il claim su cui agiscono i comandi. Gli eventuali argomenti aggiuntivi non sono specificati nel changelog: consulta l’help in-game." source="UFFICIALE · 11 ottobre" />
+Prima di modificare territorio o banca, verifica il claim selezionato. Alcuni comandi consentono un nome esplicito:
+<Command syntax="/claim bank deposit &lt;amount&gt; [claim]" description="Deposita nella banca del claim; il parametro opzionale indica il claim. L’importo e il riepilogo vanno controllati prima di confermare." source="UFFICIALE · 11 ottobre" />
+<Command syntax="/claim leave [claim]" description="Lascia il claim indicato o quello individuato dal sistema. Controlla quale territorio verrà interessato prima di procedere." source="UFFICIALE · 11 ottobre" />
+La patch non specifica in dettaglio le regole di scelta implicita quando il nome è omesso.
 
-## Distanza e protezioni
-Il regolamento richiede almeno **7 chunk di distanza** da un altro claim. Distingue inoltre il terreno protetto da quello esterno. Consulta sempre la fonte ufficiale prima di costruire vicino ad altri. <SourceRef id="LIT-RULES" />
+## Banca condivisa e affitto
+L’affitto viene pagato dalla **banca del claim**, alimentata con i depositi. Dall’11 ottobre gli avvisi mostrano fondi disponibili e importo mancante e raggiungono anche i giocatori offline. <SourceRef id="LIT-PATCH-11" />
+Il vecchio chiarimento del 7 ottobre sul prelievo automatico dal conto personale precede la banca condivisa: non descrive il sistema corrente.
 
-## Membri e permessi
-Sono riportate funzioni per gestire membri e permessi, ma non un elenco verificato delle autorizzazioni. Prima di concedere accesso, controlla quali azioni permette e a chi. La wiki non inventa comandi per aggiungere membri o configurare i diritti.
+<Callout type="verify" title="Limite e gratuità sono diversi">Il limite cumulativo dei membri non prova quote gratuite cumulative. L’11 ottobre alcuni giocatori riferiscono soltanto 6 chunk gratuiti per claim: manca una conferma ufficiale diretta e una formula completa dell’affitto. Non sommare automaticamente sei chunk gratuiti per membro. <SourceRef id="COMM-DISCORD-11" /></Callout>
+Canone, periodicità, numero massimo acquistabile e conseguenze di una banca insufficiente devono essere verificati nel menu: non inventiamo tariffe.
 
-## Primo claim e home
-La patch del 5 ottobre indica che il primo claim imposta anche una home. Le modalità di rinomina e gestione richiedono ulteriore documentazione.
+## Espandere il territorio
+I nuovi chunk devono **toccare il claim**, conservarne il collegamento e restare nel raggio consentito dal centro. La forma può essere arbitraria: non deve essere un quadrato. I claim preesistenti conservano la loro forma. Tra claim diversi servono **almeno 5 chunk**. <SourceRef id="LIT-PATCH-10" />
+<Command syntax="/claim map" description="Mostra la mappa: il chunk luminoso Claim Centre è il centro. Il menu /claim riporta anche la posizione." source="UFFICIALE · 10 ottobre" />
 
-<GuideLink href="/wiki/it/territori/home/" title="Home e teletrasporto" />
+### Distanza dal centro
+La distanza si misura in **chunk**, considerando lo scostamento più grande sui due assi. Un chunk 5 a est e 3 a nord è distante **5**, non 8.
+<Formula expression="Distanza = max(|Δx|, |Δz|)" label="DISTANZA TRA COORDINATE DI CHUNK · FONTE UFFICIALE" />
+Confronta coordinate nella stessa unità: le coordinate di blocco non sono direttamente distanze in chunk.
+<DataTable caption="Soglie di espansione documentate il 10 ottobre"><table><thead><tr><th scope="col">Chunk nel claim{' '}</th><th scope="col">Variazione del raggio{' '}</th></tr></thead><tbody><tr><th scope="row">10{' '}</th><td>Un chunk in più{' '}</td></tr><tr><th scope="row">26{' '}</th><td>Un ulteriore chunk{' '}</td></tr><tr><th scope="row">50{' '}</th><td>Un ulteriore chunk{' '}</td></tr><tr><th scope="row">82{' '}</th><td>Un ulteriore chunk{' '}</td></tr></tbody></table></DataTable>
+Il changelog fa questo esempio: con 8 chunk il claim raggiunge 7 chunk dal centro; arrivando a 10 raggiunge 8. Non estrapoliamo una formula completa per ogni dimensione. Se compare “Too far from the claim centre”, riempi prima gli spazi vicini al centro e ricontrolla il limite disponibile.
+
+## Rimuovere chunk o lasciare il gruppo
+<Command syntax="/claim removechunk" description="Proprietario e officer possono rinunciare a un chunk diverso dal centro, purché il territorio resti connesso." source="UFFICIALE · 10 ottobre" />
+Quando un membro lascia, il limite perde il suo contributo. La patch del 10 ottobre indica la rimozione degli eventuali chunk eccedenti a partire da quelli claimati più recentemente. Il dettaglio della ripartizione automatica tra più claim dopo il rework dell’11 resta da controllare: valuta i limiti prima dell’uscita.
+
+## Inviti, proprietà e home comune
+<Command syntax="/claim accept &lt;claim name&gt;" description="Accetta l’invito specificando il nome del claim." source="UFFICIALE · 10 ottobre" />
+<Command syntax="/claim transfer" description="Trasferimento della proprietà: il changelog non riporta qui gli argomenti completi. Controlla destinatario e condizioni nel menu." source="UFFICIALE · 10 ottobre" />
+<Command syntax="/claim delete" description="Elimina il claim e fa perdere la protezione del terreno. Non serve per la sola appartenenza a più claim." source="UFFICIALE · 10 ottobre" />
+<Command syntax="/claim home" description="Home comune del claim condiviso. È distinta dalla home personale chiamata claim, raggiunta con /home claim." source="UFFICIALE · 10 ottobre" />
+Per permessi e trust consulta anche le [regole](/wiki/it/informazioni/regole/): concedere accesso richiede attenzione, e una sanzione non garantisce il rimborso degli oggetti.
+
+## Dotazioni e inattività: dati ancora da confermare
+Le guide precedenti al rework riferiscono claim nell’**Overworld**, **6 chunk iniziali**, progressione ordinaria fino a **50** e dotazioni rank **60/80/120**. Sono limiti personali riferiti, non prezzi né chunk gratuiti garantiti nel sistema condiviso. <SourceRef id="COMM-GUIDES" />
+La risposta dell’8 ottobre sulla decadenza dopo **30 giorni senza accesso del proprietario** precede il multi-claim: durata, significato di proprietario e applicazione ai claim condivisi restano da verificare. <SourceRef id="COMM-DISCORD-08" />
+Le regole transitorie del 10 ottobre sono consultabili nella [cronologia](/wiki/it/informazioni/aggiornamenti/#10-ottobre-2026); questa guida applica la modifica successiva dell’11.

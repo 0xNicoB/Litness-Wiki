@@ -4,7 +4,7 @@ Wiki italiana indipendente del server Minecraft Litness. Non affiliata o gestita
 
 Sito pubblico: **https://litness-wiki.pages.dev/**. Cloudflare Pages è collegato a `main` tramite l’integrazione GitHub.
 
-Aggiornamento 9 ottobre: **32 articoli**, 8 categorie, HTML statico Astro, ricerca locale Pagefind, font self-hosted e layout responsive. Nessun database, login o servizio indispensabile esterno.
+Aggiornamento 12 ottobre: **34 articoli**, 8 categorie, HTML statico Astro, ricerca locale Pagefind, font self-hosted e layout responsive. Nessun database, login o servizio indispensabile esterno.
 
 ## Sviluppo
 
@@ -51,17 +51,18 @@ I push su main attivano le build automatiche; gli altri branch possono generare 
 - `src/data/sources.json`: registro delle fonti e provenienza.
 - `src/data/market.json`: osservazioni storiche del 7 ottobre 2026, stato RIFERITO.
 - `src/data/enchants.json`: tooltip verificati, valori opzionali e riferimenti temporali; Content Collection validata.
-- `src/data/observations-2026-10-09.json`: registro di revisione, destinazioni e incertezze.
+- `src/data/observations-2026-10-09.json`: evidenze storiche della revisione video.
+- `src/data/revisions-2026-10-12.json`: correzioni successive, fonti e regole sostituite.
 - `src/data/categories.json`: categorie e ordine della navigazione.
 - `src/config/site.ts`: identità, link e disclaimer.
 - `src/components/mdx`: callout, comandi, formule, tabelle, fonti, oggetti e gallerie.
 
 Aggiungere un articolo non richiede modifiche ai router o alla sidebar. Gli URL iniziano con `/wiki/it/`, predisposti per nuove lingue ma non con traduzioni incomplete pubblicate.
 
-Le fonti hanno date di consultazione esplicite. I due video del 9 ottobre sono stati esaminati direttamente: le parti leggibili ricevono lo stato **osservato**. Tooltip assenti o tagliati restano **riferiti**, così come lo storico del 7 ottobre. Il catalogo mostra 15 schede verificate, senza dichiarare un totale certo degli enchant. L’indice ricerca non legge prezzi o dati dal server. Le date di verifica non dipendono dalla build.
+Le fonti hanno date di consultazione esplicite. I due video del 9 ottobre sono stati esaminati direttamente: le parti leggibili ricevono lo stato **osservato**. Tooltip assenti o tagliati restano **riferiti**, così come lo storico del 7 ottobre. Il catalogo mostra 22 schede documentate (15 da video e 7 da patch ufficiali), senza dichiarare un totale certo degli enchant. L’indice ricerca non legge prezzi o dati dal server. Le date di verifica non dipendono dalla build.
 
 ## Documentazione
 
-[Design system](docs/DESIGN_SYSTEM.md) · [Architettura](docs/ARCHITECTURE.md) · [Guida contenuti](docs/CONTENT_GUIDE.md) · [Deployment](docs/DEPLOYMENT.md) · [Contribuire](CONTRIBUTING.md) · [Verifiche](docs/QA.md) · [Revisione 9 ottobre](docs/UPDATE_2026-10-09.md) · [Asset](docs/ASSETS.md)
+[Design system](docs/DESIGN_SYSTEM.md) · [Architettura](docs/ARCHITECTURE.md) · [Guida contenuti](docs/CONTENT_GUIDE.md) · [Deployment](docs/DEPLOYMENT.md) · [Contribuire](CONTRIBUTING.md) · [Verifiche](docs/QA.md) · [Revisione 9 ottobre](docs/UPDATE_2026-10-09.md) · [Revisione 12 ottobre](docs/UPDATE_2026-10-12.md) · [Asset](docs/ASSETS.md)
 
 Codice originale: MIT. Testi originali: CC BY 4.0, salvo diritti di terzi. Font OFL e icone ISC mantengono le loro licenze. Il paesaggio illustrato è originale, non uno screenshot o un asset ufficiale di Litness.

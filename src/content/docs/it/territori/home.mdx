@@ -5,32 +5,45 @@ lang: "it"
 category: "territori"
 order: 20
 tags: []
-status: "osservato"
+status: "riferito"
 published: "2026-10-08"
-updated: "2026-10-09"
-lastVerified: "2026-10-09"
-sources: ["LIT-PATCH-05", "VIDEO-09-GUIDE"]
+updated: "2026-10-12"
+lastVerified: null
+sources: ["LIT-PATCH-05", "LIT-PATCH-11", "VIDEO-09-GUIDE", "COMM-DISCORD-01", "COMM-DISCORD-03", "COMM-DISCORD-04", "COMM-DISCORD-10"]
 related: ["it/territori/claim", "it/territori/vault", "it/pve/risorse"]
 featured: false
-version: "Patch 5 ottobre 2026"
+version: "Teleport documentati all’11 ottobre"
 ---
 
 import DataTable from '../../../../components/mdx/DataTable.astro';
+import Command from '../../../../components/mdx/Command.astro';
 import SourceRef from '../../../../components/mdx/SourceRef.astro';
 
-Le home e l’RTP svolgono funzioni diverse: le prime sono destinazioni memorizzate; l’RTP è un teletrasporto casuale. I valori riportati qui si riferiscono alla guida del **9 ottobre 2026**. <SourceRef id="VIDEO-09-GUIDE" />
+Le **home personali**, la **home del claim** e l’**RTP** svolgono funzioni diverse. I limiti osservati nel video del 9 ottobre sono datati; le modifiche ufficiali dell’11 sono indicate separatamente.
 
 ## Home base e rank
-Sono riportate **2 home base per giocatore**, con un limite che può arrivare a **75 home tramite i rank**. Non è verificata la distribuzione dei benefici tra i singoli rank.
+Il menu del 9 ottobre indica **2 home base**, fino a **75 tramite i rank**. Non è verificata la distribuzione tra singoli rank. <SourceRef id="VIDEO-09-GUIDE" />
+La chat riporta queste sintassi personali:
+<Command syntax="/sethome &lt;nome&gt;" description="Memorizza la home personale con il nome scelto. Sintassi riferita nelle risposte del 10 ottobre; controlla limiti e costi nel menu." source="RIFERITO · chat 10 ottobre" />
+<Command syntax="/home &lt;nome&gt;" description="Raggiunge la home personale indicata. Sintassi riferita dalla community." source="RIFERITO · chat 10 ottobre" />
+`/delhome` compare nella chat, ma gli argomenti completi non sono verificati: consulta l’help prima di eliminare una destinazione.
+
+## Home personale claim e home condivisa
+<DataTable caption="Due comandi diversi · correzione ufficiale dell’11 ottobre"><table><thead><tr><th scope="col">Comando{' '}</th><th scope="col">Destinazione{' '}</th></tr></thead><tbody><tr><th scope="row"><code>/home claim</code>{' '}</th><td>La tua home personale chiamata claim{' '}</td></tr><tr><th scope="row"><code>/claim home</code>{' '}</th><td>La home comune del claim condiviso{' '}</td></tr></tbody></table></DataTable>
+La correzione dell’11 ottobre fa funzionare `/home claim` come home personale: non è un alias della home comune. <SourceRef id="LIT-PATCH-11" />
 
 ## Cooldown RTP
-<DataTable caption="Cooldown RTP osservati il 9 ottobre 2026 · non limiti di accesso ai mondi"><table><thead><tr><th scope="col">Mondo{' '}</th><th scope="col">Cooldown{' '}</th></tr></thead><tbody><tr><th scope="row">Overworld{' '}</th><td>15 minuti{' '}</td></tr><tr><th scope="row">Nether{' '}</th><td>30 minuti{' '}</td></tr><tr><th scope="row">End{' '}</th><td>1 ora{' '}</td></tr><tr><th scope="row">Mondo Risorse{' '}</th><td>1 minuto{' '}</td></tr></tbody></table></DataTable>
-Questi tempi riguardano il sistema RTP. Non dimostrano un blocco di ingresso nei mondi attraverso altri mezzi. Costi e sintassi operativa completa restano da verificare.
+<DataTable caption="Cooldown osservati il 9 ottobre · non limiti generici di accesso ai mondi"><table><thead><tr><th scope="col">Mondo{' '}</th><th scope="col">Cooldown RTP{' '}</th></tr></thead><tbody><tr><th scope="row">Overworld{' '}</th><td>15 minuti{' '}</td></tr><tr><th scope="row">Nether{' '}</th><td>30 minuti{' '}</td></tr><tr><th scope="row">End{' '}</th><td>1 ora{' '}</td></tr><tr><th scope="row">Mondo Risorse{' '}</th><td>1 minuto{' '}</td></tr></tbody></table></DataTable>
+Il menu è visibile intorno a **01:09**. Il tooltip indica `/rtp` per aprire la scelta dei mondi, senza documentare qui parametri aggiuntivi.
 
-## Modifiche ufficiali alle home
-Dal **5 ottobre** il primo claim imposta automaticamente anche una home ed è rimosso il limite giornaliero ai teletrasporti home. <SourceRef id="LIT-PATCH-05" />
-La rimozione del limite giornaliero non elimina automaticamente costi, cooldown o condizioni. Non sono documentati qui comandi di creazione, eliminazione o rinomina.
+## Richieste di teletrasporto
+Dall’**11 ottobre**, `/tpa` e `/tpahere` hanno entrambi **30 secondi di cooldown**. La patch non ne specifica la sintassi completa. <SourceRef id="LIT-PATCH-11" />
+Non confondere questi tempi con RTP, home o dungeon. TP-kill e trap-kill sono vietati; il [regolamento](/wiki/it/informazioni/regole/) descrive le condizioni e le prove video richieste.
 
-Vedi anche [Mondo Risorse](/wiki/it/pve/risorse/) e [Vault](/wiki/it/territori/vault/).
+## Warp e ritorno allo spawn
+La patch dell’11 aggiunge cinque destinazioni: **plots, enchant, leaderboards, cosmetics, dungeons**. Non documenta il comando completo di accesso: usa il menu warp e la guida in-game, senza assumere automaticamente `/warp &lt;nome&gt;`.
+<Command syntax="/spawn" description="Ritorno allo spawn Survival riportato da più conversazioni. È distinto dal ritorno all’hub generale." source="RIFERITO · chat 1–4 ottobre" />
 
-Il menu RTP è leggibile intorno a **01:09**; il tooltip Home intorno a **00:44** nel video Help.
+## Modifiche alle home del 5 ottobre
+Il primo claim crea automaticamente una home e il limite giornaliero ai teletrasporti home è stato rimosso. Questo non dimostra assenza di altri costi o cooldown. <SourceRef id="LIT-PATCH-05" />
+Vedi [claim condivisi](/wiki/it/territori/claim/) e [Vault](/wiki/it/territori/vault/).
