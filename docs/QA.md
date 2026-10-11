@@ -163,3 +163,12 @@ Testati ricerca multi-claim/incudine/Illusionista/Prospector, copia del deposito
 Durante la verifica sono stati corretti un import MDX mancante e i selettori dei nuovi test (sottorisultati Pagefind e date in formato italiano). La prima suite completa riportava 37 pass/4 fail/1 skip; dopo la correzione tutti i 41 casi applicabili sono passati. Non sono rimasti test falliti. Lighthouse non rieseguito: i punteggi precedenti restano misure della release precedente.
 
 Questi risultati sono locali. Pubblicazione Cloudflare, CI e risposte HTTP pubbliche vanno registrate separatamente nel report della revisione. Sitemap valida non equivale a indicizzazione Google. Nessun accesso diretto al gioco o verifica di ruoli staff Discord.
+
+
+### Pubblicazione e verifica pubblica della revisione12
+
+Implementazione `733d539e99ff48fac59baa195712bc85b446131e` su main; CI [38182023140](https://github.com/0xNicoB/Litness-Wiki/actions/runs/38182023140) riuscita con installazione pulita e Chromium Playwright standard, 22 Node/41 E2E passati e 1 skip. Cloudflare deployment Git automatico `20359569-dc5f-434f-bc79-4591c87f0a03`, successo alle 22:51:28 UTC dell’11 ottobre (00:51:28 del 12 in Italia), Node22.23.3. Build provider conferma gli stessi conteggi locali.
+
+15 richieste HTTP di produzione: 14 risposte200, una404 personalizzata, zero redirect; comprendono due nuove guide, canonical/description, sitemap XML index e diretta con44 URL, robots con entrambe le sitemap, Pagefind34 e file Google identico. I tre controlli aggiuntivi con user-agent Googlebot-like confermano solo disponibilità per quella stringa, non accesso di Googlebot verificato o indicizzazione.
+
+Nel browser cloud provati homepage con revisioni12, ricerca multi-claim/risultato/guida, copia banca riletto dalla clipboard e filtro Confusion ufficiale. La suite completa resta locale/CI; non è dichiarata una seconda esecuzione completa E2E in produzione. Dettagli e limiti in UPDATE_2026-10-12.md.
