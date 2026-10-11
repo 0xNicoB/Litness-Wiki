@@ -1,0 +1,69 @@
+name: Sitemap HTTP diagnostics
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/sitemap-http-diagnostics.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fetch production endpoints (browser and crawler user agents)
+        shell: bash
+        run: |
+          set -uo pipefail
+          mkdir -p diagnostics
+          for agent in browser googlebot-like; do
+            if [ "$agent" = browser ]; then
+              ua="Mozilla/5.0 (compatible; sitemap-diagnostic/1.0)"
+            else
+              # A user-agent string does NOT prove verified Googlebot identity.
+              ua="Googlebot/2.1 (+http://www.google.com/bot.html)"
+            fi
+            for route in / /robots.txt /sitemap-index.xml /sitemap-0.xml; do
+              name=\${route#/}
+              [ -n "$name" ] || name=homepage
+              printf '\n=== %s %s ===\n' "$agent" "$route"
+              curl --silent --show-error --location --max-time 25 --connect-timeout 10 \
+                --user-agent "$ua" --dump-header "diagnostics/$agent-$name.headers" \
+                --output "diagnostics/$agent-$name.body" \
+                --write-out 'HTTP %{http_code}, redirects %{num_redirects}, type %{content_type}, final %{url_effective}, remote %{remote_ip}, total %{time_total}s\n' \
+                "https://litness-wiki.pages.dev$route" || true
+              grep -Ei '^(HTTP/|content-type:|location:|server:|cf-ray:|x-robots-tag:)' \
+                "diagnostics/$agent-$name.headers" || true
+            done
+          done
+      - name: Parse XML and check sitemap hostnames
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib
+          import xml.etree.ElementTree as ET
+          from urllib.parse import urlparse
+          for agent in ('browser', 'googlebot-like'):
+              for name in ('sitemap-index.xml', 'sitemap-0.xml'):
+                  path = pathlib.Path('diagnostics') / f'{agent}-{name}.body'
+                  print(f'\n{agent}: {name}')
+                  try:
+                      raw = path.read_bytes()
+                      root = ET.fromstring(raw)
+                      locations = [e.text or '' for e in root.iter() if e.tag.endswith('}loc') or e.tag == 'loc']
+                      hosts = sorted(set(urlparse(url).netloc for url in locations))
+                      print(f'XML OK; root={root.tag}; locations={len(locations)}; hosts={hosts}; bytes={len(raw)}')
+                  except Exception as e:
+                      print(f'XML NOT PARSED: {e}')
+          PY
+      - name: Upload diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitemap-http-diagnostics
+          path: diagnostics/
+          retention-days: 7
