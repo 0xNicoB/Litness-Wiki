@@ -28,7 +28,7 @@ jobs:
               ua="Googlebot/2.1 (+http://www.google.com/bot.html)"
             fi
             for route in / /robots.txt /sitemap-index.xml /sitemap-0.xml; do
-              name=\${route#/}
+              name=${route#/}
               [ -n "$name" ] || name=homepage
               printf '\n=== %s %s ===\n' "$agent" "$route"
               curl --silent --show-error --location --max-time 25 --connect-timeout 10 \
